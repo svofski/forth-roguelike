@@ -190,15 +190,15 @@ ROWS 6 / constant ROOM_HH
 : render-rooms ( -- )
     10 1 do i render-room loop ;
 
-( n in range 1..9 --> x y in range 0..2 )
-: n-xy ( n -- x y )
+\ room number rn n in range 1..9 --> x y in range 0..2
+: rn-xy ( rn -- x y )
     1- dup 3 / swap 3 mod swap ;
 
 : door-y ( rn -- y )
     dup room-height 
         dup 0> if 2 - rnd 1 + swap (rooms) }y1@ + 
                else drop (rooms) }y1@ then ;
-    
+
 : door-x ( rn -- x)
     dup room-width 
         dup 0> if 2 - rnd 1 + swap (rooms) }x1@ + 
@@ -206,9 +206,6 @@ ROWS 6 / constant ROOM_HH
 
 : door-l ( rn -- x y )
     dup door-y swap (rooms) }x2@ swap ;
-
-: door-l! ( rn -- )
-    dup door-l ;
 
 : door-h ( rn -- x y )
     dup door-y swap (rooms) }x1@ swap ;
@@ -230,36 +227,31 @@ ROWS 6 / constant ROOM_HH
     dup door-l 3dup +door! rot drop 2swap
 
     3 pick 2 pick any-between       ( x1 y1 x2 y2 m -- )
-    4 pick 4 pick 2 pick hpass      \ x1,y1 - mx,y1  - make 3 lines
+    4 pick 4 pick 2 pick 1+ hpass   \ x1,y1 - mx,y1  - make 3 lines
     dup    4 pick 3 pick vpass      \ mx,y1 - mx,y2
-    over over swap 4 pick hpass     \ mx,y2 - x2,y2
-    C-PASSAGE over 5 pick dcellyx!
-    C-PASSAGE over 3 pick dcellyx!
-    drop drop drop drop drop ;
+    1- swap rot hpass               \ mx,y2 - x2,y2
+    drop drop ;
 
 : conn-v ( top bottom -- ) 
     dup door-k 3dup +door! rot drop rot
     dup door-j 3dup +door! rot drop 2swap
 
-                                    ( x1 y1 x2 y2 -- )
     2 pick over any-between         ( x1 y1 x2 y2 m -- )
-    4 pick 4 pick 2 pick vpass      \ x1,y1 - x1,m
+    4 pick 4 pick 2 pick 1+ vpass   \ x1,y1 - x1,m
     4 pick over 4 pick hpass        \ x1,m - x2,m 
     2 pick over 3 pick vpass        \ x2,m - x2,y2
-    C-PASSAGE 5 pick 2 pick dcellyx!
-    C-PASSAGE 3 pick 2 pick dcellyx!
-    drop drop drop drop drop ;
+    1- swap vpass 
+    drop drop ;
 
 : connect-2rooms ( r1 r2 -- )
     2dup  ( r1 r2 r1 r2 -- )
-    n-xy  ( r1 r2 r1 x2 y2 -- )
+    rn-xy ( r1 r2 r1 x2 y2 -- )
     rot
-    n-xy  ( r1 r2 x2 y2 x1 y1 -- )
-    2 roll = ( y1 == y2 )
-    if drop drop    
+    rn-xy ( r1 r2 x2 y2 x1 y1 -- )
+    swap drop rot drop = if  ( y1 == y2 )
         2dup > if swap then 
         conn-h
-    else drop drop
+    else 
         2dup > if swap then
         conn-v
     then ;

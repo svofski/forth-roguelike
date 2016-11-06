@@ -59,7 +59,7 @@ variable #edge
 
 \ Find where we can go starting from given room number.
 \ Possible directions are defined as a table of hex numbers.
-\ The number of results is variable: 0..4.
+\ The number of results is variable 0..4, they are room numbers 1..9.
 ( rn -- directions )
 hex
 : make-could-go
@@ -67,8 +67,7 @@ hex
     does> swap cells + @ 
         begin
             dup f and dup cannot-go? if drop else swap then
-            4 rshift dup 0= until drop
-;            
+            4 rshift dup 0= until drop ;            
 decimal
 
 make-could-go where?
