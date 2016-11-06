@@ -1,16 +1,11 @@
 require lfsr.fs
 require dung.fs
 
-( x1 y1 x2 y2 flags hdoory jdoorx kdoorx ldoory )
-
 1 constant RF-EXISTS    ( room exists and valid )
 2 constant RF-CON       ( room is in connected set )
 4 constant RF-THRU      ( room is a thru for xing )
 
 14 constant ROOM-SIZEOF
-
-( : point create c, c, does> dup c@ swap 1+ c@ swap ; )
-( not sure if this is useful )
 
 variable current-offset
 : soffset ( n -- ) ( addr -- addr')
@@ -54,8 +49,7 @@ ROWS 6 / constant ROOM_HH
 : room-centre ( rn -- x y )
     1- dup
         3 mod 2 * 1 + ROOM_HW * swap
-        3 / 2 * 1 + ROOM_HH *
-;
+        3 / 2 * 1 + ROOM_HH * ;
 
 : rnd-room ( rn -- )
     dup room-centre

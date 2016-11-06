@@ -53,9 +53,14 @@ variable #edge
 
 : room-trunk! con-sets trunk-set @ swap ! ;
 
+\ return true if the room is nonexistent or has been visited before
 : cannot-go? ( i -- b )
     dup room-exists? invert swap room-trunk? or ;
 
+\ Find where we can go starting from given room number.
+\ Possible directions are defined as a table of hex numbers.
+\ The number of results is variable: 0..4.
+( rn -- directions )
 hex
 : make-could-go
     create hex 0 , 24 , 135 , 26 , 157 , 2468 , 359 , 48 , 579 , 68 , decimal
@@ -68,34 +73,31 @@ decimal
 
 make-could-go where?
 
-( pick start room and make it trunk )
+\ pick start room and make it trunk
 : pick-start ( -- i ) 
     0 ( put a dummy to drop )
     begin drop 9 rnd1+ 
         dup room-exists? over room-thru? invert and
     until
-    dup trunk-set !
-;
+    dup trunk-set ! ;
 
+\ pick a random room to go to
 : go-to ( from -- to )
     depth >r where? depth r@ - 1+ 
         dup 0> if rnd pick else NOWAY then
         depth r> - 0 do swap drop loop ;
 
+\ prune the edge that connects a dead-end thru room
 : prune-last ( rn -- )
     #edge @ if 
         dup                     ( rn rn -- )
         #edge @ 1- edge@        ( rn rn a b -- )
         drop = if 
-            \ prune tos
-             -1 #edge +!
-             \ cr ." PRUNED: " #edge @ edge@ . . cr
-            \ drop
+            -1 #edge +!
             room-nexisteplus!
         else
             drop
-        then then 
-    ;
+        then then ;
 
 : traverse
     pick-start
@@ -109,9 +111,8 @@ make-could-go where?
             \ push & keep exploring ( next -- )
         else
             drop dup                ( cur next -- cur cur )
-            \ dump-sets ." cur=" dup . dup dead-end? ." dead end=" .
             room-thru? if dup prune-last then drop
-            \ back track
+            \ back track to where we can branch or doneski
             tsavail? if tstack> else exit then
         then
     again ;
