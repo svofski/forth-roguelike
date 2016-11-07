@@ -11,18 +11,13 @@ require tstack.fs
 
 0 constant NOWAY
 
-create con-sets 10 cells allot
-does> swap cells + ;
-
-variable trunk-set \ see con-sets
-
 create (con-edges) 20 allot
 does> swap + ;
 variable #edge 
 
-: init-con-sets 
-    10 1 do 
-        i room-exists? if i else 0 then i con-sets ! loop ;
+: init-tree
+    10 1 do
+        i room-cut! loop ;
 
 : init-edges
     #edge off
@@ -38,9 +33,13 @@ variable #edge
     #edge dup @ if -1 swap +! then ;
 
 : dump-sets
-    cr ." trunk=" trunk-set @ . cr
+    cr
     10 1 do
-        i con-sets @ .
+        i room-trunk? if [CHAR] T emit 
+        else i room-thru? if [CHAR] + emit
+        else i room-exists? if [CHAR] 0 emit
+        else [CHAR] _ emit then then then
+        1 spaces
         i 1- 3 mod 2 = if cr then
     loop 
 
@@ -48,10 +47,6 @@ variable #edge
     #edge @ 0 do
         i edge@ '(' emit . . ')' emit
     loop cr then ;
-
-: room-trunk? con-sets @ trunk-set @ = ;
-
-: room-trunk! con-sets trunk-set @ swap ! ;
 
 \ return true if the room is nonexistent or has been visited before
 : cannot-go? ( i -- b )
@@ -77,8 +72,7 @@ make-could-go where?
     0 ( put a dummy to drop )
     begin drop 9 rnd1+ 
         dup room-exists? over room-thru? invert and
-    until
-    dup trunk-set ! ;
+    until ;
 
 \ pick a random room to go to
 : go-to ( from -- to )
@@ -98,16 +92,16 @@ make-could-go where?
             drop
         then then ;
 
-: traverse
-    pick-start
+\ pick a random room and walk the maze, create edges as we go
+: build-tree
+    pick-start dup room-trunk!
     begin
         ( rn -- )
         dup go-to dup if 
             ( cur next -- )  
             dup rot dup 
-            >tstack edge+! 
+            >tstack edge+!          \ push & keep exploring ( next -- )
             dup room-trunk!
-            \ push & keep exploring ( next -- )
         else
             drop dup                ( cur next -- cur cur )
             room-thru? if dup prune-last then drop
@@ -116,14 +110,17 @@ make-could-go where?
         then
     again ;
 
-: conn?
-    true
+\ return true if the rooms are all connected
+: tree-complete?
     10 1 do
-        drop
-        i con-sets @ dup 0= swap trunk-set @ = or invert 
-            if false leave then
-        true
-    loop ;
+        i room-exists? if
+            i room-trunk? invert if
+                R> R> drop drop ( unloop )
+                false exit
+            then
+        then
+    loop
+    true ;
 
 : render-passages
     #edge @ if
@@ -131,15 +128,19 @@ make-could-go where?
             i edge@ connect-2rooms
         loop then ;
 
+: add-some-thru
+    10 1 do i room-exists? invert if 
+        coinflip if i room-thru then 
+    then loop ;
+
+
 : linked-rooms
     C-NOTHING dclear
     make-rooms
     begin 
-        init-con-sets init-edges
-        traverse conn? if exit then   \ all connected, done
-        10 1 do i con-sets @ 0= if 
-            coinflip if i room-thru then
-        then loop
+        init-tree init-edges
+        build-tree tree-complete? if exit then   \ all connected, done
+        add-some-thru
     again ;
 
 : level

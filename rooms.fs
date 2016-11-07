@@ -4,6 +4,7 @@ require dung.fs
 1 constant RF-EXISTS    ( room exists and valid )
 2 constant RF-CON       ( room is in connected set )
 4 constant RF-THRU      ( room is a thru for xing )
+8 constant RF-TRUNK     ( room is in the spanning tree )
 
 14 constant ROOM-SIZEOF
 
@@ -93,6 +94,10 @@ ROWS 6 / constant ROOM_HH
 
 : room-nexisteplus!
     (rooms) }flags dup @ RF-EXISTS RF-THRU or invert and swap ! ;
+
+: room-trunk? (rooms) }flags@ RF-TRUNK and 0 <> ;
+: room-trunk! (rooms) }flags dup @ RF-TRUNK or swap ! ;
+: room-cut!   (rooms) }flags dup @ RF-TRUNK invert and swap ! ;
 
 : room-make ( rn -- )
     dup (rooms) }flags @ RF-EXISTS and 0= if
