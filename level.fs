@@ -15,6 +15,10 @@ create (con-edges) 20 allot
 does> swap + ;
 variable #edge 
 
+variable start-room 
+variable exit-room
+variable farthest
+
 : init-tree
     10 1 do
         i room-cut! loop ;
@@ -92,9 +96,17 @@ make-could-go where?
             drop
         then then ;
 
+: farthest?! ( rn -- )
+    tsdepth farthest @ > if
+        tsdepth farthest !
+        exit-room !
+        exit then
+    drop ;
+
 \ pick a random room and walk the maze, create edges as we go
 : build-tree
-    pick-start dup room-trunk!
+    0 farthest !
+    pick-start dup room-trunk! dup start-room ! dup exit-room !
     begin
         ( rn -- )
         dup go-to dup if 
@@ -102,6 +114,9 @@ make-could-go where?
             dup rot dup 
             >tstack edge+!          \ push & keep exploring ( next -- )
             dup room-trunk!
+            dup room-thru? invert if
+                dup farthest?!
+            then
         else
             drop dup                ( cur next -- cur cur )
             room-thru? if dup prune-last then drop
@@ -143,5 +158,14 @@ make-could-go where?
         add-some-thru
     again ;
 
+: x-rnd-in-room
+    dup (rooms) }x1@ swap (rooms) }x2@ any-between ;
+: y-rnd-in-room
+    dup (rooms) }y1@ swap (rooms) }y2@ any-between ;
+: place-thing ( rn c -- )
+    swap dup x-rnd-in-room swap y-rnd-in-room dcellyx! ;
+
 : level
-    linked-rooms render-passages render-rooms ;
+    linked-rooms render-passages render-rooms 
+    start-room @ [CHAR] @ place-thing
+    exit-room  @ [CHAR] > place-thing ;
