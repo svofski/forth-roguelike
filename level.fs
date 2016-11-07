@@ -8,6 +8,10 @@ require tstack.fs
 : point
     create c, c,
     does> dup 1+ ;
+: p-xy@ ( point -- x y )
+    c@ swap c@ ;
+: p-xy! ( x y py px -- )
+    >R rot R> c! c! ; 
 
 0 constant NOWAY
 
@@ -120,8 +124,9 @@ make-could-go where?
         else
             drop dup                ( cur next -- cur cur )
             room-thru? if dup prune-last then drop
-            \ back track to where we can branch or doneski
-            tsavail? if tstack> else exit then
+            tsavail? if 
+                tstack> \ back track to where we can branch or doneski
+            else exit then
         then
     again ;
 
@@ -162,10 +167,22 @@ make-could-go where?
     dup (rooms) }x1@ swap (rooms) }x2@ any-between ;
 : y-rnd-in-room
     dup (rooms) }y1@ swap (rooms) }y2@ any-between ;
+
+0 0 point tmp-point
+0 0 point rogue-xy
+
+: somewhere-in-room ( rn -- x y )
+    dup x-rnd-in-room swap y-rnd-in-room ;
+
 : place-thing ( rn c -- )
-    swap dup x-rnd-in-room swap y-rnd-in-room dcellyx! ;
+    swap somewhere-in-room
+    2dup tmp-point p-xy!
+    dcellyx! ;
+
+: place-rogue 
+    somewhere-in-room rogue-xy p-xy! ;
 
 : level
     linked-rooms render-passages render-rooms 
-    start-room @ [CHAR] @ place-thing
+    start-room @ place-rogue
     exit-room  @ [CHAR] > place-thing ;

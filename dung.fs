@@ -5,6 +5,8 @@ COLS ROWS * constant dngsize
 32 constant C-NOTHING
 '.' constant C-FLOOR
 '#' constant C-PASSAGE
+'+' constant C-DOOR
+'>' constant C-EXIT
 
 create (dungeon) dngsize allot 
 

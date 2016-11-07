@@ -108,7 +108,6 @@ ROWS 6 / constant ROOM_HH
 : make-rooms 
     0 (rooms) ROOM-SIZEOF 10 * 0 fill
     4 rnd 3 + >R
-    ." Making " R@ . ." rooms"
     0 0 ( nrooms i -- )
     begin
         dup 1+ 9 mod swap       ( nrooms i+1 i -- )
@@ -171,7 +170,7 @@ ROWS 6 / constant ROOM_HH
     dup (rooms) }#doors@ 
         dup 0> if 
             1- 0 swap do 
-                dup '+' swap i 
+                dup C-DOOR swap i 
                     door[] 
                 dcellyx!
             -1 +loop
