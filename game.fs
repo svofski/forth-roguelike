@@ -83,6 +83,7 @@ create dlevel 0 ,
         dup 'b' = if walk-b drop then
         dup 'n' = if walk-n drop then
         dup '>' = if walk-> drop then
+        dup 12  = if page dprint then
         drop
     again ;
 
