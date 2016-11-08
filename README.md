@@ -8,8 +8,10 @@ to, hopefully, get it. If you are a Forth person, you get it and you see how I d
 ## how to
 The main development platform is gforth. 
 
-Currently only a rudimentary maze generator is implemented:
+Status:
+ * maze generator
+ * ability to walk around the dungeon and downstairs
 ```
-$ gforth level.fs
-level dprint
+$ gforth game.fs
+play
 ```
