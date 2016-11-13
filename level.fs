@@ -1,23 +1,10 @@
-require rooms.fs
-require tstack.fs
-
-: point@ 
-    create c, c, 
-    does> dup c@ swap 1+ c@ swap ;
-
-: point
-    create c, c,
-    does> dup 1+ ;
-: p-xy@ ( point -- x y )
-    c@ swap c@ ;
-: p-xy! ( x y py px -- )
-    >R rot R> c! c! ; 
-
 0 constant NOWAY
 
-create (con-edges) 20 allot
-does> swap + ;
-variable #edge 
+: 20array 
+    create 20 cells allot
+    does> swap + ;
+20array (con-edges)
+variable n-edge 
 
 variable start-room 
 variable exit-room
@@ -28,17 +15,17 @@ variable farthest
         i room-cut! loop ;
 
 : init-edges
-    #edge off
+    n-edge off
     20 0 do 0 i (con-edges) ! loop ;
 
 : edge+! 
-    4 lshift or #edge dup rot rot @ (con-edges) c! 1 swap +! ;
+    4 lshift or n-edge dup rot rot @ (con-edges) c! 1 swap +! ;
 
 : edge@
     (con-edges) c@ dup 15 and swap 4 rshift ;
 
 : edge-!
-    #edge dup @ if -1 swap +! then ;
+    n-edge dup @ if -1 swap +! then ;
 
 : dump-sets
     cr
@@ -51,22 +38,25 @@ variable farthest
         i 1- 3 mod 2 = if cr then
     loop 
 
-    #edge @ if
-    #edge @ 0 do
-        i edge@ '(' emit . . ')' emit
+    n-edge @ if
+    n-edge @ 0 do
+        i edge@ [CHAR] ( emit . . [CHAR] ) emit
     loop cr then ;
 
-\ return true if the room is nonexistent or has been visited before
+\ return true if the room is nonexistent or was visited before
 : cannot-go? ( i -- b )
     dup room-exists? invert swap room-trunk? or ;
 
 \ Find where we can go starting from given room number.
 \ Possible directions are defined as a table of hex numbers.
-\ The number of results is variable 0..4, they are room numbers 1..9.
+\ The number of results is variable 0..4, 
+\ they are room numbers 1..9.
 ( rn -- directions )
 hex
 : make-could-go
-    create hex 0 , 24 , 135 , 26 , 157 , 2468 , 359 , 48 , 579 , 68 , decimal
+    create hex 0 , 24 , 135 , 26 , 157 , 2468 , 
+               359 , 48 , 579 , 68 , 
+           decimal
     does> swap cells + @ 
         begin
             dup f and dup cannot-go? if drop else swap then
@@ -78,9 +68,12 @@ make-could-go where?
 \ pick start room and make it trunk
 : pick-start ( -- i ) 
     0 ( put a dummy to drop )
-    begin drop 9 rnd1+ 
-        dup room-exists? over room-thru? invert and
-    until ;
+    100 0 do
+        9 rnd1+ 
+        dup room-exists? over room-thru? not and
+        if swap drop leave then
+        drop
+    loop ;
 
 \ pick a random room to go to
 : go-to ( from -- to )
@@ -90,11 +83,11 @@ make-could-go where?
 
 \ prune the edge that connects a dead-end thru room
 : prune-last ( rn -- )
-    #edge @ if 
+    n-edge @ if 
         dup                     ( rn rn -- )
-        #edge @ 1- edge@        ( rn rn a b -- )
+        n-edge @ 1- edge@        ( rn rn a b -- )
         drop = if 
-            -1 #edge +!
+            -1 n-edge +!
             room-nexisteplus!
         else
             drop
@@ -110,13 +103,15 @@ make-could-go where?
 \ pick a random room and walk the maze, create edges as we go
 : build-tree
     0 farthest !
-    pick-start dup room-trunk! dup start-room ! dup exit-room !
+    pick-start 
+    dup 0= if drop exit then        \ could not pick
+    dup room-trunk! dup start-room ! dup exit-room !
     begin
         ( rn -- )
         dup go-to dup if 
             ( cur next -- )  
             dup rot dup 
-            >tstack edge+!          \ push & keep exploring ( next -- )
+            >tstack edge+!          \ push&continue ( next -- )
             dup room-trunk!
             dup room-thru? invert if
                 dup farthest?!
@@ -125,7 +120,7 @@ make-could-go where?
             drop dup                ( cur next -- cur cur )
             room-thru? if dup prune-last then drop
             tsavail? if 
-                tstack> \ back track to where we can branch or doneski
+                tstack> \ backtrack or done
             else exit then
         then
     again ;
@@ -143,8 +138,8 @@ make-could-go where?
     true ;
 
 : render-passages
-    #edge @ if
-        #edge @ 0 do
+    n-edge @ if
+        n-edge @ 0 do
             i edge@ connect-2rooms
         loop then ;
 
@@ -153,36 +148,23 @@ make-could-go where?
         coinflip if i room-thru then 
     then loop ;
 
-
 : linked-rooms
     C-NOTHING dclear
     make-rooms
     begin 
-        init-tree init-edges
-        build-tree tree-complete? if exit then   \ all connected, done
+        init-tree 
+        init-edges 
+        build-tree 
+        tree-complete? if exit then 
         add-some-thru
     again ;
 
-: x-rnd-in-room
-    dup (rooms) }x1@ swap (rooms) }x2@ any-between ;
-: y-rnd-in-room
-    dup (rooms) }y1@ swap (rooms) }y2@ any-between ;
-
-0 0 point tmp-point
-0 0 point rogue-xy
-
-: somewhere-in-room ( rn -- x y )
-    dup x-rnd-in-room swap y-rnd-in-room ;
-
 : place-thing ( rn c -- )
     swap somewhere-in-room
-    2dup tmp-point p-xy!
     dcellyx! ;
-
-: place-rogue 
-    somewhere-in-room rogue-xy p-xy! ;
 
 : level
     linked-rooms render-passages render-rooms 
-    start-room @ place-rogue
     exit-room  @ [CHAR] > place-thing ;
+
+

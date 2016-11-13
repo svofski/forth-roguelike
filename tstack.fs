@@ -1,7 +1,11 @@
 9 constant TSTACK-SIZE
 create tstack-sp TSTACK-SIZE ,
-create tstack-data TSTACK-SIZE cells allot
-does> swap cells + ;
+
+: mktsdata 
+    create TSTACK-SIZE cells allot
+    does> swap cells + ;
+
+mktsdata tstack-data
 
 : >tstack ( n -- )
     tstack-sp dup @ 1- dup rot !
