@@ -7,15 +7,6 @@
 
 14 constant ROOM-SIZEOF
 
-variable current-offset
-: soffset ( n -- ) ( addr -- addr')
-    create current-offset dup @ dup , 2 roll + swap !
-    does> @ + ;
-
-: soffset@ 
-    create current-offset dup @ dup , 2 roll + swap !
-    does> @ + c@ ;
-
 current-offset off
     1 soffset }x1
     1 soffset }y1

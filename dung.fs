@@ -9,7 +9,13 @@ COLS ROWS * constant dngsize
 43 constant C-DOOR 
 62 constant C-EXIT
 
-create (dungeon) dngsize allot 
+0 0 COLS 1- ROWS 1- rect update-rect
+
+\ create (dungeon) dngsize allot 
+here value (dungeon) ( -- adr )
+
+: allot-dungeon ( -- )
+    here to (dungeon) dngsize allot ;
 
 : c-visible?
     128 and ;
@@ -21,7 +27,7 @@ create (dungeon) dngsize allot
     127 and ;
 
 : c-char@
-    c@ c-char ;
+    c@ 127 and ;
 
 : dcell ( i -- a )
   (dungeon) + ;
@@ -38,6 +44,9 @@ create (dungeon) dngsize allot
 : dcell-visible?
     dcell c@ c-visible? ;
 
+: dcellyx  ( x y -- ofs )
+    COLS * + ;
+
 : dcellyx! ( value x y -- )
     COLS * + dcell! ;
 
@@ -49,7 +58,6 @@ create (dungeon) dngsize allot
 
 : dcellyx-make-visible
     COLS * + dup dcell@ c-make-visible swap dcell! ;
-
 
 : dclear ( val -- ) 
   (dungeon) dngsize rot fill ;
@@ -67,22 +75,22 @@ create (dungeon) dngsize allot
   loop drop ;
 
 : c-skip?
-    dup c-visible? not swap
-        C-NOTHING = or ;
+    dup c-visible? not if drop true exit then 
+    C-NOTHING = ;
 
 : dprint-vt ( -- )
     0 (dungeon)                 ( nspaces dungeon -- ) 
     ROWS 0 do
-        swap drop 0 swap        ( nspaces = 0 )
+        nip 0 swap              ( nspaces = 0 )
         0 i vtxy
         COLS 0 do
             dup c@ c-skip? if   ( nspaces &dng -- )
                 swap 1+ swap    
             else
-                swap if         ( nspaces > 0, set cursor )
+                over if
                     i j vtxy
+                    nip 0 swap  ( nspaces = 0 )
                 then
-                0 swap          ( nspaces = 0 )
                 dup c-char@ emit 
             then
             1+                  ( nspaces &++dng -- )
@@ -169,4 +177,38 @@ create (dungeon) dngsize allot
     else
         drop drop drop drop
     then ;
+
+: invalidate ( x1 y1 x2 y2 -- )
+    update-rect rect-add ;
+
+: invalidate-all ( -- )
+    0 0 COLS 1- ROWS 1- invalidate ;
+
+: validate-all ( -- )
+    COLS ROWS 0 0 update-rect rect! ;
+
+: dupdate-invalid ( -- )
+    COLS ROWS 0 0 update-rect rect-eq? if exit then
+    \ ." U!" update-rect dump-rect 
+    COLS update-rect }rx2@ update-rect }rx1@ - 1+ -
+    0 (dungeon)                 ( nspaces dungeon -- ) 
+    update-rect }rx1@ update-rect }ry1@ dcellyx +
+    update-rect }ry2@ 1+ update-rect }ry1@ do
+        nip 0 swap              ( nspaces = 0 )
+        update-rect }rx1@ i vtxy
+        update-rect }rx2@ 1+ update-rect }rx1@ do
+            dup c@ c-skip? if   ( nspaces &dng -- )
+                swap 1+ swap    
+            else
+                over if
+                    i j vtxy
+                    nip 0 swap  ( nspaces = 0 )
+                then
+                dup c-char@ emit 
+            then
+            1+                  ( nspaces &++dng -- )
+        loop
+        2 pick +
+    loop drop drop drop 
+    validate-all ;
 

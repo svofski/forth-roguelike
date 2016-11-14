@@ -34,4 +34,17 @@ PC there are several alternatives:
  * xterm -ti vt52 -tn vt52 for GUI terminal
  * Qodem emulates vt52 in modern text terminals like macOS Terminal
 
+```
+$ aliados forth.com
+include main.fs
+play
+```
+
+To create an executable:
+```
+$ aliados forth.com
+include main.fs
+turnkey play rog.com
+```
+
 
