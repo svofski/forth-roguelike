@@ -69,7 +69,7 @@ create player-flags 0 ,
         drop false ; 
 
 : diag-nogo? ( x y -- true|false )
-    dcellyx@-c is-door? ;
+    dcellyx@ is-door? ;
    
 : try-move-@ ( x y -- true|false )
     2dup can-@-go? 
@@ -197,10 +197,9 @@ create player-flags 0 ,
     roguexy@ 2dup p-y 2swap p-n invalidate ;
 
 : @-> ( -- )
-    roguexy@ 
-        vtxy [CHAR] @ emit ;
+    roguexy@ vtxy [CHAR] @ emit ;
 
-: stats->
+: stats-> ( -- )
     0 24 vtxy ." Dlvl: " dlevel @ . 
     ." depth:" depth . ." R:" repeat-count @ . ;
 
@@ -299,6 +298,6 @@ create RS-DISP ' cmd-single ,
 : time&date 1234 56 78 99 11 666 ;
 
 : play
-    time&date + + + + + $ffff and lfsr !
+    time&date + + + + + -1 and lfsr !
     allot-dungeon
     0play ;

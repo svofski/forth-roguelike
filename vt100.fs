@@ -1,2 +1,2 @@
 : vtxy ( x y -- )
-    27 emit '[' emit 1+ 0 .r ';' emit 1+ 0 .r 'H' emit ;
+    27 emit [CHAR] [ emit 1+ 0 .r [CHAR] ; emit 1+ 0 .r [CHAR] H emit ;
