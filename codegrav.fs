@@ -34,4 +34,12 @@
     loop 
     drop drop ;
 
+\ xt are ( x y -- )
+: apply-adjacent ( xt x y -- )
+    rot >R
+    2dup p-y R@ execute 2dup p-k R@ execute 2dup p-u R@ execute
+    2dup p-h R@ execute 2dup     R@ execute 2dup p-l R@ execute
+    2dup p-b R@ execute 2dup p-j R@ execute      p-n R@ execute 
+    R> drop ;
+
 

@@ -89,7 +89,7 @@ here value (dungeon) ( -- adr )
     dfillln
     [ COLS ] literal +
   loop 
-  drop drop drop ;
+  3drop ;
 
 : dfill ( val y1 x1 y2 x2 -- )
   2 roll 
@@ -108,7 +108,7 @@ here value (dungeon) ( -- adr )
         i j dcellyx-make-visible
         loop 
     loop 
-    drop drop ;
+    2drop ;
 
 : dlineh ( char x1 y1 x2 -- )
     rot swap                    ( char y1 x1 x2 -- )
@@ -119,7 +119,7 @@ here value (dungeon) ( -- adr )
         swap rot                ( char w x1 y1 -- )
         COLS* + (dungeon) + 1+ dfillln
     else
-        drop drop drop drop
+        2drop 2drop
     then ;
 
 : dlinev ( char x1 y1 y2 -- )
@@ -130,7 +130,7 @@ here value (dungeon) ( -- adr )
         (dungeon) + 1+          ( char w ptr )
         dfillcol
     else
-        drop drop drop drop
+        2drop 2drop
     then ;
 
 : invalidate ( x1 y1 x2 y2 -- )
@@ -153,13 +153,13 @@ here value (dungeon) ( -- adr )
     nothing-to-update? if exit then 
     updaterect-row-increment
     0 (dungeon)                 ( inc nspaces dungeon -- ) 
-    update-rect }rx1@ update-rect }ry1@ dcellyx +
+    update-rect }rx1@ update-rect }ry1@ dcellyx + \ start adr
     update-rect }ry2@ 1+ update-rect }ry1@ do
         nip 0 swap              ( nspaces = 0 )
         update-rect }rx1@ i vtxy
         update-rect }rx2@ 1+ update-rect }rx1@ do
             dup c@ c-skip? if   ( inc nspaces &dng -- )
-                swap 1+ swap    
+                swap 1+ swap
             else
                 over if
                     i j vtxy
@@ -170,6 +170,6 @@ here value (dungeon) ( -- adr )
             1+                  ( inc nspaces &++dng -- )
         loop
         2 pick +
-    loop drop drop drop 
+    loop 3drop
     validate-all ;
 

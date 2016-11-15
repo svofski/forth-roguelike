@@ -1,5 +1,5 @@
-: >= 2dup = rot rot > or ;
-: <= 2dup = rot rot < or ;
+: >= 2dup = -rot > or ;
+: <= 2dup = -rot < or ;
 : 3drop drop drop drop ;
 : 3dup 2 pick 2 pick 2 pick ;
 
@@ -34,6 +34,15 @@ variable current-offset
     c@ swap c@ ;
 : p-xy! ( x y py px -- )
     >R rot R> c! c! ; 
+
+: p-y 1- swap 1- swap ;
+: p-k 1- ;
+: p-u 1- swap 1+ swap ;
+: p-h swap 1- swap ;
+: p-l swap 1+ swap ;
+: p-b swap 1- swap 1+ ;
+: p-j 1+ ;
+: p-n 1+ swap 1+ swap ;
 
 : rect
     create swap 2 roll 3 roll c, c, c, c, ;
@@ -77,5 +86,7 @@ current-offset off
     and and and ;
 
 : dump-rect ( r1 -- )
-    dup }rx1@ . dup }ry1@ . dup }rx2@ . }ry2@ . ;
+    ." (" dup }rx1@ . dup }ry1@ 0 .r
+    [CHAR] - emit
+    dup }rx2@ . }ry2@ 0 .r ." )";
     

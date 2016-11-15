@@ -1,5 +1,4 @@
 : vtxy ( x y -- )
-    \ 27 emit '[' emit 1+ 0 .r ';' emit 1+ 0 .r 'H' emit ;
     27 emit [CHAR] Y emit 32 + emit 32 + emit ;
 
 hex

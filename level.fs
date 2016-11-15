@@ -19,7 +19,7 @@ variable farthest
     20 0 do 0 i (con-edges) ! loop ;
 
 : edge+! 
-    4 lshift or n-edge dup rot rot @ (con-edges) c! 1 swap +! ;
+    4 lshift or n-edge dup -rot @ (con-edges) c! 1 swap +! ;
 
 : edge@
     (con-edges) c@ dup 15 and swap 4 rshift ;
@@ -71,7 +71,7 @@ make-could-go where?
     100 0 do
         9 rnd1+ 
         dup room-exists? over room-thru? not and
-        if swap drop leave then
+        if nip leave then
         drop
     loop ;
 
@@ -79,7 +79,7 @@ make-could-go where?
 : go-to ( from -- to )
     depth >r where? depth r@ - 1+ 
         dup 0> if rnd pick else NOWAY then
-        depth r> - 0 do swap drop loop ;
+        depth r> - 0 do nip loop ;
 
 \ prune the edge that connects a dead-end thru room
 : prune-last ( rn -- )
@@ -130,7 +130,7 @@ make-could-go where?
     10 1 do
         i room-exists? if
             i room-trunk? invert if
-                R> R> drop drop ( unloop )
+                R> R> 2drop ( unloop )
                 false exit
             then
         then

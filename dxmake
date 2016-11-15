@@ -1,0 +1,6 @@
+rm -f rog.com rog.zip
+echo -e include main.fs turnkey play rog.com bye \\r \\n |./tools/aliados-0.1.1/aliados tools/dx420/FORTH.COM
+newname=rog`date +%S`.com
+mv rog.com $newname
+ls -l $newname
+zip rog.zip $newname *.fs 

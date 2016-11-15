@@ -25,23 +25,6 @@ create player-flags 0 ,
 : is-pass? c-char [ C-PASSAGE ] literal = ;
 : is-floor? c-char [ C-FLOOR ] literal = ;
 
-: p-y 1- swap 1- swap ;
-: p-k 1- ;
-: p-u 1- swap 1+ swap ;
-: p-h swap 1- swap ;
-: p-l swap 1+ swap ;
-: p-b swap 1- swap 1+ ;
-: p-j 1+ ;
-: p-n 1+ swap 1+ swap ;
-
-\ xt are ( x y -- )
-: apply-adjacent ( xt x y -- )
-    rot >R
-    2dup p-y R@ execute 2dup p-k R@ execute 2dup p-u R@ execute
-    2dup p-h R@ execute 2dup     R@ execute 2dup p-l R@ execute
-    2dup p-b R@ execute 2dup p-j R@ execute      p-n R@ execute 
-    R> drop ;
-
 \ xt are ( ptr -- )
 : apply-adjacent-a ( xt x y -- )
     p-y dcellyx 
@@ -73,20 +56,20 @@ create player-flags 0 ,
    
 : try-move-@ ( x y -- true|false )
     2dup can-@-go? 
-    if rogue-xy p-xy! 
-        true
+    if 
+        rogue-xy p-xy! true
     else 2drop 
         false 
     then ;
 
 : try-move-@-diag ( x y -- true|false )
-    roguexy@ diag-nogo? if 2drop false exit then
-
-    2dup can-@-go? -rot 2dup diag-nogo? not 3 roll and 
-    if rogue-xy p-xy! 
-        true
-    else 2drop 
-        false 
+    2dup can-@-go? not if 2drop false exit then \ can go at all
+    roguexy@ diag-nogo? if 2drop false exit then \ now on + ?
+    2dup diag-nogo? not                         \ target not +
+    if 
+        rogue-xy p-xy! true
+    else 
+        2drop false 
     then ;
 
 : lightup-any-a ( ptr -- ) 
@@ -238,7 +221,7 @@ create player-flags 0 ,
     key dup isupper? swap tolower swap
     if
         repeat-command !
-        [ RS-REPEAT-RUN ] literal repeat-state !
+        RS-REPEAT-RUN repeat-state !
         repeat-count off
     else
         dup isdigit? if
@@ -247,7 +230,7 @@ create player-flags 0 ,
             repeat-command !
             repeat-state off
             repeat-count @ 0> if
-                [ RS-REPEAT-COUNT ] literal repeat-state !
+                RS-REPEAT-COUNT repeat-state !
                 1 repeat-count +!
             then
         then
