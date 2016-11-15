@@ -1,5 +1,5 @@
-mkdir -p html
+mkdir -p docs
 gforth doc/gendoc.fs
 for f in *.fs ; do
-  mv $f.html html/
+  mv $f.html docs/
 done
