@@ -12,15 +12,18 @@ create repeat-command 0 ,   \ valid for repeat and run
 create current-room 0 ,
 0 0 point rogue-xy
 
+: roguexy@ rogue-xy p-xy@ ;
+
 1 constant PF-BLIND 
 create player-flags 0 ,
 
 : pf-blind?
-    player-flags @ PF-BLIND and ;
+    player-flags @ [ PF-BLIND ] literal and ;
 
-: is-door? c-char C-DOOR = ;
-: is-exit? c-char C-EXIT = ;
-: is-pass? c-char C-PASSAGE = ;
+: is-door? c-char [ C-DOOR ] literal = ;
+: is-exit? c-char [ C-EXIT ] literal = ;
+: is-pass? c-char [ C-PASSAGE ] literal = ;
+: is-floor? c-char [ C-FLOOR ] literal = ;
 
 : p-y 1- swap 1- swap ;
 : p-k 1- ;
@@ -31,6 +34,7 @@ create player-flags 0 ,
 : p-j 1+ ;
 : p-n 1+ swap 1+ swap ;
 
+\ xt are ( x y -- )
 : apply-adjacent ( xt x y -- )
     rot >R
     2dup p-y R@ execute 2dup p-k R@ execute 2dup p-u R@ execute
@@ -38,20 +42,31 @@ create player-flags 0 ,
     2dup p-b R@ execute 2dup p-j R@ execute      p-n R@ execute 
     R> drop ;
 
-: of-happenings?
-    dcellyx@-c
-        dup is-door? swap
-        dup is-exit? swap
-        drop
-    or ;
+\ xt are ( ptr -- )
+: apply-adjacent-a ( xt x y -- )
+    p-y dcellyx 
+    (dungeon) +    \ get top-left pointer
+       2dup swap execute ( xt a -- )
+    1+ 2dup swap execute
+    1+ 2dup swap execute
+    [ COLS 2 - ] literal + 2dup swap execute
+    1+ 2dup swap execute
+    1+ 2dup swap execute
+    [ COLS 2 - ] literal + 2dup swap execute
+    1+ 2dup swap execute
+    1+      swap execute ;
 
- : can-@-go? 
-    dcellyx@-c
-             dup C-FLOOR = if drop true exit then
-             dup C-PASSAGE = if drop true exit then
-             dup is-door? if drop true exit then
-             dup is-exit? if drop true exit then
-             drop false ; 
+: should-stop-because? ( c -- true|false )
+    dup is-door? swap
+        is-exit? or ;
+
+: can-@-go? 
+    dcellyx@
+        dup is-floor? if drop true exit then
+        dup is-pass? if drop true exit then
+        dup is-door? if drop true exit then
+        dup is-exit? if drop true exit then
+        drop false ; 
 
 : diag-nogo? ( x y -- true|false )
     dcellyx@-c is-door? ;
@@ -65,7 +80,7 @@ create player-flags 0 ,
     then ;
 
 : try-move-@-diag ( x y -- true|false )
-    rogue-xy p-xy@ diag-nogo? if 2drop false exit then
+    roguexy@ diag-nogo? if 2drop false exit then
 
     2dup can-@-go? -rot 2dup diag-nogo? not 3 roll and 
     if rogue-xy p-xy! 
@@ -74,25 +89,22 @@ create player-flags 0 ,
         false 
     then ;
 
-: stop-if-running
-    repeat-state @ RS-REPEAT-RUN = if
-        2dup of-happenings? if
+: lightup-any-a ( ptr -- ) 
+    dup c@ 
+    repeat-state @ [ RS-REPEAT-RUN ] literal = if
+        dup should-stop-because? if
             repeat-state off
         then
-    then ;
+    then 
+    c-make-visible swap c! ;
 
-: lightup-any ( x y -- ) 
-    stop-if-running
-    dcellyx-make-visible ;
-
-: lightup-pass-only ( x y -- )
-    2dup dcellyx@ 
-    dup is-pass? swap is-door? or 
+: lightup-pass-only-a ( ptr -- )
+    dup c@
+    dup is-pass? over is-door? or
     if
-        stop-if-running
-        dcellyx-make-visible exit 
-    then
-    2drop ;
+        c-make-visible swap c! exit
+    then 
+    drop drop ;
 
 : should-light-room? ( rn -- true|false )
     dup room-lit? swap room-shown? not and ;
@@ -108,25 +120,27 @@ create player-flags 0 ,
 
 : light-spot ( -- )
     pf-blind? if 
-        rogue-xy p-xy@ dcellyx-make-visible
+        roguexy@ dcellyx-make-visible
         exit 
     then
 
-    rogue-xy p-xy@ 
-    2dup dcellyx@ is-pass? if
-        ['] lightup-pass-only -rot apply-adjacent
+    roguexy@ 2dup dcellyx@ ( x y c -- )
+    ( c ) dup is-pass? if
+        drop
+        ['] lightup-pass-only-a -rot apply-adjacent-a
         exit
     then
-    2dup dcellyx@ is-door? if
+    ( c ) dup is-door? if
+        ( c) drop
         2dup xy-find-room
         dup should-light-room? if
             show-entire-room
             2drop
             exit
         then
-        drop
     then
-    ['] lightup-any -rot apply-adjacent ;
+    ( c ) drop
+    ['] lightup-any-a -rot apply-adjacent-a ;
 
 : add-lights ( dlvl -- )
     10 1 do 
@@ -156,10 +170,10 @@ create player-flags 0 ,
     then ;
 
 : xt-walk
-    rogue-xy p-xy@ rot execute try-move-@ light-spot ;
+    roguexy@ rot execute try-move-@ light-spot ;
 
 : xt-walk-diag
-    rogue-xy p-xy@ rot execute try-move-@-diag light-spot ;
+    roguexy@ rot execute try-move-@-diag light-spot ;
 
 : walk-h ['] p-h xt-walk ;
 : walk-l ['] p-l xt-walk ;
@@ -171,7 +185,7 @@ create player-flags 0 ,
 : walk-n ['] p-n xt-walk-diag ;
 
 : walk->
-    rogue-xy p-xy@ dcellyx@-c C-EXIT =
+    roguexy@ dcellyx@ is-exit?
     if
         ++level
         true
@@ -180,10 +194,10 @@ create player-flags 0 ,
     then ;
 
 : @-invalidate ( -- )
-    rogue-xy p-xy@ 2dup p-y 2swap p-n invalidate ;
+    roguexy@ 2dup p-y 2swap p-n invalidate ;
 
 : @-> ( -- )
-    rogue-xy p-xy@ 
+    roguexy@ 
         vtxy [CHAR] @ emit ;
 
 : stats->
@@ -225,7 +239,7 @@ create player-flags 0 ,
     key dup isupper? swap tolower swap
     if
         repeat-command !
-        RS-REPEAT-RUN repeat-state !
+        [ RS-REPEAT-RUN ] literal repeat-state !
         repeat-count off
     else
         dup isdigit? if
@@ -234,7 +248,7 @@ create player-flags 0 ,
             repeat-command !
             repeat-state off
             repeat-count @ 0> if
-                RS-REPEAT-COUNT repeat-state !
+                [ RS-REPEAT-COUNT ] literal repeat-state !
                 1 repeat-count +!
             then
         then

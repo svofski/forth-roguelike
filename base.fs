@@ -1,6 +1,7 @@
 : >= 2dup = rot rot > or ;
 : <= 2dup = rot rot < or ;
 : 3drop drop drop drop ;
+: 3dup 2 pick 2 pick 2 pick ;
 
 hex
 : isupper?
