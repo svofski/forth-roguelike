@@ -85,6 +85,21 @@ current-offset off
     3 roll }ry2@ 4 roll =
     and and and ;
 
+: rect-topleft ( r -- x1 y1 )
+    dup c@ swap 1+ c@ ;
+: rect-topright ( r -- x2 y1 )
+    dup 2 + c@ swap 1+ c@ ;
+: rect-bottomleft ( r -- x1 y2 )
+    dup c@ swap 3 + c@ ;
+: rect-bottomright ( r -- x2 y2 )
+    dup 2 + c@ swap 3 + c@ ;
+
+: rect-width ( r1 -- h )
+    dup }rx2@ swap }rx1@ - 1+ ;
+
+: rect-height ( r1 -- h )
+    dup }ry2@ swap }ry1@ - 1+ ;
+
 : dump-rect ( r1 -- )
     ." (" dup }rx1@ . dup }ry1@ 0 .r
     [CHAR] - emit

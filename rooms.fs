@@ -120,7 +120,7 @@ ROWS 6 / constant ROOM_HH
     R> 3drop ( drop limit, drop counters ) ;
 
 : fill-room ( rn -- )
-    C-FLOOR swap (rooms) rect@ dfillx ;
+    C-FLOOR swap (rooms) dfillrect ;
 
 : paint-room-visible ( rn -- )
     (rooms) rect@ dfill-visible ;
@@ -138,13 +138,13 @@ ROWS 6 / constant ROOM_HH
     swap (rooms) }doors swap 2* + dup c@ swap 1+ c@ ;
 
 : room-topleft ( rn -- x1 y1 )
-    (rooms) dup c@ swap 1+ c@ ;
+    (rooms) rect-topleft ;
 : room-topright ( rn -- x2 y1 )
-    (rooms) dup 2 + c@ swap 1+ c@ ;
+    (rooms) rect-topright ; 
 : room-bottomleft ( rn -- x1 y2 )
-    (rooms) dup c@ swap 3 + c@ ;
+    (rooms) rect-bottomleft ; 
 : room-bottomright ( rn -- x2 y2 )
-    (rooms) dup 2 + c@ swap 3 + c@ ;
+    (rooms) rect-bottomright ; 
 
 : room-border ( rn -- )
     dup [CHAR] / swap room-topleft     dcellyx!

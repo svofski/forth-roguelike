@@ -68,39 +68,25 @@ here value (dungeon) ( -- adr )
     dup c-visible? not if drop true exit then 
     [ C-NOTHING ] literal = ;
 
-: dfillln ( val width ptr )
+: dfillln ( val width ptr -- )
     swap 0 do
         2dup c! 1+
     loop 2drop ;
 
-: dfillcol ( val height ptr )
+: dfillcol ( val height ptr -- )
     swap 0 do
         2dup c! [ COLS ] literal +
     loop 2drop ;
 
-: dfillx ( val x1 y1 x2 y2 -- )
-  2 pick - 1+           ( val x1 y1 x2 height )
-  1 roll 3 pick - 1+    ( val x1 y1 height width )
-  2 roll COLS*
-  3 roll +    ( val height width dptr )
-  (dungeon) +
-  rot 0 do
-    3dup
-    dfillln
-    [ COLS ] literal +
-  loop 
-  3drop ;
-
-: dfill ( val y1 x1 y2 x2 -- )
-  2 roll 
-  do
-    2dup
-    4 pick rot rot swap
-    do 
-      dup j i dcellyx!
-    loop
-    drop
-  loop ;
+: dfillrect ( val r1 -- )
+    dup rect-topleft dcellyx (dungeon) + swap ( v & r1 -- )
+    dup rect-height swap rect-width ( v & h w -- )
+    -rot ( v w & h -- )
+    0 do
+        3dup dfillln ( v w & )
+        [ COLS ] literal +
+    loop 
+    3drop ;
 
 : dfill-visible ( x1 y1 x2 y2 -- )
     1+ rot do
