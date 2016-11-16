@@ -95,10 +95,10 @@ current-offset off
     dup 2 + c@ swap 3 + c@ ;
 
 : rect-width ( r1 -- h )
-    dup }rx2@ swap }rx1@ - 1+ ;
+    dup }rx2@ swap }rx1@ - ;
 
 : rect-height ( r1 -- h )
-    dup }ry2@ swap }ry1@ - 1+ ;
+    dup }ry2@ swap }ry1@ - ;
 
 : dump-rect ( r1 -- )
     ." (" dup }rx1@ . dup }ry1@ 0 .r

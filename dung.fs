@@ -80,7 +80,7 @@ here value (dungeon) ( -- adr )
 
 : dfillrect ( val r1 -- )
     dup rect-topleft dcellyx (dungeon) + swap ( v & r1 -- )
-    dup rect-height swap rect-width ( v & h w -- )
+    dup rect-height 1+ swap rect-width 1+ ( v & h w -- )
     -rot ( v w & h -- )
     0 do
         3dup dfillln ( v w & )

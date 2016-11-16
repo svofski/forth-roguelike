@@ -60,10 +60,10 @@ ROWS 6 / constant ROOM_HH
         dup @ [ RF-THRU RF-EXISTS or ] literal or swap c! ;
 
 : room-width ( rn -- width )
-    (rooms) dup }x2 c@ swap }x1 c@ - ;
+    (rooms) rect-width ;
 
 : room-height ( rn -- height )
-    (rooms) dup }y2 c@ swap }y1 c@ - ;
+    (rooms) rect-height ;
 
 \ validate room rn, update }flags, 
 \ return true if exists, false otherwise
@@ -94,7 +94,7 @@ ROWS 6 / constant ROOM_HH
 : room-shown! RF-SHOWN swap room-flags+! ;
 
 : room-make ( rn -- )
-    dup (rooms) }flags @ RF-EXISTS and 0= if
+    dup room-exists? not if
         dup rnd-room
             room-validate
         else drop false then ;
@@ -109,7 +109,7 @@ ROWS 6 / constant ROOM_HH
     loop ;
 
 : make-rooms 
-    0 (rooms) ROOM-SIZEOF 10 * 0 fill
+    0 (rooms) [ ROOM-SIZEOF 10 * ] literal 0 fill
     4 rnd 3 + >R
     0 0 ( nrooms i -- )
     begin
@@ -191,6 +191,7 @@ ROWS 6 / constant ROOM_HH
 : render-rooms ( -- )
     10 1 do i render-room loop ;
 
+\ room number to x y position in 3x3 grid
 \ room number rn n in range 1..9 --> x y in range 0..2
 : rn-xy ( rn -- x y )
     1- dup 3 / swap 3 mod swap ;
@@ -274,10 +275,10 @@ ROWS 6 / constant ROOM_HH
     loop 
     2drop ;
 
-: x-rnd-in-room
+: x-rnd-in-room ( rn -- x )
     dup (rooms) }x1@ swap (rooms) }x2@ any-between ;
 
-: y-rnd-in-room
+: y-rnd-in-room ( rn -- y )
     dup (rooms) }y1@ swap (rooms) }y2@ any-between ;
 
 : somewhere-in-room ( rn -- x y )

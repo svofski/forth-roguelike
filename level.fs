@@ -10,21 +10,22 @@ variable start-room
 variable exit-room
 variable farthest
 
-: init-tree
+: init-tree ( -- )
     10 1 do
         i room-cut! loop ;
 
-: init-edges
+: init-edges ( -- )
     n-edge off
     20 0 do 0 i (con-edges) ! loop ;
 
-: edge+! 
+: edge+! ( edge -- )
     4 lshift or n-edge dup -rot @ (con-edges) c! 1 swap +! ;
 
-: edge@
+: edge@ ( en -- edge )
     (con-edges) c@ dup 15 and swap 4 rshift ;
 
-: edge-!
+\ remove last edge
+: edge-! ( -- ) 
     n-edge dup @ if -1 swap +! then ;
 
 : dump-sets
