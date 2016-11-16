@@ -85,21 +85,36 @@ make-could-go where?
 \ prune the edge that connects a dead-end thru room
 : prune-last ( rn -- )
     n-edge @ if 
-        dup                     ( rn rn -- )
-        n-edge @ 1- edge@        ( rn rn a b -- )
+        dup                         ( rn rn -- )
+        n-edge @ 1- edge@           ( rn rn a b -- )
         drop = if 
             -1 n-edge +!
             room-nexisteplus!
         else
             drop
-        then then ;
+        then 
+    then ;
 
 : farthest?! ( rn -- )
     tsdepth farthest @ > if
         tsdepth farthest !
         exit-room !
-        exit then
+        exit 
+    then
     drop ;
+
+: push&go ( cur next -- )
+    dup rot dup 
+    >tstack edge+!
+    dup room-trunk!
+    dup room-thru? invert if
+        dup farthest?!
+    then ;
+
+: back&track ( cur next -- )
+    drop dup                ( cur next -- cur cur )
+    room-thru? if dup prune-last then drop
+    tstack> ;    ( -- last-position )
 
 \ pick a random room and walk the maze, create edges as we go
 : build-tree
@@ -110,19 +125,9 @@ make-could-go where?
     begin
         ( rn -- )
         dup go-to dup if 
-            ( cur next -- )  
-            dup rot dup 
-            >tstack edge+!          \ push&continue ( next -- )
-            dup room-trunk!
-            dup room-thru? invert if
-                dup farthest?!
-            then
+            push&go
         else
-            drop dup                ( cur next -- cur cur )
-            room-thru? if dup prune-last then drop
-            tsavail? if 
-                tstack> \ backtrack or done
-            else exit then
+            back&track ?dup not if exit then
         then
     again ;
 
