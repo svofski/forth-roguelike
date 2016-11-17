@@ -41,6 +41,19 @@ include things.fs
     {stack-out}
     ;
 
+: dump-to-stack ( data -- rn x y class )
+    >R
+    R@ }t-room@ R@ }t-x@ R@ }t-y@ R@ }t-class@
+    R> drop ;
+
+: .hold 0 #s 2drop [char] # hold ;
+
+: dump-to-hold ( data -- rn x y class )
+    >R
+    R@ }t-room@ .hold R@ }t-x@ .hold 
+    R@ }t-y@ .hold R@ }t-class@ .hold
+    R> drop ;
+
 : test-thing-rooms
     {stack-in}
     5 thing-new 
@@ -55,11 +68,12 @@ include things.fs
         TC-POTION   over }t-class c!
         drop
 
-    cr .s cr
-
-    5 dump-room-things
-
-    cr .s cr
+    \ 5 dump-room-things
+    <#
+    ['] dump-to-hold 5 with-room-things
+    0 0 #> 
+    \ 2dup cr [char] ! emit type [char] ! emit cr
+    s" #2#2#1#5#3#4#3#5" compare 0= .
 
     {stack-out}
     ;
@@ -67,6 +81,6 @@ cr .( test-things-clear ) cr
 test-things-clear
 cr .( test-thing-new ) cr
 test-thing-new
-cr .( test-thing-new ) cr
+cr .( test-thing-rooms ) cr
 test-thing-rooms
 cr

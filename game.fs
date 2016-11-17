@@ -101,6 +101,10 @@ create player-flags 0 ,
     dup room-shown! 
         repaint-room ;
 
+: show-entire-map ( -- )
+    0 0 COLS ROWS dfill-visible
+    invalidate-all ;
+
 : light-spot ( -- )
     pf-blind? if 
         roguexy@ dcellyx-make-visible
@@ -200,6 +204,7 @@ create player-flags 0 ,
     dup [CHAR] > = if walk-> exit then
     dup [CHAR] q = if quit-game on false exit then
     dup 12  = if page invalidate-all false exit then
+    dup [CHAR] \ = if show-entire-map false exit then
     dup 27  = if repeat-count off false exit then
     false ; 
 

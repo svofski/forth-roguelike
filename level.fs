@@ -169,8 +169,23 @@ make-could-go where?
     swap somewhere-in-room
     dcellyx! ;
 
+: add-junk ( rn -- )
+    C-FLOOR+THING place-thing ;
+
+: foreach-room
+    10 1 do
+        i room-exists? if 
+            i room-thru? not if
+                dup i swap execute 
+        then then
+    loop drop ;
+
+: place-things ( -- )
+    ['] add-junk foreach-room ;
+
 : level
     linked-rooms render-passages render-rooms 
+    place-things
     exit-room  @ [CHAR] > place-thing ;
 
 

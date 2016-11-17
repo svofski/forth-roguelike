@@ -7,6 +7,7 @@ COLS ROWS * constant dngsize
 32 constant C-NOTHING
 32 constant C-NOTHING  
 46 constant C-FLOOR 
+44 constant C-FLOOR+THING       \ , says to look into things
 35 constant C-PASSAGE
 43 constant C-DOOR 
 62 constant C-EXIT
@@ -152,6 +153,41 @@ here value (dungeon) ( -- adr )
                     nip 0 swap  ( nspaces = 0 )
                 then
                 dup c-char@ emit 
+            then
+            1+                  ( inc nspaces &++dng -- )
+        loop
+        2 pick +
+    loop 3drop
+    validate-all ;
+
+: there-thing? c-char C-FLOOR+THING = ;
+: get-thingchar-xy drop drop [CHAR] * ;
+
+: dupdate-invalid ( -- )
+    nothing-to-update? if exit then 
+    updaterect-row-increment
+    0 (dungeon)                 ( inc nspaces dungeon -- ) 
+    update-rect }rx1@ update-rect }ry1@ dcellyx + \ start adr
+    update-rect }ry2@ 1+ update-rect }ry1@ do
+        nip 0 swap              ( nspaces = 0 )
+        update-rect }rx1@ i vtxy
+        update-rect }rx2@ 1+ update-rect }rx1@ do
+            dup c@              ( inc nsp dng c )
+            dup there-thing? if 
+                \ switch the thing trait with the actual thing
+                128 and i j get-thingchar-xy or
+            then
+            ( inc nsp dng c )
+            dup c-skip? if   ( inc nspaces &dng -- )
+                drop
+                swap 1+ swap
+            else
+                ( inc nsp dng c )
+                rot if
+                    i j vtxy
+                then
+                0 -rot  ( nspaces = 0 )
+                c-char emit 
             then
             1+                  ( inc nspaces &++dng -- )
         loop
