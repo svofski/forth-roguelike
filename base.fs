@@ -1,17 +1,13 @@
-: >= 2dup = -rot > or ;
-: <= 2dup = -rot < or ;
+: >= < 0= ;
+: <= > 0= ;
 : 3drop drop drop drop ;
 : 3dup 2 pick 2 pick 2 pick ;
 
 hex
-: isupper?
-    dup 41 >= swap 5A <= and ;
-: tolower
-    dup isupper? if 20 + then ;
-: isdigit?
-    dup 30 >= swap 39 <= and ;
-: atoi
-    30 - ;
+: isupper?  [char] A - 1A u< ;
+: tolower  dup isupper? 20 and + ;
+: isdigit?  [char] 0 - 0A u< ;
+: atoi 30 - ;
 decimal 
 
 variable current-offset
