@@ -41,14 +41,46 @@ include things.fs
     nthings @ 1 = . 
     {stack-out}
     ;
-: test-find-index
+
+: test-insert
     {stack-in}
     things-clear
-    1 find-index 0= .
+
+    3 thing-new
+    1 thing-new
+    5 thing-new
+
+    nthings @ 3 = .
+
+    0 thing[] }t-room@ 1 = .
+    1 thing[] }t-room@ 3 = .
+    2 thing[] }t-room@ 5 = .
+    
+    things-clear
 
     1 thing-new
-    1 thing-new
+    2 thing-new
     3 thing-new
+
+    nthings @ 3 = .
+
+    0 thing[] }t-room@ 1 = .
+    1 thing[] }t-room@ 2 = .
+    2 thing[] }t-room@ 3 = .
+
+    {stack-out}
+    ;
+
+: test-del 
+    {stack-in}
+    things-clear
+    1 thing-new
+    2 thing-new
+    3 thing-new
+
+    1 thing-del
+
+    1 thing[] }t-room@ 0= .
 
     {stack-out}
     ;
@@ -57,4 +89,5 @@ test-things-clear
 cr .( test-thing-new ) cr
 test-thing-new
 cr .( test-thing-find-index ) cr
-test-find-index
+test-insert
+cr
