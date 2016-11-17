@@ -20,6 +20,16 @@
 \   flags
 \   hp
 \   extra1
+
+1   constant TC-MONSTER
+2   constant TC-SCROLL
+3   constant TC-POTION
+4   constant TC-FOOD
+5   constant TC-GOLD
+6   constant TC-ARMOUR
+7   constant TC-WEAPON
+
+
 current-offset off
 1 soffset }t-room
 1 soffset }t-x
@@ -32,108 +42,97 @@ current-offset off
 1 soffset@ }t-y@
 1 soffset@ }t-class@
 
-8 constant THING-SIZEOF
+8 constant |THING|
 20 constant THINGS-MAX 
-THING-SIZEOF THINGS-MAX * constant THINGSDATA-SIZEOF
-THINGS-MAX cells constant THINGS-SIZEOF 
+|THING| THINGS-MAX * constant |THINGSDATA|
+
+\ linked list using indices:
+\   msb = things-data idx   msb = next or 0
+THINGS-MAX cells constant |THINGSLIST| 
+
+\ 10 cells ( 0 for roomless, 1 - 9 ) for entry points
+\ of thing lists
+
+\ actual things data, unlinked
 : mkthings-data
-    create THINGS-SIZEOF allot
+    create |THINGSDATA| allot
     does> swap 3 lshift + ;
-
-mkthings-data (things-data) 
-
-: mkthings
-    create THINGS-SIZEOF allot 
+: mkthings-list
+    create |THINGSLIST| allot 
     does> swap cells + ;
+: mkthings-byroom
+    create 10 allot
+    does> swap + ;
 
-mkthings (things)
+: car>data+next dup 8 rshift swap 255 and ;    
+: data+next>car swap 8 lshift or ;
+
+mkthings-data (t-data) 
+mkthings-list (t-list)
+mkthings-byroom (t-byroom)
+
 variable nthings
 
-\ Return pointer to thing e.g. 0 thing[] }t-room@
-: thing[] ( n -- thing )
-    (things) @ ; 
+\ access thing-data by index
+: thing-data[] ( n -- thing )
+    (t-data) ; 
 
 : dump-thing ( ptr -- )
-    }t-room @ ." R:" . ;
+    ." R:" dup }t-room@ .
+    ." x:" dup }t-x@ .
+    ." y:" dup }t-y@ .
+    ." cls:" dup }t-class@ .
+    drop ; 
 
 : dump-things-data
     THINGS-MAX 0 do
-        i (things-data) dup }t-room c@ if
-             dump-thing 
+        i (t-data) dup }t-room c@ if
+            dump-thing 
         else
             drop
             leave
         then
     loop ;
 
-: dump-things
-    THINGS-MAX 0 do
-        i (things) @ ?dup if
-            dump-thing
-        else
-            leave
-        then
-    loop ;
-    
 : things-clear
     nthings off
-    0 (things) THINGS-SIZEOF erase
-    0 (things-data) THINGSDATA-SIZEOF erase ;
+    0 (t-list) |THINGSLIST| erase
+    0 (t-data) |THINGSDATA| erase 
+    0 (t-byroom) 10 255 fill ;
 
-: find-inspoint ( rn -- index )
-    THINGS-MAX 0 do
-        i (things) @ ?dup if
-            ( rn thing )
-            }t-room c@ over > if
-                drop i leave
-            then
-        else
-            drop i leave
-        then
-    loop ;
+\ pointer to newly create thing
+: newtdata ( -- t-data )
+    nthings @ (t-data) ;
+: newcar ( -- car )
+    nthings @ ;
 
-: gap-at ( index -- )
-    dup nthings @ >= if drop exit then 
-    1+ nthings @ do
-        i 1- (things) @ i (things) !
-    -1 +loop 
-    ;
-
-: squeeze-at ( thing index -- )
-    dup gap-at
-        (things) ! ;
-
-: squeeze-in ( thing rn -- )
-    find-inspoint  
-    squeeze-at ;
-
-: thing-new ( rn -- )
+: to-room ( data-idx rn -- )
     dup >R
-    nthings @ (things-data) dup
-    }t-room rot swap c! ( -- thing )
-    R> squeeze-in 
-    1 nthings +! ;
+    (t-byroom) c@ ( dataidx caridx -- )
+    data+next>car ( car ) 
+    nthings @ (t-list) ! ( store car in new t-list cell )
+    nthings @ R> (t-byroom) c! ( update by-room )
+    ;     
 
-\ meh, not gonna work
-: thing-del ( idx -- )
-    thing[] }t-room 0 swap c! ;
+\ create an empty thing in room rn
+: thing-new ( rn -- thing-data )
+    dup newtdata }t-room c!
+        nthings @ swap to-room 
+        newtdata ( return value )
+        1 nthings +! ;
 
-: search ( x -- i )
-    >R
-    0 nthings @ 1- ( initial a b )
+: with-room-things ( xt rn -- )
+    swap >R
+    (t-byroom) c@ \ car idx
+    dup 255 = if dup exit then
     begin
-        2dup + 2/  ( a b -- a b m )
-        dup thing[] }t-room@ ( a b m r[m] )
-        dup R@ = if
-            drop -rot 2drop
-            R> drop exit
-        then
-        R@ > if             \ x < r[m]
-            nip  ( a b m -- a m )
-            2dup = if 2drop -1 R> drop exit then
-        else
-            1+ swap rot drop
-            2dup > if 2drop -1 R> drop exit then
-        then
-    again ;
+        (t-list) @ 
+            car>data+next
+            swap (t-data) R@ execute
+    dup 255 = until 
+    drop R> drop ;
 
+: dump-room-things ( rn -- )
+    ['] dump-thing swap with-room-things ;
+
+things-clear

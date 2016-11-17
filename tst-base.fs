@@ -28,7 +28,6 @@ include things.fs
 : {stack-out}
     depth 0= not if abort" stack out" then ;
 
-
 : test-things-clear
     {stack-in}
     things-clear
@@ -37,50 +36,30 @@ include things.fs
     ;
 : test-thing-new
     {stack-in}
-    1 thing-new
+    1 thing-new drop
     nthings @ 1 = . 
     {stack-out}
     ;
 
-: test-insert
+: test-thing-rooms
     {stack-in}
-    things-clear
+    5 thing-new 
+        1           over }t-x c!
+        2           over }t-y c!
+        TC-SCROLL   over }t-class c!
+        drop
 
-    3 thing-new
-    1 thing-new
     5 thing-new
+        3           over }t-x c!
+        4           over }t-y c!
+        TC-POTION   over }t-class c!
+        drop
 
-    nthings @ 3 = .
+    cr .s cr
 
-    0 thing[] }t-room@ 1 = .
-    1 thing[] }t-room@ 3 = .
-    2 thing[] }t-room@ 5 = .
-    
-    things-clear
+    5 dump-room-things
 
-    1 thing-new
-    2 thing-new
-    3 thing-new
-
-    nthings @ 3 = .
-
-    0 thing[] }t-room@ 1 = .
-    1 thing[] }t-room@ 2 = .
-    2 thing[] }t-room@ 3 = .
-
-    {stack-out}
-    ;
-
-: test-del 
-    {stack-in}
-    things-clear
-    1 thing-new
-    2 thing-new
-    3 thing-new
-
-    1 thing-del
-
-    1 thing[] }t-room@ 0= .
+    cr .s cr
 
     {stack-out}
     ;
@@ -88,6 +67,6 @@ cr .( test-things-clear ) cr
 test-things-clear
 cr .( test-thing-new ) cr
 test-thing-new
-cr .( test-thing-find-index ) cr
-test-insert
+cr .( test-thing-new ) cr
+test-thing-rooms
 cr
