@@ -1,5 +1,5 @@
+
 \ thing:
-\   room number
 \   x
 \   y
 \   class : 
@@ -31,13 +31,11 @@
 
 
 current-offset off
-1 soffset }t-room
 1 soffset }t-x
 1 soffset }t-y
 1 soffset }t-class
 
 current-offset off
-1 soffset@ }t-room@
 1 soffset@ }t-x@
 1 soffset@ }t-y@
 1 soffset@ }t-class@
@@ -60,7 +58,7 @@ THINGS-MAX cells constant |THINGSLIST|
 : mkthings-list
     create |THINGSLIST| allot 
     does> swap cells + ;
-: mkthings-byroom
+: mkthings-yidx
     create 10 allot
     does> swap + ;
 
@@ -69,7 +67,7 @@ THINGS-MAX cells constant |THINGSLIST|
 
 mkthings-data (t-data) 
 mkthings-list (t-list)
-mkthings-byroom (t-byroom)
+mkthings-yidx (t-yidx)
 
 variable nthings
 
@@ -78,27 +76,21 @@ variable nthings
     (t-data) ; 
 
 : dump-thing ( ptr -- )
-    ." R:" dup }t-room@ .
     ." x:" dup }t-x@ .
     ." y:" dup }t-y@ .
     ." cls:" dup }t-class@ .
     drop ; 
 
 : dump-things-data
-    THINGS-MAX 0 do
-        i (t-data) dup }t-room c@ if
-            dump-thing 
-        else
-            drop
-            leave
-        then
+    nthings @ 0 do
+        i (t-data) dump-thing
     loop ;
 
 : things-clear
     nthings off
     0 (t-list) |THINGSLIST| erase
     0 (t-data) |THINGSDATA| erase 
-    0 (t-byroom) 10 255 fill ;
+    0 (t-yidx) 10 255 fill ;
 
 \ pointer to newly create thing
 : newtdata ( -- t-data )
@@ -106,24 +98,25 @@ variable nthings
 : newcar ( -- car )
     nthings @ ;
 
-: to-room ( data-idx rn -- )
+: stash-at-y ( data-idx rn -- )
     dup >R
-    (t-byroom) c@ ( dataidx caridx -- )
+    (t-yidx) c@ ( dataidx caridx -- )
     data+next>car ( car ) 
     nthings @ (t-list) ! ( store car in new t-list cell )
-    nthings @ R> (t-byroom) c! ( update by-room )
+    nthings @ R> (t-yidx) c! ( update by-room )
     ;     
 
-\ create an empty thing in room rn
-: thing-new ( rn -- thing-data )
-    dup newtdata }t-room c!
-        nthings @ swap to-room 
+\ create an empty thing at x, y
+: thing-new ( x, y -- thing-data )
+    swap newtdata }t-x c!
+    dup newtdata }t-y c!
+        nthings @ swap stash-at-y
         newtdata ( return value )
         1 nthings +! ;
 
-: with-room-things ( xt rn -- )
+: with-y-things ( xt y -- )
     swap >R
-    (t-byroom) c@ \ car idx
+    (t-yidx) c@ \ car idx
     dup 255 = if dup exit then
     begin
         (t-list) @ 
@@ -132,7 +125,23 @@ variable nthings
     dup 255 = until 
     drop R> drop ;
 
-: dump-room-things ( rn -- )
-    ['] dump-thing swap with-room-things ;
+: dump-y-things ( rn -- )
+    ['] dump-thing swap with-y-things ;
 
+: get-thing-xy ( x y -- t-data|0 )
+    swap >R
+    (t-yidx) c@  
+    dup 255 = if drop R> drop 0 exit then
+    begin
+        (t-list) @
+            car>data+next
+            swap (t-data) dup }t-x@ R@ = if
+                swap drop
+                R> drop
+                exit
+            then
+            drop 
+    dup 255 = until
+    drop R> drop ;
+    
 things-clear

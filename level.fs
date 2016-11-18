@@ -188,4 +188,3 @@ make-could-go where?
     place-things
     exit-room  @ [CHAR] > place-thing ;
 
-

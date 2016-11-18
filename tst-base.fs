@@ -36,51 +36,64 @@ include things.fs
     ;
 : test-thing-new
     {stack-in}
-    1 thing-new drop
+    5 6 thing-new drop
     nthings @ 1 = . 
     {stack-out}
     ;
 
 : dump-to-stack ( data -- rn x y class )
     >R
-    R@ }t-room@ R@ }t-x@ R@ }t-y@ R@ }t-class@
+    R@ }t-x@ R@ }t-y@ R@ }t-class@
     R> drop ;
 
 : .hold 0 #s 2drop [char] # hold ;
 
 : dump-to-hold ( data -- rn x y class )
     >R
-    R@ }t-room@ .hold R@ }t-x@ .hold 
-    R@ }t-y@ .hold R@ }t-class@ .hold
+    R@ }t-x@ .hold R@ }t-y@ .hold R@ }t-class@ .hold
     R> drop ;
 
 : test-thing-rooms
     {stack-in}
-    5 thing-new 
-        1           over }t-x c!
-        2           over }t-y c!
+    1 5 thing-new 
         TC-SCROLL   over }t-class c!
         drop
 
-    5 thing-new
-        3           over }t-x c!
-        4           over }t-y c!
+    2 5 thing-new
         TC-POTION   over }t-class c!
         drop
 
     \ 5 dump-room-things
     <#
-    ['] dump-to-hold 5 with-room-things
+    ['] dump-to-hold 5 with-y-things
     0 0 #> 
     \ 2dup cr [char] ! emit type [char] ! emit cr
-    s" #2#2#1#5#3#4#3#5" compare 0= .
-
+    s" #2#5#1#3#5#2" compare 0= .
+    cr
     {stack-out}
     ;
-cr .( test-things-clear ) cr
-test-things-clear
-cr .( test-thing-new ) cr
+
+: test-get-thing-xy
+    {stack-in}
+    12 13 thing-new
+        TC-SCROLL over }t-class c!
+        drop
+
+    67 4 thing-new
+        TC-POTION over }t-class c!
+        drop
+
+    12 13 get-thing-xy }t-class@ TC-SCROLL = .
+    67 4  get-thing-xy }t-class@ TC-POTION = .
+
+    1 1 get-thing-xy 0= .
+
+    {stack-out}
+;
+
 test-thing-new
 cr .( test-thing-rooms ) cr
 test-thing-rooms
-cr
+cr .( test-get-xy ) cr
+test-get-thing-xy
+
