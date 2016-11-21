@@ -13,6 +13,27 @@ Status:
  * ability to walk around the dungeon and downstairs
  * rooms can be lit up and dark
  * running and repeat count
+ * static things are added to the dungeon, they can't be used but they already have the data structures
+
+### About speed and things
+I regularly check the speed on the target CP/M machine, which is a 3MHz 8080 computer with a lot of waitstates
+and emulated text mode. The raw screen output speed of it is estimated at about 700 cps. When I first saw
+the running speed on it I had to reconsider a few things. Now I try to be performance-conscious with the code
+that I write. 
+
+  Forth seems to hold some middle ground between compiled and interpreted languages. On a 8080 CPU, a C compiler
+  would often have a very hard time using the resources efficiently. It is reasonable to expect Forth performance
+  to be comparable with compiled code because of this, on this particular platform. But being comparable with
+  a poor C compiler on a difficult machine does not necessarily mean that it is fast.
+
+This made me spend a bit of time building a slightly ugly structure to keep the things on the level. A monster
+is also a thing. Because lookaround must happen as quickly as possible, searching for 8 things around the @
+every move would be prohibitively slow. So there are a few things to make search faster:
+ * where there is a thing, the floor is marked with C-FLOOR+THING in the dungeon (it's a comma)
+ * things are stored in array (t-data)
+ * the array is indexed by a linked list made of (data-index,next) tuples, each tuple occupies one cell
+ * an array of 24 bytes maps y-coordinate to the head of its corresponding list
+Considering how small is the number of things usually, the structure seems more elaborate than it should be. 
 
 ## How to
 ### On a modern pc (Linux, macOS, Windows, ... )
