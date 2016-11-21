@@ -8,7 +8,13 @@
 
 hex
 : isupper?  [char] A - 1A u< ;
+: islower?  [char] a - 1A u< ;
 : tolower  dup isupper? 20 and + ;
+: toupper 
+    [DEFINED] upcase [IF] upcase 
+    [ELSE]
+        dup isupper? not 20 and -  
+    [THEN] ;
 : isdigit?  [char] 0 - 0A u< ;
 : atoi 30 - ;
 decimal 
