@@ -165,12 +165,13 @@ make-could-go where?
         add-some-thru
     again ;
 
-: place-thing ( rn c -- )
-    swap somewhere-in-room
-    dcellyx! ;
+: place-thing ( rn cls -- )
+    swap somewhere-in-room ( cls x y )
+    3dup thing-new }t-class c! 
+    rot drop C-FLOOR+THING -rot dcellyx! ;
 
 : add-junk ( rn -- )
-    C-FLOOR+THING place-thing ;
+    rnd-static-thing place-thing ;
 
 : foreach-room
     10 1 do
@@ -181,10 +182,11 @@ make-could-go where?
     loop drop ;
 
 : place-things ( -- )
+    things-clear
     ['] add-junk foreach-room ;
 
 : level
     linked-rooms render-passages render-rooms 
     place-things
-    exit-room  @ [CHAR] > place-thing ;
+    exit-room @ C-EXIT place-thing ;
 

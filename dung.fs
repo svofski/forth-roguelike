@@ -1,16 +1,6 @@
-80 constant COLS
-24 constant ROWS
 COLS ROWS * constant dngsize
 
 : COLS* 4 lshift dup 2 lshift + ;
-
-32 constant C-NOTHING
-32 constant C-NOTHING  
-46 constant C-FLOOR 
-44 constant C-FLOOR+THING       \ , says to look into things
-35 constant C-PASSAGE
-43 constant C-DOOR 
-62 constant C-EXIT
 
 0 0 COLS 1- ROWS 1- rect update-rect
 
@@ -161,7 +151,6 @@ here value (dungeon) ( -- adr )
     validate-all ;
 
 : there-thing? c-char C-FLOOR+THING = ;
-: get-thingchar-xy drop drop [CHAR] * ;
 
 : dupdate-invalid ( -- )
     nothing-to-update? if exit then 
@@ -175,7 +164,7 @@ here value (dungeon) ( -- adr )
             dup c@              ( inc nsp dng c )
             dup there-thing? if 
                 \ switch the thing trait with the actual thing
-                128 and i j get-thingchar-xy or
+                128 and i j char@xy or
             then
             ( inc nsp dng c )
             dup c-skip? if   ( inc nspaces &dng -- )

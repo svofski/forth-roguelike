@@ -1,3 +1,6 @@
+80 constant COLS
+24 constant ROWS
+
 : >= < 0= ;
 : <= > 0= ;
 : 3drop drop drop drop ;

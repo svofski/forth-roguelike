@@ -21,9 +21,10 @@ create player-flags 0 ,
     player-flags @ [ PF-BLIND ] literal and ;
 
 : is-door? c-char [ C-DOOR ] literal = ;
-: is-exit? c-char [ C-EXIT ] literal = ;
 : is-pass? c-char [ C-PASSAGE ] literal = ;
 : is-floor? c-char [ C-FLOOR ] literal = ;
+: is-thing? c-char [ C-FLOOR+THING ] literal = ;
+: is-exit? c-char [ C-EXIT ] literal = ;
 
 \ xt are ( ptr -- )
 : apply-adjacent-a ( xt x y -- )
@@ -41,14 +42,16 @@ create player-flags 0 ,
 
 : should-stop-because? ( c -- true|false )
     dup is-door? swap
-        is-exit? or ;
+        is-thing? or ; 
+        \ is-exit? or ;
 
 : can-@-go? 
     dcellyx@
         dup is-floor? if drop true exit then
         dup is-pass? if drop true exit then
         dup is-door? if drop true exit then
-        dup is-exit? if drop true exit then
+        dup is-thing? if drop true exit then
+        \ dup is-exit? if drop true exit then
         drop false ; 
 
 : diag-nogo? ( x y -- true|false )
@@ -172,7 +175,8 @@ create player-flags 0 ,
 : walk-n ['] p-n xt-walk-diag ;
 
 : walk->
-    roguexy@ dcellyx@ is-exit?
+    roguexy@ char@xy is-exit?
+    \ dcellyx@ is-exit?
     if
         ++level
         true
