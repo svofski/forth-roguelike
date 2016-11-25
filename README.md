@@ -27,13 +27,14 @@ that I write.
   a poor C compiler on a difficult machine does not necessarily mean that it is fast.
 
 This made me spend a bit of time building a slightly ugly structure to keep the things on the level. A monster
-is also a thing. Because lookaround must happen as quickly as possible, searching for 8 things around the @
-every move would be prohibitively slow. So there are a few things to make search faster:
+is also a thing. Because lookaround must happen as quickly as possible: searching for 8 things around the @
+every move would be prohibitively slow. So there are a few things to make searching faster:
  * where there is a thing, the floor is marked with C-FLOOR+THING in the dungeon (it's a comma)
  * things are stored in array (t-data)
  * the array is indexed by a linked list made of (data-index,next) tuples, each tuple occupies one cell
  * an array of 24 bytes maps y-coordinate to the head of its corresponding list
-Considering how small is the number of things usually, the structure seems more elaborate than it should be. 
+ 
+Considering how small the number of things usually is (3-10 tops, although sometimes there are many monsters, or the @ might wish to dump all his possessions onto the floor), the structure seems more elaborate than it should be. 
 
 ## How to
 ### On a modern pc (Linux, macOS, Windows, ... )
