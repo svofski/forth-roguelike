@@ -2,6 +2,9 @@
 
 create dlevel 0 ,           \ current dungeon level
 create quit-game 0 ,        \ termination flag
+2variable debugmsg
+
+0 0 debugmsg 2!
 
 1 constant RS-REPEAT-RUN
 2 constant RS-REPEAT-COUNT
@@ -16,6 +19,9 @@ create current-room 0 ,
 
 1 constant PF-BLIND 
 create player-flags 0 ,
+
+1 constant GF-ESTOCADA
+0 value game-flags
 
 : pf-blind?
     player-flags @ [ PF-BLIND ] literal and ;
@@ -56,7 +62,7 @@ create player-flags 0 ,
             char@xy dup is-monster? if drop false exit then
             drop true exit 
         then
-        drop false ; 
+        3drop false ; 
 
 : diag-nogo? ( x y -- true|false )
     dcellyx@ is-door? ;
@@ -65,7 +71,9 @@ create player-flags 0 ,
     2dup can-@-go? 
     if 
         rogue-xy p-xy! true
-    else 2drop 
+    else 
+        game-flags GF-ESTOCADA or to game-flags
+        2drop 
         false 
     then ;
 
@@ -76,6 +84,7 @@ create player-flags 0 ,
     if 
         rogue-xy p-xy! true
     else 
+        game-flags GF-ESTOCADA or to game-flags
         2drop false 
     then ;
 
@@ -196,7 +205,10 @@ create player-flags 0 ,
 
 : stats-> ( -- )
     0 24 vtxy ." Dlvl: " dlevel @ . 
-    ." depth:" depth . ." R:" repeat-count @ . ;
+    ." depth:" depth . ." R:" repeat-count @ . 
+    debugmsg 2@ type
+    clreol 
+    0 0 debugmsg 2! ;
 
 \ true if ok, false if couldn't go
 : dispatch-cmd-in ( char -- true|false )
@@ -217,7 +229,13 @@ create player-flags 0 ,
     false ; 
 
 : dispatch-command ( -- true|false )
-    repeat-command @ dispatch-cmd-in nip ;
+    repeat-command @ dispatch-cmd-in nip 
+    dup not if
+        game-flags GF-ESTOCADA and if
+            s" NUTSKICK" debugmsg 2!
+            game-flags GF-ESTOCADA invert and to game-flags
+        then
+    then ;
 
 : repeat-off
     repeat-state off
