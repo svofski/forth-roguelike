@@ -170,8 +170,19 @@ make-could-go where?
     3dup thing-new }t-class c! 
     rot drop C-FLOOR+THING -rot dcellyx! ;
 
+: place-monster ( rn monster -- )
+    swap somewhere-in-room ( cls x y )
+    3dup rot C-MONSTER + -rot 
+    thing-new }t-class c!
+    rot drop C-FLOOR+THING -rot dcellyx! ;
+
 : add-junk ( rn -- )
-    rnd-static-thing place-thing ;
+    dup rnd-static-thing place-thing 
+    coinflip if 
+        rnd-monster-class place-monster
+    else
+        drop
+    then ;
 
 : foreach-room
     10 1 do
