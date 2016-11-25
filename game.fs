@@ -25,6 +25,7 @@ create player-flags 0 ,
 : is-floor? c-char [ C-FLOOR ] literal = ;
 : is-thing? c-char [ C-FLOOR+THING ] literal = ;
 : is-exit? c-char [ C-EXIT ] literal = ;
+: is-monster? c-char isupper? ;
 
 \ xt are ( ptr -- )
 : apply-adjacent-a ( xt x y -- )
@@ -43,15 +44,18 @@ create player-flags 0 ,
 : should-stop-because? ( c -- true|false )
     dup is-door? swap
         is-thing? or ; 
-        \ is-exit? or ;
 
 : can-@-go? 
-    dcellyx@
-        dup is-floor? if drop true exit then
-        dup is-pass? if drop true exit then
-        dup is-door? if drop true exit then
-        dup is-thing? if drop true exit then
-        \ dup is-exit? if drop true exit then
+    2dup
+    dcellyx@ 
+        dup is-floor? if 3drop true exit then
+        dup is-pass? if 3drop true exit then
+        dup is-door? if 3drop true exit then
+        dup is-thing? if 
+            drop
+            char@xy dup is-monster? if drop false exit then
+            drop true exit 
+        then
         drop false ; 
 
 : diag-nogo? ( x y -- true|false )
