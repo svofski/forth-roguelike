@@ -95,8 +95,9 @@ defer dump-monster
     then ; 
 
 : dump-things-data
+    cr
     nthings @ 0 do
-        i (t-data) dump-thing
+        i (t-data) dump-thing cr
     loop ;
 
 : things-clear

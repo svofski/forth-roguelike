@@ -26,6 +26,20 @@ hex
 : atoi 30 - ;
 decimal 
 
+( parse colon-separated string ) 
+( leave left part if true, right part if false )
+: truehalf 
+    2dup [CHAR] : scan nip - ;
+: falsehalf
+    [CHAR] : scan 1- swap 1+ swap ;
+: s:" ( b -- c-addr u1 )
+    [CHAR] " parse postpone SLiteral
+    postpone rot postpone if
+        postpone truehalf
+    postpone else
+        postpone falsehalf
+    postpone then ; immediate
+
 variable current-offset
 : soffset ( n -- ) ( addr -- addr')
     create current-offset dup @ dup , 2 roll + swap !
@@ -117,3 +131,4 @@ current-offset off
     [CHAR] - emit
     dup }rx2@ . }ry2@ 0 .r ." )";
     
+
