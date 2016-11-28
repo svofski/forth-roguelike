@@ -27,11 +27,21 @@ current-offset off
 1 soffset }t-x
 1 soffset }t-y
 1 soffset }t-class
+1 soffset }t-flags
+1 soffset }t-hp
+1 soffset }t-extra
+1 soffset }t-tgt-x
+1 soffset }t-tgt-y
 
 current-offset off
 1 soffset@ }t-x@
 1 soffset@ }t-y@
 1 soffset@ }t-class@
+1 soffset@ }t-flags@
+1 soffset@ }t-hp@
+1 soffset@ }t-extra@
+1 soffset@ }t-tgt-x@
+1 soffset@ }t-tgt-y@
 
 8 constant |THING|
 20 constant THINGS-MAX 
@@ -69,11 +79,16 @@ mkthings-yidx (t-yidx)
 
 variable nthings
 
+defer dump-monster
+
 : dump-thing ( ptr -- )
     ?dup if 
         ." x:" dup }t-x@ .
         ." y:" dup }t-y@ .
-        ." cls:" dup }t-class@ .
+        ." cls:" dup }t-class@ dup .
+            isupper? if
+                dup dump-monster
+            then
         drop
     else
         ." (nil)"
@@ -108,6 +123,7 @@ variable nthings
 \ create an empty thing at x, y
 : thing-new ( x, y -- thing-data )
     nthings @ to freecell-tlist 
+    newtdata |THING| erase
     newtdata }t-y c!
     newtdata }t-x c!
     newtdata link-thing

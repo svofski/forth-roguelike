@@ -12,6 +12,9 @@
 37 constant C-FOOD
 65 constant C-MONSTER
 
+\ thing flags ( things.fs }t-flags )
+1   constant TF-AIMED       \ monster has life goals
+
 create static-items 
 here C-WEAPON c, C-POTION c, C-SCROLL c,
      C-WAND c, C-ARMOR c, C-FOOD c, 
@@ -61,6 +64,10 @@ here
 : monster-char
     monster-name drop c@ toupper ;
 
+( monster class to name )
+: mcls>name ( cls -- str u )
+    [CHAR] A - monster-name ;
+    
 : rnd-monster-class
     26 rnd ;
 

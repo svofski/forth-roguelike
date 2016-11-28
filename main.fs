@@ -4,6 +4,7 @@ include tstack.fs
 include vt.fs
 include chars.fs
 include things.fs
+include monster.fs
 include dung.fs
 include rooms.fs
 include level.fs
