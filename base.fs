@@ -1,6 +1,13 @@
 80 constant COLS
 24 constant ROWS
 
+[DEFINED] not 0= [IF]
+: not if false else true then ;
+: gforth true ;
+[ELSE]
+: gforth false ;
+[THEN]
+
 : >= < 0= ;
 : <= > 0= ;
 : 3drop drop drop drop ;

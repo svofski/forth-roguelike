@@ -1,7 +1,13 @@
 include base.fs
 include lfsr.fs
 include tstack.fs
-include vt.fs
+
+gforth [IF]
+    include vt100.fs
+[ELSE]
+    include vt52.fs
+[THEN]
+
 include chars.fs
 include things.fs
 include monster.fs
