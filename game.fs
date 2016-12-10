@@ -12,8 +12,10 @@ create quit-game 0 ,        \ termination flag
 create repeat-state 0 ,     \ 0, RS-REPEAT-RUN, RS-REPEAT-COUNT
 create repeat-count 0 ,     \ number prefix before command
 create repeat-command 0 ,   \ valid for repeat and run
-create current-room 0 ,
-0 0 point rogue-xy
+create current-room 0 ,     \ the room rogue is in
+0 0 point rogue-xy          \ rogue xy location
+7 value rogue-speed@        \ baseline speed 7
+0 value turn-time@          \ turn time 
 
 : roguexy@ rogue-xy p-xy@ ;
 
@@ -25,13 +27,6 @@ create player-flags 0 ,
 
 : pf-blind?
     player-flags @ [ PF-BLIND ] literal and ;
-
-: is-door? c-char [ C-DOOR ] literal = ;
-: is-pass? c-char [ C-PASSAGE ] literal = ;
-: is-floor? c-char [ C-FLOOR ] literal = ;
-: is-thing? c-char [ C-FLOOR+THING ] literal = ;
-: is-exit? c-char [ C-EXIT ] literal = ;
-: is-monster? c-char isupper? ;
 
 \ xt are ( ptr -- )
 : apply-adjacent-a ( xt x y -- )
@@ -51,7 +46,7 @@ create player-flags 0 ,
     dup is-door? swap
         is-thing? or ; 
 
-: can-@-go? 
+: can-@-go? ( x y -- true|false )
     2dup
     dcellyx@ 
         dup is-floor? if 3drop true exit then
@@ -66,11 +61,15 @@ create player-flags 0 ,
 
 : diag-nogo? ( x y -- true|false )
     dcellyx@ is-door? ;
+
+: advance-time
+    turn-time@ rogue-speed@ + to turn-time@ ;
    
 : try-move-@ ( x y -- true|false )
     2dup can-@-go? 
     if 
         rogue-xy p-xy! true
+        advance-time
     else 
         game-flags GF-ESTOCADA or to game-flags
         2drop 
@@ -83,6 +82,7 @@ create player-flags 0 ,
     2dup diag-nogo? not                         \ target not +
     if 
         rogue-xy p-xy! true
+        advance-time
     else 
         game-flags GF-ESTOCADA or to game-flags
         2drop false 
@@ -210,6 +210,9 @@ create player-flags 0 ,
     clreol 
     0 0 debugmsg 2! ;
 
+: debug-magic
+    ['] mons-aim-rnd mons-foreach ;
+
 \ true if ok, false if couldn't go
 : dispatch-cmd-in ( char -- true|false )
     dup [CHAR] h = if walk-h exit then
@@ -225,6 +228,8 @@ create player-flags 0 ,
     dup [CHAR] q = if quit-game on false exit then
     dup 12  = if page invalidate-all false exit then
     dup [CHAR] \ = if show-entire-map false exit then
+    dup [CHAR] ] = if debug-magic false exit then
+    dup [CHAR] . = if dprint false exit then
     dup 27  = if repeat-count off false exit then
     false ; 
 
@@ -235,7 +240,9 @@ create player-flags 0 ,
             s" NUTSKICK" debugmsg 2!
             game-flags GF-ESTOCADA invert and to game-flags
         then
-    then ;
+    then 
+    monsters-turn
+    ;
 
 : repeat-off
     repeat-state off

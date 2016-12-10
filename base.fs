@@ -120,6 +120,15 @@ current-offset off
 : rect-bottomright ( r -- x2 y2 )
     dup 2 + c@ swap 3 + c@ ;
 
+( ensure that x1,y1 is left/above of x2,y2 )
+: norm4 ( x1 y1 x2 y2 -- x1' y1' x2' y2' )
+    rot 2dup > if swap then
+    2swap 2dup > if swap then
+    ( y1' y2' x1' x2' )
+    2swap
+    ( x1' x2' y1' y2' -- x1' y1' x2' y2' )
+    rot swap ;
+
 : rect-width ( r1 -- h )
     dup }rx2@ swap }rx1@ - ;
 
@@ -130,5 +139,5 @@ current-offset off
     ." (" dup }rx1@ . dup }ry1@ 0 .r
     [CHAR] - emit
     dup }rx2@ . }ry2@ 0 .r ." )";
-    
+
 

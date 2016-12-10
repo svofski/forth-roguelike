@@ -71,4 +71,23 @@ here
 : rnd-monster-class
     26 rnd ;
 
+: c-visible?
+    128 and ;
+
+: c-make-visible
+    128 or ;
+
+: c-char
+    127 and ;
+
+: c-char@
+    c@ 127 and ;
+
+: is-door? c-char [ C-DOOR ] literal = ;
+: is-pass? c-char [ C-PASSAGE ] literal = ;
+: is-floor? c-char [ C-FLOOR ] literal = ;
+: is-thing? c-char [ C-FLOOR+THING ] literal = ;
+: is-exit? c-char [ C-EXIT ] literal = ;
+: is-monster? c-char isupper? ;
+
 

@@ -10,9 +10,9 @@ gforth [IF]
 
 include chars.fs
 include things.fs
-include monster.fs
 include dung.fs
 include rooms.fs
 include level.fs
+include monster.fs
 include game.fs
 

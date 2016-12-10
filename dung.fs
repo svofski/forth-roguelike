@@ -10,18 +10,6 @@ here value (dungeon) ( -- adr )
 : allot-dungeon ( -- )
     here to (dungeon) dngsize allot ;
 
-: c-visible?
-    128 and ;
-
-: c-make-visible
-    128 or ;
-
-: c-char
-    127 and ;
-
-: c-char@
-    c@ 127 and ;
-
 : dcell ( i -- a )
   (dungeon) + ;
 
@@ -54,6 +42,14 @@ here value (dungeon) ( -- adr )
 
 : make-all-visible ( -- )
     dngsize 0 do i dcell-make-visible loop ;
+
+( remove thing or monster presence flag )
+: dwipe-floor ( x y -- )
+    dcellyx dcell dup c@ 128 and C-FLOOR or swap c! ;
+
+( set thing or monster presence flag )
+: ddirty-floor ( x y -- )
+    dcellyx dcell dup c@ 128 and C-FLOOR+THING or swap c! ;
 
 : c-skip?
     dup c-visible? not if drop true exit then 
@@ -111,7 +107,7 @@ here value (dungeon) ( -- adr )
     then ;
 
 : invalidate ( x1 y1 x2 y2 -- )
-    update-rect rect-add ;
+    norm4 update-rect rect-add ;
 
 : invalidate-all ( -- )
     0 0 COLS 1- ROWS 1- invalidate ;
@@ -184,3 +180,11 @@ here value (dungeon) ( -- adr )
     loop 3drop
     validate-all ;
 
+: dprint ( -- )
+  (dungeon)
+  ROWS 0 do 
+    COLS 0 do
+      dup c@ c-char emit 1+
+    loop
+    cr
+  loop drop ;

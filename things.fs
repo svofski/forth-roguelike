@@ -1,26 +1,3 @@
-
-\ thing:
-\   x
-\   y
-\   class : 
-\       % food 
-\       $ gold 
-\       ] armour 
-\       ) weapon 
-\       ! potion 
-\       ? scroll 
-\       > exit
-\       A-Za-z monstar
-\   attrib :
-\       $80: always shown
-\       $40: reserved
-\       class-specific $3f
-\           $ quantity
-\           % satiation
-\   flags
-\   hp
-\   extra1
-
 decimal
 
 current-offset off
@@ -29,7 +6,7 @@ current-offset off
 1 soffset }t-class
 1 soffset }t-flags
 1 soffset }t-hp
-1 soffset }t-extra
+1 soffset }t-time
 1 soffset }t-tgt-x
 1 soffset }t-tgt-y
 
@@ -39,7 +16,7 @@ current-offset off
 1 soffset@ }t-class@
 1 soffset@ }t-flags@
 1 soffset@ }t-hp@
-1 soffset@ }t-extra@
+1 soffset@ }t-time@
 1 soffset@ }t-tgt-x@
 1 soffset@ }t-tgt-y@
 
