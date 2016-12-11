@@ -53,8 +53,38 @@ here value (dungeon) ( -- adr )
     dcellyx dcell dup c@ 128 and C-FLOOR or swap c! ;
 
 ( set thing or monster presence flag )
-: ddirty-floor ( x y -- )
-    dcellyx dcell dup c@ 128 and C-FLOOR+THING or swap c! ;
+: (dset) ( x y bit -- )
+    -rot ( bit x y -- )
+    dcellyx dcell dup c@  ( bit adr c )
+        dup (?stuff) if
+            ( bit adr c ) rot or 
+        else
+            ( bit adr c ) 128 and rot (C-MARKER) or or 
+        then 
+        swap c! ;
+: (dreset) ( x y bit -- )
+    -rot
+    dcellyx dcell dup c@ ( bit adr c )
+        dup (?stuff) if
+            ( bit adr c )
+            rot invert and ( adr c' )
+            dup [ (C-THING) (C-MONSTER) or ] literal and
+            0= if
+                128 and C-FLOOR or 
+            then
+            swap c! 
+        else
+            2drop  ( there was nothing, leave )
+        then ;
+
+: dset-thing ( x y -- )
+    (C-THING) (dset) ;
+: dreset-thing ( x y -- )
+    (C-THING) (dreset) ;
+: dmonst-set ( x y -- )
+    (C-MONSTER) (dset) ;
+: dmonst-reset ( x y -- )
+    (C-MONSTER) (dreset) ;
 
 : c-skip?
     dup c-visible? not if drop true exit then 
@@ -153,8 +183,6 @@ here value (dungeon) ( -- adr )
             then
     loop ;
 
-: there-thing? c-char C-FLOOR+THING = ;
-
 : dupdate-invalid ( -- )
     nothing-to-update? if exit then 
     dupdate-points
@@ -166,7 +194,7 @@ here value (dungeon) ( -- adr )
         update-rect }rx1@ i vtxy
         update-rect }rx2@ 1+ update-rect }rx1@ do
             dup c@              ( inc nsp dng c )
-            dup there-thing? if 
+            dup (?stuff) if 
                 \ switch the thing trait with the actual thing
                 128 and i j char@xy or
             then

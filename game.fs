@@ -52,11 +52,8 @@ create player-flags 0 ,
         dup is-floor? if 3drop true exit then
         dup is-pass? if 3drop true exit then
         dup is-door? if 3drop true exit then
-        dup is-thing? if 
-            drop
-            char@xy dup is-monster? if drop false exit then
-            drop true exit 
-        then
+        dup is-thing? if 3drop true exit then
+        dup is-monster? if 3drop false exit then
         3drop false ; 
 
 : diag-nogo? ( x y -- true|false )

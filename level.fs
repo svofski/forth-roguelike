@@ -174,7 +174,7 @@ make-could-go where?
     swap somewhere-in-room ( cls x y )
     3dup rot C-MONSTER + -rot 
     thing-new }t-class c!
-    rot drop C-FLOOR+THING -rot dcellyx! ;
+    rot drop C-FLOOR+MONSTER -rot dcellyx! ;
 
 : add-junk ( rn -- )
     dup rnd-static-thing place-thing 

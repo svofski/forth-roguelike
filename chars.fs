@@ -1,6 +1,16 @@
 32 constant C-NOTHING
 46 constant C-FLOOR 
-44 constant C-FLOOR+THING       \ , says to look into things
+
+97 constant C-FLOOR+THING       \ $61 'a' thing on the floor
+98 constant C-FLOOR+MONSTER     \ $62 'b' monster and no things
+99 constant C-FLOOR+THING+MONSTER \ $63 'c' thing+monster
+hex 
+70 constant (C-MARKER-MASK)
+60 constant (C-MARKER) 
+1  constant (C-THING)
+2  constant (C-MONSTER)
+decimal 
+
 35 constant C-PASSAGE
 43 constant C-DOOR 
 62 constant C-EXIT
@@ -86,8 +96,27 @@ here
 : is-door? c-char [ C-DOOR ] literal = ;
 : is-pass? c-char [ C-PASSAGE ] literal = ;
 : is-floor? c-char [ C-FLOOR ] literal = ;
-: is-thing? c-char [ C-FLOOR+THING ] literal = ;
 : is-exit? c-char [ C-EXIT ] literal = ;
-: is-monster? c-char isupper? ;
 
-
+( if stuff, return c, otherwise 0 )
+: (?stuff) ( c -- c|0 )
+    dup 
+    c-char (C-MARKER-MASK) and (C-MARKER) = if 
+        exit
+    else
+        drop 0
+    then ;
+: (thing?) c-char (C-THING) and ;
+: (monster?) c-char (C-MONSTER) and ;
+: is-thing? ( c -- bool )  
+    (?stuff) ?dup if
+        (thing?)
+    else
+        false
+    then ;
+: is-monster? ( c -- bool )
+    (?stuff) ?dup if
+        (monster?)
+    else
+        false
+    then ;

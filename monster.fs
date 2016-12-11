@@ -63,19 +63,20 @@
         dup is-pass? if drop true exit then
         dup is-door? if drop true exit then
         dup is-thing? if drop true exit then
+        dup is-monster? if drop false exit then
         drop false ;
 
 : mons-movexy ( thing x y -- )
     2dup 4 pick dup ( t x y x y t t )
     }t-x@ swap }t-y@ ( t x y x y x' y' )
     ( mark old location as floor )
-    2dup dwipe-floor    
+    2dup dmonst-reset
     ( invalidate just 2 points: x,y and x',y' )
     invalidate1 invalidate1
     ( move thing in the things map, attach to the new y ) 
     ( t x y ) 3dup move-thing
     ( mark new location as thing )
-    2dup ddirty-floor
+    2dup dmonst-set
     ( update x,y in thing data )
     2 pick }t-y c!   ( t x )
     swap }t-x c! ;
