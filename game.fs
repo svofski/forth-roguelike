@@ -206,7 +206,7 @@ create player-flags 0 ,
 : stats-> ( -- )
     0 24 vtxy ." Dlvl: " dlevel @ . 
     ." depth:" depth . ." R:" repeat-count @ . 
-    debugmsg 2@ type
+    debugmsg 2@ type 
     clreol 
     0 0 debugmsg 2! ;
 

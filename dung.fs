@@ -4,6 +4,11 @@ COLS ROWS * constant dngsize
 
 0 0 COLS 1- ROWS 1- rect update-rect
 
+0 value |update-points|
+create update-points 40 allot
+: update-point[] ( n -- pointx pointy )
+    2* update-points + dup 1+ ; 
+
 \ create (dungeon) dngsize allot 
 here value (dungeon) ( -- adr )
 
@@ -109,47 +114,45 @@ here value (dungeon) ( -- adr )
 : invalidate ( x1 y1 x2 y2 -- )
     norm4 update-rect rect-add ;
 
+( invalidate a single location )
+: invalidate1 ( x1 y1 -- )
+    |update-points| update-point[] p-xy!
+    |update-points| 1+ to |update-points| ;
+
 : invalidate-all ( -- )
-    0 0 COLS 1- ROWS 1- invalidate ;
+    0 0 COLS 1- ROWS 1- invalidate 
+    0 to |update-points| ;
 
 : validate-all ( -- )
-    COLS ROWS 0 0 update-rect rect! ;
+    COLS ROWS 0 0 update-rect rect! 
+    0 to |update-points|
+    ;
+
+: (ntu-rect?)
+    [ COLS ROWS ] literal literal 0 0 update-rect rect-eq? ;
+
+: (ntu-pts?)
+    |update-points| 0= ;
 
 : nothing-to-update?
-    [ COLS ROWS ] literal literal 0 0 update-rect rect-eq? ;
+    (ntu-rect?) (ntu-pts?) and ;
 
 : updaterect-row-increment ( -- increment ) 
     [ COLS ] literal 
     update-rect }rx2@ update-rect }rx1@ - 1+ - ;
 
-: dupdate-invalid ( -- )
-    nothing-to-update? if exit then 
-    updaterect-row-increment
-    0 (dungeon)                 ( inc nspaces dungeon -- ) 
-    update-rect }rx1@ update-rect }ry1@ dcellyx + \ start adr
-    update-rect }ry2@ 1+ update-rect }ry1@ do
-        nip 0 swap              ( nspaces = 0 )
-        update-rect }rx1@ i vtxy
-        update-rect }rx2@ 1+ update-rect }rx1@ do
-            dup c@ c-skip? if   ( inc nspaces &dng -- )
-                swap 1+ swap
-            else
-                over if
-                    i j vtxy
-                    nip 0 swap  ( nspaces = 0 )
-                then
-                dup c-char@ emit 
-            then
-            1+                  ( inc nspaces &++dng -- )
-        loop
-        2 pick +
-    loop 3drop
-    validate-all ;
+: dupdate-points ( -- )
+    (ntu-pts?) if exit then 
+    |update-points| 0 do
+        i update-point[] p-xy@ 
+            2dup vtxy char@xy emit
+    loop ;
 
 : there-thing? c-char C-FLOOR+THING = ;
 
 : dupdate-invalid ( -- )
     nothing-to-update? if exit then 
+    dupdate-points
     updaterect-row-increment
     0 (dungeon)                 ( inc nspaces dungeon -- ) 
     update-rect }rx1@ update-rect }ry1@ dcellyx + \ start adr

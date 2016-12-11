@@ -71,8 +71,8 @@
     }t-x@ swap }t-y@ ( t x y x y x' y' )
     ( mark old location as floor )
     2dup dwipe-floor    
-    ( invalidate rect x,y-x',y' )
-    invalidate          
+    ( invalidate just 2 points: x,y and x',y' )
+    invalidate1 invalidate1
     ( move thing in the things map, attach to the new y ) 
     ( t x y ) 3dup move-thing
     ( mark new location as thing )
