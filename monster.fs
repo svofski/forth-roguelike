@@ -62,9 +62,8 @@
         dup is-floor? if drop true exit then
         dup is-pass? if drop true exit then
         dup is-door? if drop true exit then
+        dup is-thing? if drop true exit then
         drop false ;
-
-
 
 : mons-movexy ( thing x y -- )
     2dup 4 pick dup ( t x y x y t t )
@@ -87,19 +86,30 @@
     d+ 2dup can-M-go? if
         mons-movexy
     else
-        3drop
-    then
-;
+        2drop mons-unaim
+    then ;
+
+: (mons-keep-busy) ( thing -- )
+    dup mons-aimed? not if
+        mons-aim-rnd
+    else
+        drop
+    then ;
 
 : (mons-turn)
-    \ 0 25 vtxy ." GRRR I MOVE" dump-thing 
-    dup mons-aimed? not if drop exit then
+    dup (mons-keep-busy)
+    dup mons-aimed? not if 
+        drop exit 
+    then
     dup dup }t-tgt-x@ swap }t-x@ dircmp
     over dup }t-tgt-y@ swap }t-y@ dircmp
     ( thing dx dy )
+    2dup or 0= if
+        2drop mons-unaim
+        exit
+    then
     ( try going by dx,dy )
-    mons-try-moverel 
-    ;
+    mons-try-moverel ;
 
 ( advance monster time counter and make a move if it's time )
 : mons-turn ( thing -- )

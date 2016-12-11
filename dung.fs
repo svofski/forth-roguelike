@@ -5,7 +5,7 @@ COLS ROWS * constant dngsize
 0 0 COLS 1- ROWS 1- rect update-rect
 
 0 value |update-points|
-create update-points 40 allot
+create update-points 160 allot
 : update-point[] ( n -- pointx pointy )
     2* update-points + dup 1+ ; 
 
@@ -144,8 +144,13 @@ here value (dungeon) ( -- adr )
 : dupdate-points ( -- )
     (ntu-pts?) if exit then 
     |update-points| 0 do
-        i update-point[] p-xy@ 
-            2dup vtxy char@xy emit
+        i update-point[] p-xy@  ( -- x y )
+            ( if the location is dark, skip update ) 
+            2dup dcellyx@ c-skip? not if
+                2dup vtxy char@xy emit
+            else    
+                2drop
+            then
     loop ;
 
 : there-thing? c-char C-FLOOR+THING = ;
