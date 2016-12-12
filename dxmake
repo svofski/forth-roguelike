@@ -4,3 +4,4 @@ newname=rog`date +%S`.com
 mv rog.com $newname
 ls -l $newname
 zip rog.zip $newname *.fs 
+# zip -j rog.zip tools/dx420/FORTH.COM

@@ -7,3 +7,6 @@
 hex
 : page 0c emit 1f emit 1b emit 45 emit 1b emit 4a emit ;
 decimal
+
+( hax for koi-7 microdos on vector-06c )
+hex 1b emit 5b emit decimal

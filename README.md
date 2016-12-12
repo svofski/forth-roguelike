@@ -14,8 +14,9 @@ Status:
  * rooms can be lit up and dark
  * running and repeat count
  * static things are added to the dungeon, they can't be used but they already have the data structures
+ * pointlessly wandering monsters
 
-### About speed and things
+### About performance and things
 I regularly check the speed on the target CP/M machine, which is a 3MHz 8080 computer with a lot of waitstates
 and emulated text mode. The raw screen output speed of it is estimated at about 700 cps. When I first saw
 the running speed on it I had to reconsider a few things. Now I try to be performance-conscious with the code
@@ -39,7 +40,7 @@ Considering how small the number of things usually is (3-10 tops, although somet
 ## How to
 ### On a modern pc (Linux, macOS, Windows, ... )
 ```
-$ gforth gforth-main.fs
+$ gforth main.fs
 play
 ```
 
