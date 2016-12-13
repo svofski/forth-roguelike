@@ -220,6 +220,11 @@ create player-flags 0 ,
     dup [CHAR] u = if walk-u exit then
     dup [CHAR] b = if walk-b exit then
     dup [CHAR] n = if walk-n exit then
+    ( vector-06c arrow keys )
+    dup 8 = if walk-h exit then
+    dup 24 = if walk-l exit then
+    dup 26 = if walk-j exit then
+    dup 25 = if walk-k exit then
 
     dup [CHAR] > = if walk-> exit then
     dup [CHAR] q = if quit-game on false exit then
