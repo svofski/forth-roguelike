@@ -12,12 +12,8 @@ create quit-game 0 ,        \ termination flag
 create repeat-state 0 ,     \ 0, RS-REPEAT-RUN, RS-REPEAT-COUNT
 create repeat-count 0 ,     \ number prefix before command
 create repeat-command 0 ,   \ valid for repeat and run
-create current-room 0 ,     \ the room rogue is in
-0 0 point rogue-xy          \ rogue xy location
 7 value rogue-speed@        \ baseline speed 7
 0 value turn-time@          \ turn time 
-
-: roguexy@ rogue-xy p-xy@ ;
 
 1 constant PF-BLIND 
 create player-flags 0 ,
@@ -61,11 +57,15 @@ create player-flags 0 ,
 
 : advance-time
     turn-time@ rogue-speed@ + to turn-time@ ;
+    
+: update-@-room 
+    rogue-xy p-xy@ xy-find-room rogue-room ! ;
    
 : try-move-@ ( x y -- true|false )
     2dup can-@-go? 
     if 
         rogue-xy p-xy! true
+        update-@-room
         advance-time
     else 
         game-flags GF-ESTOCADA or to game-flags
@@ -74,15 +74,11 @@ create player-flags 0 ,
     then ;
 
 : try-move-@-diag ( x y -- true|false )
-    2dup can-@-go? not if 2drop false exit then \ can go at all
-    roguexy@ diag-nogo? if 2drop false exit then \ now on + ?
     2dup diag-nogo? not                         \ target not +
     if 
-        rogue-xy p-xy! true
-        advance-time
-    else 
-        game-flags GF-ESTOCADA or to game-flags
-        2drop false 
+        try-move-@
+    else
+        2drop false
     then ;
 
 : lightup-any-a ( ptr -- ) 
@@ -159,7 +155,7 @@ create player-flags 0 ,
     page
     level
     add-lights
-    start-room @ current-room ! 
+    start-room @ rogue-room ! 
     start-room @ place-rogue
     start-room @ 
     dup should-light-room? if

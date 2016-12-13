@@ -60,7 +60,7 @@ here value (dungeon) ( -- adr )
             ( bit adr c ) rot or 
         else
             ( bit adr c ) 128 and rot (C-MARKER) or or 
-        then 
+        then
         swap c! ;
 : (dreset) ( x y bit -- )
     -rot

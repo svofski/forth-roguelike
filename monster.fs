@@ -46,11 +46,21 @@
     }t-flags@ TF-AIMED and 0<> ;
 
 : mons-aim-rnd ( thing -- )
-    dup dup 1+ swap
-        p-xy@
+    dup 
+        rect-topleft
         xy-find-room
         somewhere-in-room 
         mons-aim ;
+
+( try to aim at monsieur @ )
+: mons-sniff ( thing -- )
+    dup
+        rect-topleft xy-find-room
+        rogue-room @ = if
+            roguexy@ mons-aim
+        else
+            drop
+        then ;
 
 : dircmp ( x1 x2 -- -1|0|+1 )
     - dup 0< if drop -1 exit then
@@ -58,6 +68,7 @@
           0 ;
 
 : can-M-go? ( x y -- true|false )
+    2dup roguexy@ d= if 2drop false exit then
     dcellyx@
         dup is-floor? if drop true exit then
         dup is-pass? if drop true exit then
@@ -67,30 +78,30 @@
         drop false ;
 
 : mons-movexy ( thing x y -- )
-    2dup 4 pick dup ( t x y x y t t )
-    }t-x@ swap }t-y@ ( t x y x y x' y' )
-    ( mark old location as floor )
-    2dup dmonst-reset
-    ( invalidate just 2 points: x,y and x',y' )
-    invalidate1 invalidate1
-    ( move thing in the things map, attach to the new y ) 
-    ( t x y ) 3dup move-thing
-    ( mark new location as thing )
-    2dup dmonst-set
+    2dup 4 pick rect-topleft ( t x y x y x' y' )
+    2dup dmonst-reset   ( reset monster marker from floor )
+    invalidate1         ( invalidate old loc )
+    invalidate1         ( invalidate new loc )
+    ( t x y -- ) 
+    3dup move-thing     ( remap to the new y )
+    2dup dmonst-set     ( set monster marker on the floor )
     ( update x,y in thing data )
-    2 pick }t-y c!   ( t x )
-    swap }t-x c! ;
+    ( t x y -- ) 
+    2 pick }t-y c!
+      swap }t-x c! ;
 
 : mons-try-moverel ( thing dx dy -- bool )
-    2 pick dup ( t dx dy t t )
-    }t-x@ swap }t-y@ ( t dx dy tx ty )
-    d+ 2dup can-M-go? if
+    2 pick dup }t-y@    ( t dx dy t y )
+    rot +               ( t dx t y' )
+    -rot }t-x@ + swap   ( t x' y' )
+    2dup can-M-go? if
         mons-movexy
     else
         2drop mons-unaim
     then ;
 
 : (mons-keep-busy) ( thing -- )
+    dup mons-sniff
     dup mons-aimed? not if
         mons-aim-rnd
     else
@@ -106,7 +117,7 @@
     over dup }t-tgt-y@ swap }t-y@ dircmp
     ( thing dx dy )
     2dup or 0= if
-        2drop mons-unaim
+        2drop mons-unaim 
         exit
     then
     ( try going by dx,dy )

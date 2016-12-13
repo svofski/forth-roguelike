@@ -13,6 +13,7 @@ include things.fs
 include dung.fs
 include rooms.fs
 include level.fs
+include gamevars.fs
 include monster.fs
 include game.fs
 
