@@ -86,6 +86,8 @@ here
 
 : c-make-visible
     128 or ;
+: [c-make-visible]
+    128 postpone literal postpone or ; immediate
 
 : c-char
     127 and ;
@@ -101,21 +103,21 @@ here
 ( if stuff, return c, otherwise 0 )
 : (?stuff) ( c -- c|0 )
     dup 
-    c-char (C-MARKER-MASK) and (C-MARKER) = if 
+    (C-MARKER-MASK) and (C-MARKER) = if 
         exit
     else
         drop 0
     then ;
-: (thing?) c-char (C-THING) and ;
-: (monster?) c-char (C-MONSTER) and ;
+: (thing?) (C-THING) and ;
+: (monster?) (C-MONSTER) and ;
 : is-thing? ( c -- bool )  
-    (?stuff) ?dup if
+    c-char (?stuff) ?dup if
         (thing?)
     else
         false
     then ;
 : is-monster? ( c -- bool )
-    (?stuff) ?dup if
+    c-char (?stuff) ?dup if
         (monster?)
     else
         false

@@ -1,28 +1,34 @@
 COLS ROWS * constant dngsize
 
-: COLS* 4 lshift dup 2 lshift + ;
-
 0 0 COLS 1- ROWS 1- rect update-rect
 
 0 value |update-points|
-create update-points 160 allot
+200 constant |update-points-max|
+\ create update-points 2 |update-points-max| * allot
+here value update-points ( -- adr )
+
 : update-point[] ( n -- pointx pointy )
     2* update-points + dup 1+ ; 
 
-\ create (dungeon) dngsize allot 
+\ (dungeon) is initialized in runtime by allot-dungeon
+\ static version is simply:
+\   create (dungeon) dngsize allot 
+\ but we want to reduce the binary image size, so:
 here value (dungeon) ( -- adr )
 
 : allot-dungeon ( -- )
-    here to (dungeon) dngsize allot ;
+    here to (dungeon) dngsize allot 
+    here to update-points 2 |update-points-max| * allot
+    ;
 
 : dcell ( i -- a )
-  (dungeon) + ;
+    (dungeon) + ;
 
 : dcell! ( val idx -- )
-  dcell c! ;
+    dcell c! ;
 
 : dcell@ ( idx -- val )
-  dcell c@ ;
+    dcell c@ ;
 
 : dcell-make-visible
     dup dcell@ c-make-visible swap dcell! ;
@@ -31,16 +37,21 @@ here value (dungeon) ( -- adr )
     dcell c@ c-visible? ;
 
 : dcellyx  ( x y -- ofs )
-    COLS* + ;
+    [COLS*] + ;
 
 : dcellyx! ( value x y -- )
-    COLS* + dcell! ;
+    [COLS*] + dcell! ;
 
 : dcellyx@ ( x y -- val )
-    COLS* + (dungeon) + c@ ;
+    [COLS*] + (dungeon) + c@ ;
 
+( paint a cell at x,y visible )
 : dcellyx-make-visible ( x y -- )
-    COLS* + dup dcell@ c-make-visible swap dcell! ;
+    [COLS*] + dup dcell@ c-make-visible swap dcell! ;
+
+( paint a cell @ptr visible )
+: visible! ( char-ptr -- )
+    dup c@ c-make-visible swap c! ;
 
 : dclear ( val -- ) 
     (dungeon) dngsize rot fill ;
@@ -48,29 +59,26 @@ here value (dungeon) ( -- adr )
 : make-all-visible ( -- )
     dngsize 0 do i dcell-make-visible loop ;
 
-( remove thing or monster presence flag )
-: dwipe-floor ( x y -- )
-    dcellyx dcell dup c@ 128 and C-FLOOR or swap c! ;
-
 ( set thing or monster presence flag )
 : (dset) ( x y bit -- )
     -rot ( bit x y -- )
     dcellyx dcell dup c@  ( bit adr c )
-        dup (?stuff) if
+        dup c-char (?stuff) if
             ( bit adr c ) rot or 
         else
-            ( bit adr c ) 128 and rot (C-MARKER) or or 
+            ( bit adr c ) c-visible? rot (C-MARKER) or or 
         then
         swap c! ;
+
 : (dreset) ( x y bit -- )
     -rot
     dcellyx dcell dup c@ ( bit adr c )
-        dup (?stuff) if
+        dup c-char (?stuff) if
             ( bit adr c )
             rot invert and ( adr c' )
             dup [ (C-THING) (C-MONSTER) or ] literal and
             0= if
-                128 and C-FLOOR or 
+                c-visible? C-FLOOR or 
             then
             swap c! 
         else
@@ -87,17 +95,25 @@ here value (dungeon) ( -- adr )
     (C-MONSTER) (dreset) ;
 
 : c-skip?
-    dup c-visible? not if drop true exit then 
+    dup c-visible? not ?true/~ 
     [ C-NOTHING ] literal = ;
 
-: dfillln ( val width ptr -- )
+\ apply xt ( ptr -- ) to width elements at ptr
+: apply-span ( xt width ptr -- )
     swap 0 do
-        2dup c! 1+
-    loop 2drop ;
+        ( xt ptr -- )
+        2dup swap execute 
+        1+
+    loop 
+    2drop ;
+
+\ fill width elements at ptr with val
+: dfillln ( val width ptr -- )
+    -rot swap fill ;
 
 : dfillcol ( val height ptr -- )
     swap 0 do
-        2dup c! [ COLS ] literal +
+        2dup c! COLS+
     loop 2drop ;
 
 : dfillrect ( val r1 -- )
@@ -106,22 +122,26 @@ here value (dungeon) ( -- adr )
     -rot ( v w & h -- )
     0 do
         3dup dfillln ( v w & )
-        [ COLS ] literal +
+        COLS+
     loop 
     3drop ;
 
 : dfill-visible ( x1 y1 x2 y2 -- )
-    1+ rot do
-        2dup 1+ swap do 
-        i j dcellyx-make-visible
-        loop 
+    ( vertical bounds to r )
+    1+ rot 2>R 
+    ( calc start pointer y1 * COLS + x1 )
+    1+ over - swap      ( w x1 -- )
+    2R@ nip COLS* + dcell ( w ptr -- )
+    2R> do
+        2dup ( w ptr w ptr -- )
+        ['] visible! -rot apply-span
+        COLS+
     loop 
     2drop ;
 
 : dlineh ( char x1 y1 x2 -- )
     rot swap                    ( char y1 x1 x2 -- )
     2dup > if swap then
-
     over - 1-                   ( char y1 x1 w -- )
     dup 0> if
         swap rot                ( char w x1 y1 -- )
@@ -132,9 +152,9 @@ here value (dungeon) ( -- adr )
 
 : dlinev ( char x1 y1 y2 -- )
     2dup > if swap then
-    1 pick - 1-                 ( char x1 y1 h -- )
+    over - 1-                   ( char x1 y1 h -- )
     dup 0> if
-        2 roll 1- 2 roll 1+ COLS* +
+        rot 1- rot 1+ COLS* +
         (dungeon) + 1+          ( char w ptr )
         dfillcol
     else
@@ -147,7 +167,10 @@ here value (dungeon) ( -- adr )
 ( invalidate a single location )
 : invalidate1 ( x1 y1 -- )
     |update-points| update-point[] p-xy!
-    |update-points| 1+ to |update-points| ;
+    |update-points| 1+ to |update-points| 
+    |update-points| |update-points-max| = if
+        abort" invalidate1 overflow"
+    then ;
 
 : invalidate-all ( -- )
     0 0 COLS 1- ROWS 1- invalidate 
@@ -155,40 +178,49 @@ here value (dungeon) ( -- adr )
 
 : validate-all ( -- )
     COLS ROWS 0 0 update-rect rect! 
-    0 to |update-points|
-    ;
+    0 to |update-points| ;
 
 : (ntu-rect?)
     [ COLS ROWS ] literal literal 0 0 update-rect rect-eq? ;
 
-: (ntu-pts?)
+: (0=up-pts)
     |update-points| 0= ;
 
 : nothing-to-update?
-    (ntu-rect?) (ntu-pts?) and ;
+    (ntu-rect?) (0=up-pts) and ;
 
-: updaterect-row-increment ( -- increment ) 
-    [ COLS ] literal 
-    update-rect }rx2@ update-rect }rx1@ - 1+ - ;
+: dupd-pt  ( x y -- )
+    2dup dcellyx@ dup c-visible? if
+        (?stuff) if
+            2dup char@xy
+        else
+            C-FLOOR
+        then
+        -rot vtxy emit 
+    else
+        drop 2drop
+    then ;
 
 : dupdate-points ( -- )
-    (ntu-pts?) if exit then 
+    (0=up-pts) if exit then 
     |update-points| 0 do
         i update-point[] p-xy@  ( -- x y )
-            ( if the location is dark, skip update ) 
-            2dup dcellyx@ c-skip? not if
-                2dup vtxy char@xy emit
-            else    
-                2drop
-            then
+        2dup update-rect xy-in-r? not if
+            dupd-pt
+        else
+            2drop
+        then
     loop ;
+
+: updaterect-row-increment ( -- increment ) 
+    COLS update-rect }rx2@ update-rect }rx1@ - 1+ - ;
 
 : dupdate-invalid ( -- )
     nothing-to-update? if exit then 
     dupdate-points
     updaterect-row-increment
     0 (dungeon)                 ( inc nspaces dungeon -- ) 
-    update-rect }rx1@ update-rect }ry1@ dcellyx + \ start adr
+    update-rect rect-topleft dcellyx + ( + start adr )
     update-rect }ry2@ 1+ update-rect }ry1@ do
         nip 0 swap              ( nspaces = 0 )
         update-rect }rx1@ i vtxy

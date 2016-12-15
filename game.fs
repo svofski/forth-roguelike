@@ -28,29 +28,43 @@ create player-flags 0 ,
 : apply-adjacent-a ( xt x y -- )
     p-y dcellyx 
     (dungeon) +    \ get top-left pointer
-       2dup swap execute ( xt a -- )
+       2dup swap execute 
     1+ 2dup swap execute
     1+ 2dup swap execute
-    [ COLS 2 - ] literal + 2dup swap execute
+    [ COLS 2 - ] literal + 
+       2dup swap execute
     1+ 2dup swap execute
     1+ 2dup swap execute
-    [ COLS 2 - ] literal + 2dup swap execute
+    [ COLS 2 - ] literal + 
+       2dup swap execute
     1+ 2dup swap execute
     1+      swap execute ;
 
+: (feckoff) 
+    postpone if 
+        postpone drop 0 postpone literal 
+        postpone exit 
+    postpone then ; immediate
+
 : should-stop-because? ( c -- true|false )
-    dup is-door? swap
-        is-thing? or ; 
+    c-char 
+    dup C-FLOOR  = (feckoff)
+    dup C-PASSAGE = (feckoff)
+    dup C-NOTHING = (feckoff)
+    dup [CHAR] \ = (feckoff)
+    dup [CHAR] / = (feckoff)
+    dup [CHAR] - = (feckoff)
+    dup [CHAR] | = (feckoff)
+    drop true ;
 
 : can-@-go? ( x y -- true|false )
-    2dup
     dcellyx@ 
-        dup is-floor? if 3drop true exit then
-        dup is-pass? if 3drop true exit then
-        dup is-door? if 3drop true exit then
-        dup is-thing? if 3drop true exit then
-        dup is-monster? if 3drop false exit then
-        3drop false ; 
+        dup is-monster? ?false/~
+        dup is-floor?   ?true/~
+        dup is-pass?    ?true/~
+        dup is-door?    ?true/~
+        dup is-thing?   ?true/~
+        drop false ; 
 
 : diag-nogo? ( x y -- true|false )
     dcellyx@ is-door? ;
@@ -74,28 +88,32 @@ create player-flags 0 ,
     then ;
 
 : try-move-@-diag ( x y -- true|false )
-    2dup diag-nogo? not                         \ target not +
+    roguexy@ diag-nogo? if 2drop false exit then \ now on + ?
+    2dup diag-nogo? not                          \ target not +
     if 
         try-move-@
     else
         2drop false
     then ;
 
+( these ops are invoked a lot, especially when running )
+( they should be as quick as possible )
 : lightup-any-a ( ptr -- ) 
     dup c@ 
-    repeat-state @ [ RS-REPEAT-RUN ] literal = if
-        dup should-stop-because? if
-            repeat-state off
-        then
-    then 
-    c-make-visible swap c! ;
+    dup should-stop-because? if
+        repeat-state off
+    then
+    [c-make-visible] swap c! ;
 
 : lightup-pass-only-a ( ptr -- )
-    dup c@
-    dup is-pass? over is-door? or
-    if
-        c-make-visible swap c! exit
+    \ 1 %debugcount +!
+    dup c@ c-char
+    dup [ C-PASSAGE ] literal = if
+        [c-make-visible] swap c! exit
     then 
+    dup [ C-DOOR ] literal = if
+        [c-make-visible] swap c! exit
+    then    
     drop drop ;
 
 : should-light-room? ( rn -- true|false )
@@ -109,10 +127,6 @@ create player-flags 0 ,
     dup room-lit! 
     dup room-shown! 
         repaint-room ;
-
-: show-entire-map ( -- )
-    0 0 COLS ROWS dfill-visible
-    invalidate-all ;
 
 : light-spot ( -- )
     pf-blind? if 
@@ -182,7 +196,6 @@ create player-flags 0 ,
 
 : walk->
     roguexy@ char@xy is-exit?
-    \ dcellyx@ is-exit?
     if
         ++level
         true
@@ -199,48 +212,83 @@ create player-flags 0 ,
 : stats-> ( -- )
     0 24 vtxy ." Dlvl: " dlevel @ . 
     ." depth:" depth . ." R:" repeat-count @ . 
+    ." dcnt:" %debugcount @ .
     debugmsg 2@ type 
     clreol 
     0 0 debugmsg 2! ;
 
-: debug-magic
-    ['] mons-aim-rnd mons-foreach ;
+: cmd-debug-magic
+    ['] mons-aim-rnd mons-foreach 
+    false ;
+: cmd-quit  quit-game on false ;
+: cmd-refresh page invalidate-all false ;
+: cmd-show-entire-map ( -- )
+    0 0 COLS ROWS dfill-visible
+    invalidate-all 
+    false ;
+: cmd-dprint dprint false ;
+: cmd-esc repeat-count off false ;
 
-\ true if ok, false if couldn't go
-: dispatch-cmd-in ( char -- true|false )
-    dup [CHAR] h = if walk-h exit then
-    dup [CHAR] l = if walk-l exit then
-    dup [CHAR] j = if walk-j exit then
-    dup [CHAR] k = if walk-k exit then
-    dup [CHAR] y = if walk-y exit then
-    dup [CHAR] u = if walk-u exit then
-    dup [CHAR] b = if walk-b exit then
-    dup [CHAR] n = if walk-n exit then
+create (cmds)
+    CHAR h c, ' walk-h ,
+    CHAR l c, ' walk-l ,
+    CHAR j c, ' walk-j ,
+    CHAR k c, ' walk-k ,
+    CHAR y c, ' walk-y ,
+    CHAR u c, ' walk-u ,
+    CHAR b c, ' walk-b ,
+    CHAR n c, ' walk-n ,
     ( vector-06c arrow keys )
-    dup 8 = if walk-h exit then
-    dup 24 = if walk-l exit then
-    dup 26 = if walk-j exit then
-    dup 25 = if walk-k exit then
+    8 c, ' walk-h ,
+    24 c, ' walk-l ,
+    26 c, ' walk-j ,
+    25 c, ' walk-k ,
 
-    dup [CHAR] > = if walk-> exit then
-    dup [CHAR] q = if quit-game on false exit then
-    dup 12  = if page invalidate-all false exit then
-    dup [CHAR] \ = if show-entire-map false exit then
-    dup [CHAR] ] = if debug-magic false exit then
-    dup [CHAR] . = if dprint false exit then
-    dup 27  = if repeat-count off false exit then
-    false ; 
+    CHAR > c, ' walk-> ,
+
+    CHAR q c, ' cmd-quit ,
+    12 c,       ' cmd-refresh , 
+    CHAR \ c, ' cmd-show-entire-map ,
+    CHAR ] c, ' cmd-debug-magic ,
+    CHAR / c, ' cmd-dprint ,
+    27 c,       ' cmd-esc ,
+    0 c,
+
+: (cmd-find) ( char -- xt )
+    >R
+    (cmds) 
+    begin
+        dup c@ dup
+    while
+        ( cmds cmd-key )
+        R@ = if
+            1+ @
+            R> drop
+            exit
+        then
+        [ 1 1 cells + ] literal + 
+    repeat 
+    drop R> drop 0 ;
+
+( true if ok, false if couldn't go )
+: (dispcmd) ( char -- true|false )
+    (cmd-find) ?dup if
+        execute
+    else
+        drop
+        false
+    then ;
 
 : dispatch-command ( -- true|false )
-    repeat-command @ dispatch-cmd-in nip 
+    repeat-command @ 
+    (dispcmd)
     dup not if
         game-flags GF-ESTOCADA and if
             s" NUTSKICK" debugmsg 2!
             game-flags GF-ESTOCADA invert and to game-flags
         then
     then 
-    monsters-turn
-    ;
+    monsters-turn ;
 
 : repeat-off
     repeat-state off

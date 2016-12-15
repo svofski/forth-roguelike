@@ -1,6 +1,12 @@
 80 constant COLS
 24 constant ROWS
 
+: COLS* 4 lshift dup 2 lshift + ;
+: [COLS*] 4 postpone literal postpone lshift postpone dup 
+    2 postpone literal postpone lshift postpone + ; immediate
+
+: COLS+ postpone COLS postpone + ; immediate
+
 [DEFINED] not 0= [IF]
 : not if false else true then ;
 : gforth true ;
@@ -135,9 +141,41 @@ current-offset off
 : rect-height ( r1 -- h )
     dup }ry2@ swap }ry1@ - ;
 
+: (inrec-x) ( x r1 -- b )
+    swap over }rx1@ over ( r1 x r1x1 x )
+    > if 2drop false exit then
+    swap }rx2@ ( x r1x2 )
+    <= ;
+
+: (inrec-y) ( y r1 -- b )
+    swap over }ry1@ over ( r1 y r1y1 y )
+    > if 2drop false exit then
+    swap }ry2@ ( x r1y2 )
+    <= ;
+
+: xy-in-r? ( x y r1 -- true|false )
+    rot over (inrec-x) if
+        (inrec-y)
+    else
+        2drop false
+    then ;
+
 : dump-rect ( r1 -- )
     ." (" dup }rx1@ . dup }ry1@ 0 .r
     [CHAR] - emit
     dup }rx2@ . }ry2@ 0 .r ." )";
 
+( if condition, drop tos and exit from the callee with false )
+: ?false/~
+    if 
+        drop false
+        R> drop
+    then ;
+( if condition, drop tos and exit from the callee with true )
+: ?true/~
+    if 
+        drop true
+        R> drop
+    then ;
 
+create %debugcount 0 ,

@@ -258,22 +258,38 @@ ROWS 6 / constant ROOM_HH
         conn-v
     then ;
 
-: xy-in-room ( x y rn -- true|false )
-    3dup ( x y rn x y rn -- )
-    room-topleft rot swap   ( x y rn x tlx y tly -- )
-    >= -rot >= and          ( x y rn cond1 -- )
-    not if 3drop false exit then
-    room-bottomright rot swap
-    <= -rot <= and ;
+\ : xy-in-room ( x y rn -- true|false )
+\     3dup ( x y rn x y rn -- )
+\     room-topleft rot swap   ( x y rn x tlx y tly -- )
+\     >= -rot >= and          ( x y rn cond1 -- )
+\     not if 3drop false exit then
+\     room-bottomright rot swap
+\     <= -rot <= and ;
+
+\ : xy-find-room ( x y -- rn )
+\     0 -rot                  ( rn x y -- )
+\     10 1 do
+\         2dup i (rooms) xy-in-r? if
+\             rot drop i -rot leave
+\         then
+\     loop 
+\     2drop ;
+
+\ : xy-find-room ( x y -- rn )
+\     0 -rot                  ( rn x y -- )
+\     10 1 do
+\         2dup i (rooms) xy-in-r? if
+\             rot drop i -rot leave
+\         then
+\     loop 
+\     2drop ;
 
 : xy-find-room ( x y -- rn )
-    0 -rot                  ( rn x y -- )
-    10 1 do
-        2dup i xy-in-room if
-            rot drop i -rot leave
-        then
-    loop 
-    2drop ;
+    2dup
+    [ ROOM_HH 2* ] literal / swap [ ROOM_HW 2* ] literal / 
+    swap 3 * + 1+ 
+    dup >r (rooms) xy-in-r? if r> exit then
+    r> drop 0 ;
 
 : x-rnd-in-room ( rn -- x )
     dup (rooms) }x1@ swap (rooms) }x2@ any-between ;

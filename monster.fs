@@ -70,11 +70,11 @@
 : can-M-go? ( x y -- true|false )
     2dup roguexy@ d= if 2drop false exit then
     dcellyx@
-        dup is-floor? if drop true exit then
-        dup is-pass? if drop true exit then
-        dup is-door? if drop true exit then
-        dup is-thing? if drop true exit then
-        dup is-monster? if drop false exit then
+        dup is-monster? ?false/~
+        dup is-floor? ?true/~
+        dup is-pass? ?true/~
+        dup is-door? ?true/~
+        dup is-thing? ?true/~
         drop false ;
 
 : mons-movexy ( thing x y -- )
@@ -122,20 +122,6 @@
     then
     ( try going by dx,dy )
     mons-try-moverel ;
-
-( advance monster time counter and make a move if it's time )
-: mons-turn ( thing -- )
-    dup 
-        }t-time dup c@ time>s,t over + 
-        ( &thing &t-time speed accu ) 
-        dup >R  ( store accu in R )
-        7 and   ( keep fractional part )
-        s,t>time swap c!
-        R> 8 and if 
-            (mons-turn)
-        else
-            drop
-        then ;
 
 : monsters-turn
     ['] (mons-turn) mons-foreach ;

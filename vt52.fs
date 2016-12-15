@@ -9,4 +9,4 @@ hex
 decimal
 
 ( hax for koi-7 microdos on vector-06c )
-hex 1b emit 5b emit decimal
+\ hex 1b emit 5b emit decimal
