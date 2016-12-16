@@ -53,18 +53,15 @@ variable farthest
 \ The number of results is variable 0..4, 
 \ they are room numbers 1..9.
 ( rn -- directions )
-hex
 : make-could-go
-    create hex 0 , 24 , 135 , 26 , 157 , 2468 , 
-               359 , 48 , 579 , 68 , 
-           decimal
+    create , , , , , , , , , ,
     does> swap cells + @ 
         begin
-            dup f and dup cannot-go? if drop else swap then
+            dup 15 and dup cannot-go? if drop else swap then
             4 rshift dup 0= until drop ;            
-decimal
 
-make-could-go where?
+hex 68 579 48 359 2468 157 26 135 24 0 decimal
+make-could-go where? 
 
 \ pick start room and make it trunk
 : pick-start ( -- i ) 
@@ -200,4 +197,3 @@ make-could-go where?
     linked-rooms render-passages render-rooms 
     place-things
     exit-room @ C-EXIT place-thing ;
-
