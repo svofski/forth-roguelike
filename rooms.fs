@@ -120,7 +120,7 @@ ROWS 6 / constant ROOM_HH
     R> 3drop ( drop limit, drop counters ) ;
 
 : fill-room ( rn -- )
-    C-FLOOR swap (rooms) dfillrect ;
+    B-FLOOR swap (rooms) dfillrect ;
 
 : paint-room-visible ( rn -- )
     (rooms) rect@ dfill-visible ;
@@ -147,18 +147,18 @@ ROWS 6 / constant ROOM_HH
     (rooms) rect-bottomright ; 
 
 : room-border ( rn -- )
-    dup [CHAR] / swap room-topleft     dcellyx!
-    dup [CHAR] \ swap room-topright    dcellyx!
-    dup [CHAR] \ swap room-bottomleft  dcellyx!
-    dup [CHAR] / swap room-bottomright dcellyx!
+    dup B-HWALL swap room-topleft     dcellyx!
+    dup B-HWALL swap room-topright    dcellyx!
+    dup B-HWALL swap room-bottomleft  dcellyx!
+    dup B-HWALL swap room-bottomright dcellyx!
 
-    dup [CHAR] - swap 
+    dup B-HWALL swap 
         dup room-topleft rot room-topright drop dlineh
-    dup [CHAR] - swap 
+    dup B-HWALL swap 
         dup room-bottomleft rot room-bottomright drop dlineh
-    dup [CHAR] | swap 
+    dup B-VWALL swap 
         dup room-topleft rot room-bottomleft nip dlinev
-    dup [CHAR] | swap 
+    dup B-VWALL swap 
         dup room-topright rot room-bottomright nip dlinev
 
     drop ;
@@ -167,7 +167,7 @@ ROWS 6 / constant ROOM_HH
     dup (rooms) }n-doors@ 
         dup 0> if 
             1- 0 swap do 
-                dup C-DOOR swap i 
+                dup B-DOOR swap i 
                     door[] 
                 dcellyx!
             -1 +loop
@@ -178,7 +178,7 @@ ROWS 6 / constant ROOM_HH
 : render-room ( rn -- )
     >R
     R@ room-thru? if
-        C-PASSAGE R@ (rooms) dup c@ swap 1+ c@ dcellyx!
+        B-PASSAGE R@ (rooms) dup c@ swap 1+ c@ dcellyx!
     else 
         R@ room-exists? if
             R@ fill-room 
@@ -219,10 +219,10 @@ ROWS 6 / constant ROOM_HH
     dup door-x swap (rooms) }y1@ ;
 
 : hpass ( x1 y1 x2 -- )
-    C-PASSAGE 3 roll 3 roll 3 roll dlineh ;
+    B-PASSAGE 3 roll 3 roll 3 roll dlineh ;
 
 : vpass ( x1 y1 y2 -- )
-    C-PASSAGE 3 roll 3 roll 3 roll dlinev ;
+    B-PASSAGE 3 roll 3 roll 3 roll dlinev ;
 
 : conn-h ( left right -- )
     dup door-h 3dup +door! rot drop rot
@@ -258,38 +258,12 @@ ROWS 6 / constant ROOM_HH
         conn-v
     then ;
 
-\ : xy-in-room ( x y rn -- true|false )
-\     3dup ( x y rn x y rn -- )
-\     room-topleft rot swap   ( x y rn x tlx y tly -- )
-\     >= -rot >= and          ( x y rn cond1 -- )
-\     not if 3drop false exit then
-\     room-bottomright rot swap
-\     <= -rot <= and ;
-
-\ : xy-find-room ( x y -- rn )
-\     0 -rot                  ( rn x y -- )
-\     10 1 do
-\         2dup i (rooms) xy-in-r? if
-\             rot drop i -rot leave
-\         then
-\     loop 
-\     2drop ;
-
-\ : xy-find-room ( x y -- rn )
-\     0 -rot                  ( rn x y -- )
-\     10 1 do
-\         2dup i (rooms) xy-in-r? if
-\             rot drop i -rot leave
-\         then
-\     loop 
-\     2drop ;
-
 : xy-find-room ( x y -- rn )
     2dup
     [ ROOM_HH 2* ] literal / swap [ ROOM_HW 2* ] literal / 
     swap 3 * + 1+ 
-    dup >r (rooms) xy-in-r? if r> exit then
-    r> drop 0 ;
+    dup >r (rooms) xy-in-r? 
+    r> swap not if drop 0 then ;
 
 : x-rnd-in-room ( rn -- x )
     dup (rooms) }x1@ swap (rooms) }x2@ any-between ;

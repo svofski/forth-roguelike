@@ -201,6 +201,6 @@ defer dump-monster
         }t-class@
         exit
     then
-    C-FLOOR ;
+    [char] ~ ;
 
 things-clear

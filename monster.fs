@@ -46,16 +46,14 @@
     }t-flags@ TF-AIMED and 0<> ;
 
 : mons-aim-rnd ( thing -- )
-    dup 
-        rect-topleft
+    dup rect-topleft
         xy-find-room
         somewhere-in-room 
         mons-aim ;
 
 ( try to aim at monsieur @ )
 : mons-sniff ( thing -- )
-    dup
-        rect-topleft xy-find-room
+    dup rect-topleft xy-find-room
         rogue-room @ = if
             roguexy@ mons-aim
         else
@@ -67,24 +65,14 @@
           0> if       1 exit then
           0 ;
 
-: can-M-go? ( x y -- true|false )
-    2dup roguexy@ d= if 2drop false exit then
-    dcellyx@
-        dup is-monster? ?false/~
-        dup is-floor? ?true/~
-        dup is-pass? ?true/~
-        dup is-door? ?true/~
-        dup is-thing? ?true/~
-        drop false ;
-
 : mons-movexy ( thing x y -- )
     2dup 4 pick rect-topleft ( t x y x y x' y' )
-    2dup dmonst-reset   ( reset monster marker from floor )
+    2dup dreset-monster ( reset monster marker from floor )
     invalidate1         ( invalidate old loc )
     invalidate1         ( invalidate new loc )
     ( t x y -- ) 
     3dup move-thing     ( remap to the new y )
-    2dup dmonst-set     ( set monster marker on the floor )
+    2dup dset-monster   ( set monster marker on the floor )
     ( update x,y in thing data )
     ( t x y -- ) 
     2 pick }t-y c!

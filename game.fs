@@ -40,31 +40,9 @@ create player-flags 0 ,
     1+ 2dup swap execute
     1+      swap execute ;
 
-: (feckoff) 
-    postpone if 
-        postpone drop 0 postpone literal 
-        postpone exit 
-    postpone then ; immediate
-
 : should-stop-because? ( c -- true|false )
-    c-char 
-    dup C-FLOOR  = (feckoff)
-    dup C-PASSAGE = (feckoff)
-    dup C-NOTHING = (feckoff)
-    dup [CHAR] \ = (feckoff)
-    dup [CHAR] / = (feckoff)
-    dup [CHAR] - = (feckoff)
-    dup [CHAR] | = (feckoff)
-    drop true ;
-
-: can-@-go? ( x y -- true|false )
-    dcellyx@ 
-        dup is-monster? ?false/~
-        dup is-floor?   ?true/~
-        dup is-pass?    ?true/~
-        dup is-door?    ?true/~
-        dup is-thing?   ?true/~
-        drop false ; 
+    [ B-FLOOR B-PASSAGE B-HWALL B-VWALL or or or ] literal
+    and not ;
 
 : diag-nogo? ( x y -- true|false )
     dcellyx@ is-door? ;
@@ -107,13 +85,10 @@ create player-flags 0 ,
 
 : lightup-pass-only-a ( ptr -- )
     \ 1 %debugcount +!
-    dup c@ c-char
-    dup [ C-PASSAGE ] literal = if
+    dup c@ 
+    dup [ B-PASSAGE B-DOOR or ] literal and if
         [c-make-visible] swap c! exit
     then 
-    dup [ C-DOOR ] literal = if
-        [c-make-visible] swap c! exit
-    then    
     drop drop ;
 
 : should-light-room? ( rn -- true|false )

@@ -60,43 +60,22 @@ here value (dungeon) ( -- adr )
     dngsize 0 do i dcell-make-visible loop ;
 
 ( set thing or monster presence flag )
-: (dset) ( x y bit -- )
-    -rot ( bit x y -- )
-    dcellyx dcell dup c@  ( bit adr c )
-        dup c-char (?stuff) if
-            ( bit adr c ) rot or 
-        else
-            ( bit adr c ) c-visible? rot (C-MARKER) or or 
-        then
-        swap c! ;
-
-: (dreset) ( x y bit -- )
-    -rot
-    dcellyx dcell dup c@ ( bit adr c )
-        dup c-char (?stuff) if
-            ( bit adr c )
-            rot invert and ( adr c' )
-            dup [ (C-THING) (C-MONSTER) or ] literal and
-            0= if
-                c-visible? C-FLOOR or 
-            then
-            swap c! 
-        else
-            2drop  ( there was nothing, leave )
-        then ;
-
 : dset-thing ( x y -- )
-    (C-THING) (dset) ;
+    dcellyx dcell dup c@ 
+    [ B-THING ] literal or swap c! ;
 : dreset-thing ( x y -- )
-    (C-THING) (dreset) ;
-: dmonst-set ( x y -- )
-    (C-MONSTER) (dset) ;
-: dmonst-reset ( x y -- )
-    (C-MONSTER) (dreset) ;
+    dcellyx dcell dup c@ 
+    [ B-THING invert ] literal and swap c! ;
+: dset-monster ( x y -- )
+    dcellyx dcell dup c@ 
+    [ B-MONSTER ] literal or swap c! ;
+: dreset-monster ( x y -- )
+    dcellyx dcell dup c@ 
+    [ B-MONSTER invert ] literal and swap c! ;
 
 : c-skip?
-    dup c-visible? not ?true/~ 
-    [ C-NOTHING ] literal = ;
+    dup [ NOTHING ] literal = swap
+        c-visible? not or ;
 
 \ apply xt ( ptr -- ) to width elements at ptr
 : apply-span ( xt width ptr -- )
@@ -212,13 +191,13 @@ here value (dungeon) ( -- adr )
         then
     loop ;
 
-: updaterect-row-increment ( -- increment ) 
+: (updaterect-row-increment) ( -- increment ) 
     COLS update-rect }rx2@ update-rect }rx1@ - 1+ - ;
 
 : dupdate-invalid ( -- )
     nothing-to-update? if exit then 
     dupdate-points
-    updaterect-row-increment
+    (updaterect-row-increment)
     0 (dungeon)                 ( inc nspaces dungeon -- ) 
     update-rect rect-topleft dcellyx + ( + start adr )
     update-rect }ry2@ 1+ update-rect }ry1@ do
@@ -226,10 +205,6 @@ here value (dungeon) ( -- adr )
         update-rect }rx1@ i vtxy
         update-rect }rx2@ 1+ update-rect }rx1@ do
             dup c@              ( inc nsp dng c )
-            dup (?stuff) if 
-                \ switch the thing trait with the actual thing
-                128 and i j char@xy or
-            then
             ( inc nsp dng c )
             dup c-skip? if   ( inc nspaces &dng -- )
                 drop
@@ -240,7 +215,12 @@ here value (dungeon) ( -- adr )
                     i j vtxy
                 then
                 0 -rot  ( nspaces = 0 )
-                c-char emit 
+                dup (?stuff) if
+                    drop i j char@xy
+                else
+                    bits2print
+                then
+                emit 
             then
             1+                  ( inc nspaces &++dng -- )
         loop
@@ -252,7 +232,7 @@ here value (dungeon) ( -- adr )
   (dungeon)
   ROWS 0 do 
     COLS 0 do
-      dup c@ c-char emit 1+
+      dup c@ bits2print emit 1+
     loop
     cr
   loop drop ;

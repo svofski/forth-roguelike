@@ -1,15 +1,28 @@
-32 constant C-NOTHING
-46 constant C-FLOOR 
+\
+\ x x x x  x x x x    - B-FLOOR
+\              |_______ B-PASSAGE
+\            |_________ B-DOOR
+\          |___________ B-THING
+\       |______________ B-MONSTER
+\     |________________ B-VWALL     
+\   ___________________ B-HWALL   
+\ _____________________ B-MYSTERY
 
-97 constant C-FLOOR+THING       \ $61 'a' thing on the floor
-98 constant C-FLOOR+MONSTER     \ $62 'b' monster and no things
-99 constant C-FLOOR+THING+MONSTER \ $63 'c' thing+monster
-hex 
-70 constant (C-MARKER-MASK)
-60 constant (C-MARKER) 
-1  constant (C-THING)
-2  constant (C-MONSTER)
-decimal 
+  0 constant NOTHING
+
+  1 constant B-FLOOR
+  2 constant B-PASSAGE
+  4 constant B-DOOR
+  8 constant B-THING
+ 16 constant B-MONSTER
+ 32 constant B-VWALL
+ 64 constant B-HWALL
+128 constant B-VISIBLE
+
+
+char . constant C-FLOOR
+char - constant C-HWALL
+char | constant C-VWALL
 
 35 constant C-PASSAGE
 43 constant C-DOOR 
@@ -24,6 +37,7 @@ decimal
 
 \ thing flags ( things.fs }t-flags )
 1   constant TF-AIMED       \ monster has life goals
+2   constant TF-CHASING     \ monster really means it
 
 create static-items 
 here C-WEAPON c, C-POTION c, C-SCROLL c,
@@ -82,43 +96,34 @@ here
     26 rnd ;
 
 : c-visible?
-    128 and ;
+    [ B-VISIBLE ] literal and ;
 
 : c-make-visible
-    128 or ;
+    [ B-VISIBLE ] literal or ;
+
 : [c-make-visible]
     128 postpone literal postpone or ; immediate
 
-: c-char
-    127 and ;
+: is-door? [ B-DOOR ] literal and ;
+: is-pass? [ B-PASSAGE ] literal and ;
+: is-floor? [ B-FLOOR ] literal and ;
 
-: c-char@
-    c@ 127 and ;
-
-: is-door? c-char [ C-DOOR ] literal = ;
-: is-pass? c-char [ C-PASSAGE ] literal = ;
-: is-floor? c-char [ C-FLOOR ] literal = ;
-: is-exit? c-char [ C-EXIT ] literal = ;
+( not applicable to floors )
+: is-exit?  [ C-EXIT ] literal = ;
 
 ( if stuff, return c, otherwise 0 )
 : (?stuff) ( c -- c|0 )
-    dup 
-    (C-MARKER-MASK) and (C-MARKER) = if 
-        exit
-    else
-        drop 0
-    then ;
-: (thing?) (C-THING) and ;
-: (monster?) (C-MONSTER) and ;
-: is-thing? ( c -- bool )  
-    c-char (?stuff) ?dup if
-        (thing?)
-    else
-        false
-    then ;
-: is-monster? ( c -- bool )
-    c-char (?stuff) ?dup if
-        (monster?)
-    else
-        false
-    then ;
+    [ B-THING B-MONSTER or ] literal and ; 
+: is-thing? [ B-THING ] literal and ;
+: is-monster? [ B-MONSTER ] literal and ;
+
+: bits2print ( bits -- c )
+    dup [ B-VISIBLE ] literal and if 
+        dup [ B-FLOOR ] literal and if drop C-FLOOR exit then 
+        dup [ B-PASSAGE ] literal and if 
+                                     drop C-PASSAGE exit then
+        dup [ B-HWALL ] literal and if drop C-HWALL exit then
+        dup [ B-VWALL ] literal and if drop C-VWALL exit then
+        dup [ B-DOOR ] literal  and if drop C-DOOR  exit then
+    then
+    drop BL ;

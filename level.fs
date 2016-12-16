@@ -152,7 +152,7 @@ make-could-go where?
     then loop ;
 
 : linked-rooms
-    C-NOTHING dclear
+    NOTHING dclear
     make-rooms
     begin 
         init-tree 
@@ -165,13 +165,13 @@ make-could-go where?
 : place-thing ( rn cls -- )
     swap somewhere-in-room ( cls x y )
     3dup thing-new }t-class c! 
-    rot drop C-FLOOR+THING -rot dcellyx! ;
+    rot drop dset-thing ;
 
 : place-monster ( rn monster -- )
     swap somewhere-in-room ( cls x y )
     3dup rot C-MONSTER + -rot 
     thing-new }t-class c!
-    rot drop C-FLOOR+MONSTER -rot dcellyx! ;
+    rot drop dset-monster ;
 
 : add-junk ( rn -- )
     dup rnd-static-thing place-thing 

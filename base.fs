@@ -178,4 +178,11 @@ current-offset off
         R> drop
     then ;
 
+( drop tos and return false )
+: (feckoff) ( x -- false )
+    postpone if 
+        postpone drop 0 postpone literal 
+        postpone exit 
+    postpone then ; immediate
+
 create %debugcount 0 ,
