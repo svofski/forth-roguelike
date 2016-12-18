@@ -23,9 +23,9 @@
 char . constant C-FLOOR
 char - constant C-HWALL
 char | constant C-VWALL
+char # constant C-PASSAGE
+char + constant C-DOOR 
 
-35 constant C-PASSAGE
-43 constant C-DOOR 
 62 constant C-EXIT
 41 constant C-WEAPON
 33 constant C-POTION

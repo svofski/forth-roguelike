@@ -170,10 +170,10 @@ here value (dungeon) ( -- adr )
 
 : dupd-pt  ( x y -- )
     2dup dcellyx@ dup c-visible? if
-        (?stuff) if
-            2dup char@xy
+        dup (?stuff) if
+            drop 2dup char@xy
         else
-            C-FLOOR
+            bits2print
         then
         -rot vtxy emit 
     else

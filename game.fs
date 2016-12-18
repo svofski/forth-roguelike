@@ -51,7 +51,10 @@ create player-flags 0 ,
     turn-time@ rogue-speed@ + to turn-time@ ;
     
 : update-@-room 
-    rogue-xy p-xy@ xy-find-room rogue-room ! ;
+    roguexy@ dcellyx@ is-door? if
+        roguexy@ last-door p-xy!
+    then
+    roguexy@ xy-find-room rogue-room ! ;
    
 : try-move-@ ( x y -- true|false )
     2dup can-@-go? 
@@ -188,6 +191,7 @@ create player-flags 0 ,
     0 24 vtxy ." Dlvl: " dlevel @ . 
     ." depth:" depth . ." R:" repeat-count @ . 
     ." dcnt:" %debugcount @ .
+    ." room:" rogue-room @ .
     debugmsg 2@ type 
     clreol 
     0 0 debugmsg 2! ;

@@ -46,7 +46,7 @@ variable farthest
 
 \ return true if the room is nonexistent or was visited before
 : cannot-go? ( i -- b )
-    dup room-exists? invert swap room-trunk? or ;
+    dup room-exists? not swap room-trunk? or ;
 
 \ Find where we can go starting from given room number.
 \ Possible directions are defined as a table of hex numbers.
@@ -104,7 +104,7 @@ make-could-go where?
     dup rot dup 
     >tstack edge+!
     dup room-trunk!
-    dup room-thru? invert if
+    dup room-thru? not if
         dup farthest?!
     then ;
 
@@ -132,7 +132,7 @@ make-could-go where?
 : tree-complete?
     10 1 do
         i room-exists? if
-            i room-trunk? invert if
+            i room-trunk? not if
                 R> R> 2drop ( unloop )
                 false exit
             then
@@ -147,7 +147,7 @@ make-could-go where?
         loop then ;
 
 : add-some-thru
-    10 1 do i room-exists? invert if 
+    10 1 do i room-exists? not if 
         coinflip if i room-thru then 
     then loop ;
 

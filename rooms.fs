@@ -75,20 +75,20 @@ ROWS 6 / constant ROOM_HH
     if swap (rooms) }flags RF-EXISTS swap c!  
     else nip then ;
 
-: room-exists?  (rooms) }flags@ RF-EXISTS and 0<> ;
+: room-exists?  (rooms) }flags@ RF-EXISTS and ( 0<> ) ;
 
-: room-thru? (rooms) }flags@ RF-THRU and 0<> ;
+: room-thru? (rooms) }flags@ RF-THRU and ( 0<> ) ;
 
 : room-nexisteplus!
     (rooms) }flags dup @ 
         [ RF-EXISTS RF-THRU or invert ] literal and swap ! ;
 
-: room-trunk? (rooms) }flags@ RF-TRUNK and 0 <> ;
+: room-trunk? (rooms) }flags@ RF-TRUNK and ( 0<> ) ;
 : room-trunk! (rooms) }flags dup @ RF-TRUNK or swap ! ;
 : room-cut!   (rooms) }flags dup @ RF-TRUNK invert and swap ! ;
 
-: room-lit?   (rooms) }flags@ RF-LIT and 0 <> ;
-: room-shown? (rooms) }flags@ RF-SHOWN and 0 <> ;
+: room-lit?   (rooms) }flags@ RF-LIT and ( 0<> ) ;
+: room-shown? (rooms) }flags@ RF-SHOWN and ( 0<> ) ;
 : room-flags+! (rooms) }flags dup @ rot or swap ! ;
 : room-lit!   RF-LIT swap room-flags+! ;
 : room-shown! RF-SHOWN swap room-flags+! ;
@@ -126,9 +126,9 @@ ROWS 6 / constant ROOM_HH
     (rooms) rect@ dfill-visible ;
 
 : +door! ( rn x y -- )
-    3dup 24 > if abort" y > 80" then
-         80 > if abort" x > 80" then
-         9 > if abort" rn > 9" then
+    \ 3dup 24 > if abort" y > 80" then
+    \    80 > if abort" x > 80" then
+    \    9 > if abort" rn > 9" then
     rot (rooms) >R
         R@ }n-doors dup c@ dup 1+ rot c! ( -- x y &room ndoors )
         2* R@ }doors + dup 1+            ( -- x y &door &door+1)
@@ -147,21 +147,16 @@ ROWS 6 / constant ROOM_HH
     (rooms) rect-bottomright ; 
 
 : room-border ( rn -- )
-    dup B-HWALL swap room-topleft     dcellyx!
-    dup B-HWALL swap room-topright    dcellyx!
-    dup B-HWALL swap room-bottomleft  dcellyx!
-    dup B-HWALL swap room-bottomright dcellyx!
-
-    dup B-HWALL swap 
-        dup room-topleft rot room-topright drop dlineh
-    dup B-HWALL swap 
-        dup room-bottomleft rot room-bottomright drop dlineh
-    dup B-VWALL swap 
-        dup room-topleft rot room-bottomleft nip dlinev
-    dup B-VWALL swap 
-        dup room-topright rot room-bottomright nip dlinev
-
-    drop ;
+    B-HWALL swap        ( '-' rn )
+    2dup room-topleft     dcellyx!
+    2dup room-topright    dcellyx!
+    2dup room-bottomleft  dcellyx!
+    2dup room-bottomright dcellyx!
+    2dup dup room-topleft rot room-topright drop dlineh
+    2dup dup room-bottomleft rot room-bottomright drop dlineh
+    nip B-VWALL swap    ( '|' rn )
+    2dup dup room-topleft rot room-bottomleft nip dlinev
+         dup room-topright rot room-bottomright nip dlinev ;
 
 : room-doors ( rn -- )
     dup (rooms) }n-doors@ 
@@ -261,9 +256,10 @@ ROWS 6 / constant ROOM_HH
 : xy-find-room ( x y -- rn )
     2dup
     [ ROOM_HH 2* ] literal / swap [ ROOM_HW 2* ] literal / 
-    swap 3 * + 1+ 
+    swap 3 * + 1+  ( x y rn -- )
+    dup room-thru? if 3drop 0 exit then ( thru rooms not cool )
     dup >r (rooms) xy-in-r? 
-    r> swap not if drop 0 then ;
+        r> swap not if drop 0 then ;
 
 : x-rnd-in-room ( rn -- x )
     dup (rooms) }x1@ swap (rooms) }x2@ any-between ;

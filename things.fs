@@ -9,6 +9,7 @@ current-offset off
 1 soffset }t-time
 1 soffset }t-tgt-x
 1 soffset }t-tgt-y
+1 soffset }t-count1
 
 current-offset off
 1 soffset@ }t-x@
@@ -19,8 +20,9 @@ current-offset off
 1 soffset@ }t-time@
 1 soffset@ }t-tgt-x@
 1 soffset@ }t-tgt-y@
+1 soffset@ }t-count1@
 
-8 constant |THING|
+16 constant |THING|
 20 constant THINGS-MAX 
 |THING| THINGS-MAX * constant |THINGSDATA|
 
@@ -36,7 +38,7 @@ ROWS constant |YIDX|
 \ actual things data, unlinked
 : mkthings-data
     create |THINGSDATA| allot
-    does> swap 3 lshift + ;
+    does> swap 4 lshift + ;
 : mkthings-list
     create |THINGSLIST| allot 
     does> swap cells + ;
@@ -52,7 +54,7 @@ mkthings-list (t-list)
 mkthings-yidx (t-yidx)
 
 : t-data>index
-    0 (t-data) - 3 rshift ;
+    0 (t-data) - 4 rshift ;
 
 variable nthings
 

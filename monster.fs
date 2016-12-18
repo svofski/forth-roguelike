@@ -35,15 +35,25 @@
 : mons-aim ( thing x y -- )
     rot dup >R }t-tgt-y c!
             R@ }t-tgt-x c! 
+          \ 4 R@ }t-count1 c! \ frustration counter
             R> }t-flags dup c@ TF-AIMED or swap c! ;
+
+: mons-chase-on ( thing -- )
+    }t-flags dup c@ [ TF-CHASING ] literal or swap c! ;
+: mons-chase-off ( thing -- )
+    }t-flags dup c@ [ TF-CHASING invert ] literal and swap c! ;
 
 ( make the monster aimless )
 : mons-unaim ( thing -- )
-    }t-flags dup c@ [ TF-AIMED invert ] literal and swap c! ;
+     4 over }t-count1 c! \ frustration counter
+        }t-flags dup c@ 
+        [ TF-AIMED TF-CHASING or invert ] literal and swap c! ;
 
 ( true if the monster knows where to go )
 : mons-aimed? ( thing -- true|false )
-    }t-flags@ TF-AIMED and 0<> ;
+    }t-flags@ [ TF-AIMED ] literal and ;
+: mons-chasing? ( thing -- true|false )
+    }t-flags@ [ TF-CHASING ] literal and ;
 
 : mons-aim-rnd ( thing -- )
     dup rect-topleft
@@ -51,10 +61,33 @@
         somewhere-in-room 
         mons-aim ;
 
+( try not to let the @ escape from our claws )
+( follow directly if on the same kind of ground )
+( otherwise try and aim at the door )
+: do-chase ( thing -- )
+    dup rect-topleft dcellyx@ 
+        dup is-door? if
+            drop rogue-xy 
+        else 
+            rogue-room @ 0=
+                swap is-pass? if not then
+            if
+                last-door 
+            else
+                rogue-xy
+            then 
+        then p-xy@
+        ( thing x y ) mons-aim ;
+
 ( try to aim at monsieur @ )
 : mons-sniff ( thing -- )
+    dup mons-chasing? if
+        do-chase
+        exit
+    then
     dup rect-topleft xy-find-room
         rogue-room @ = if
+            dup mons-chase-on
             roguexy@ mons-aim
         else
             drop
@@ -78,15 +111,32 @@
     2 pick }t-y c!
       swap }t-x c! ;
 
-: mons-try-moverel ( thing dx dy -- bool )
+: (mons-try-moverel) ( thing dx dy -- bool )
     2 pick dup }t-y@    ( t dx dy t y )
     rot +               ( t dx t y' )
     -rot }t-x@ + swap   ( t x' y' )
     2dup can-M-go? if
-        mons-movexy
-    else
-        2drop mons-unaim
+        mons-movexy true
+    else        
+        3drop false 
     then ;
+
+: mons-try-moverel
+    3dup (mons-try-moverel) if
+        3drop exit then
+    3dup drop 0 (mons-try-moverel) if
+        3drop exit then
+    3dup swap drop 0 swap (mons-try-moverel) if
+        3drop exit then
+
+    \ only really sometimes, back off
+    12 rnd 0= if
+        3dup negate (mons-try-moverel) if
+            3drop exit then
+        3dup swap negate swap (mons-try-moverel) if
+            3drop exit then
+    then
+    3drop ;
 
 : (mons-keep-busy) ( thing -- )
     dup mons-sniff
@@ -105,7 +155,8 @@
     over dup }t-tgt-y@ swap }t-y@ dircmp
     ( thing dx dy )
     2dup or 0= if
-        2drop mons-unaim 
+        2drop 
+        mons-unaim 
         exit
     then
     ( try going by dx,dy )
