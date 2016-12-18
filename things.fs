@@ -10,6 +10,7 @@ current-offset off
 1 soffset }t-tgt-x
 1 soffset }t-tgt-y
 1 soffset }t-count1
+1 soffset }t-room
 
 current-offset off
 1 soffset@ }t-x@
@@ -21,6 +22,8 @@ current-offset off
 1 soffset@ }t-tgt-x@
 1 soffset@ }t-tgt-y@
 1 soffset@ }t-count1@
+1 soffset@ }t-room@
+
 
 16 constant |THING|
 20 constant THINGS-MAX 

@@ -168,10 +168,12 @@ make-could-go where?
     rot drop dset-thing ;
 
 : place-monster ( rn monster -- )
-    swap somewhere-in-room ( cls x y )
-    3dup rot C-MONSTER + -rot 
-    thing-new }t-class c!
-    rot drop dset-monster ;
+    2dup
+        swap somewhere-in-room ( cls x y )
+        3dup rot C-MONSTER + -rot 
+        thing-new dup >r }t-class c!
+        rot drop dset-monster 
+    drop r> }t-room c! ;
 
 : add-junk ( rn -- )
     dup rnd-static-thing place-thing 

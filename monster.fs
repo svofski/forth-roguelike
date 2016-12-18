@@ -85,8 +85,7 @@
         do-chase
         exit
     then
-    dup rect-topleft xy-find-room
-        rogue-room @ = if
+    dup }t-room@ rogue-room @ = if
             dup mons-chase-on
             roguexy@ mons-aim
         else
@@ -99,42 +98,46 @@
           0 ;
 
 : mons-movexy ( thing x y -- )
-    2dup 4 pick rect-topleft ( t x y x y x' y' )
+    rot >r
+    2dup r@ rect-topleft ( x y x y x' y' )
     2dup dreset-monster ( reset monster marker from floor )
     invalidate1         ( invalidate old loc )
     invalidate1         ( invalidate new loc )
-    ( t x y -- ) 
-    3dup move-thing     ( remap to the new y )
-    2dup dset-monster   ( set monster marker on the floor )
+    ( x y -- ) 
+    2dup r@ -rot move-thing     ( remap to the new y )
+    2dup dset-monster-   ( set monster marker on the floor )
+    ( update room if crossing the door )
+    dup is-pass?
+        if drop 0 r@ }t-room c! else
+        is-door?
+        if 2dup xy-find-room r@ }t-room c! then then
+\    2dup xy-find-room r@ }t-room c!
     ( update x,y in thing data )
-    ( t x y -- ) 
-    2 pick }t-y c!
-      swap }t-x c! ;
+    r@ }t-y c!
+    r> }t-x c! ;
 
-: (mons-try-moverel) ( thing dx dy -- bool )
+( try to move thing by dx dy: )
+( if ok, jump one return stack frame out, drop everything )
+( if not, keep input parameters on stack and return )
+: (mons-try-moverel ( thing dx dy -- thing dx dy bool )
     2 pick dup }t-y@    ( t dx dy t y )
     rot +               ( t dx t y' )
     -rot }t-x@ + swap   ( t x' y' )
     2dup can-M-go? if
-        mons-movexy true
+        mons-movexy 
+        3drop r> drop   ( exit from the callee! )
     else        
-        3drop false 
+        3drop 
     then ;
 
-: mons-try-moverel
-    3dup (mons-try-moverel) if
-        3drop exit then
-    3dup drop 0 (mons-try-moverel) if
-        3drop exit then
-    3dup swap drop 0 swap (mons-try-moverel) if
-        3drop exit then
-
-    \ only really sometimes, back off
+: mons-try-moverel ( thing dx dy -- )
+    3dup                    (mons-try-moverel ( !exits if ok! )
+    3dup drop 0             (mons-try-moverel 
+    3dup swap drop 0 swap   (mons-try-moverel 
+    ( only really sometimes, back off )
     12 rnd 0= if
-        3dup negate (mons-try-moverel) if
-            3drop exit then
-        3dup swap negate swap (mons-try-moverel) if
-            3drop exit then
+        3dup negate           (mons-try-moverel
+        3dup swap negate swap (mons-try-moverel
     then
     3drop ;
 

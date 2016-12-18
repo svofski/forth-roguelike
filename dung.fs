@@ -69,6 +69,9 @@ here value (dungeon) ( -- adr )
 : dset-monster ( x y -- )
     dcellyx dcell dup c@ 
     [ B-MONSTER ] literal or swap c! ;
+: dset-monster- ( x y -- newvalue )
+    dcellyx dcell dup c@ 
+    [ B-MONSTER ] literal or dup -rot swap c! ;
 : dreset-monster ( x y -- )
     dcellyx dcell dup c@ 
     [ B-MONSTER invert ] literal and swap c! ;
