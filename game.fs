@@ -48,8 +48,11 @@ create player-flags 0 ,
     dcellyx@ is-door? ;
 
 : advance-time
-    turn-time@ rogue-speed@ + to turn-time@ ;
-    
+    \ this probably has to do with running vs monsters thing,
+    \ currently unused
+    turn-time@ rogue-speed@ + to turn-time@ 
+    ;
+
 : update-@-room 
     roguexy@ dcellyx@ is-door? if
         roguexy@ last-door p-xy!
@@ -62,6 +65,7 @@ create player-flags 0 ,
         rogue-xy p-xy! true
         update-@-room
         advance-time
+        @-count-move
     else 
         game-flags GF-ESTOCADA or to game-flags
         2drop 
@@ -163,6 +167,7 @@ create player-flags 0 ,
 : xt-walk-diag
     roguexy@ rot execute try-move-@-diag light-spot ;
 
+\ walk commands, return true if success false otherwise 
 : walk-h ['] p-h xt-walk ;
 : walk-l ['] p-l xt-walk ;
 : walk-k ['] p-k xt-walk ;
@@ -171,6 +176,7 @@ create player-flags 0 ,
 : walk-u ['] p-u xt-walk-diag ;
 : walk-b ['] p-b xt-walk-diag ;
 : walk-n ['] p-n xt-walk-diag ;
+: rest ['] p-. xt-walk ;
 
 : walk->
     roguexy@ char@xy is-exit?
@@ -187,12 +193,33 @@ create player-flags 0 ,
 : @-> ( -- )
     roguexy@ vtxy [CHAR] @ emit ;
 
+\ print single-cell number without trailing space
+: .# ( n -- )
+    0 <# #s #> type ;
+
+\ print doublel-cell number without trailing space
+: d.# ( d -- )
+    <# #s #> type ; 
+
 : stats-> ( -- )
-    0 24 vtxy ." Dlvl: " dlevel @ . 
-    ." depth:" depth . ." R:" repeat-count @ . 
+    0 24 vtxy ." Level: " dlevel @ . 
+    ." Gold: " 2stat-$ 2@ d.# space
+    ." Hp: " stat-hp @ .# [CHAR] ( emit stat-hpmax @ .# [CHAR] ) emit
+    space
+    ." Str: " stat-str @ .# [CHAR] ( emit stat-strmax @ .# [CHAR] ) emit
+    space
+    ." Arm: " stat-arm @ . 
+    ." Exp: " stat-exp @ .# [CHAR] / emit 2stat-exp-pts 2@ d.
+    stat-hunger 2@ type
+    space
+    \ debug print
+    debug-on
+    ." stack:" depth . ." R:" repeat-count @ . 
     ." dcnt:" %debugcount @ .
-    ." room:" rogue-room @ .
+    ." rn:" rogue-room @ .
+    ." m:" stat-movs @ .
     debugmsg 2@ type 
+    debug-off
     clreol 
     0 0 debugmsg 2! ;
 
@@ -208,6 +235,8 @@ create player-flags 0 ,
 : cmd-dprint dprint false ;
 : cmd-esc repeat-count off false ;
 
+\ create command dispatch table: 
+\ char dispatch char dispatch ..
 create (cmds)
     CHAR h c, ' walk-h ,
     CHAR l c, ' walk-l ,
@@ -217,6 +246,7 @@ create (cmds)
     CHAR u c, ' walk-u ,
     CHAR b c, ' walk-b ,
     CHAR n c, ' walk-n ,
+    CHAR . c, ' rest ,
     ( vector-06c arrow keys )
     8 c, ' walk-h ,
     24 c, ' walk-l ,
@@ -326,6 +356,7 @@ create RS-DISP ' cmd-single ,
                ' cmd-count , 
 
 : 0play
+    @-init
     dlevel off
     quit-game off
     repeat-off

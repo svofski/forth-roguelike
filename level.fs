@@ -1,3 +1,5 @@
+( exports: level )
+
 0 constant NOWAY
 
 : 20array 

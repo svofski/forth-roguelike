@@ -1,5 +1,6 @@
 decimal
 
+( struct thing field offsets )
 current-offset off
 1 soffset }t-x
 1 soffset }t-y
@@ -12,6 +13,7 @@ current-offset off
 1 soffset }t-count1
 1 soffset }t-room
 
+( struct thing field getters )
 current-offset off
 1 soffset@ }t-x@
 1 soffset@ }t-y@

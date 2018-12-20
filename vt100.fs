@@ -5,3 +5,8 @@
 : clreol
     27 emit [CHAR] [ emit
     [CHAR] K emit ;
+
+: debug-on 
+    27 emit [CHAR] [ emit [CHAR] 7 emit [CHAR] m emit ;
+: debug-off
+    27 emit [CHAR] [ emit [CHAR] 0 emit [CHAR] m emit ;

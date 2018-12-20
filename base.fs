@@ -1,6 +1,12 @@
 80 constant COLS
 24 constant ROWS
 
+\ move counts
+300 constant HUNGRY
+150 constant WEAK
+20  constant FAINT
+0   constant STARVE
+
 : COLS* 4 lshift dup 2 lshift + ;
 : [COLS*] 4 postpone literal postpone lshift postpone dup 
     2 postpone literal postpone lshift postpone + ; immediate
@@ -67,6 +73,7 @@ variable current-offset
 : p-xy! ( x y py px -- )
     >R rot R> c! c! ; 
 
+\ advance player coordinate in hjklyubn directions, or rest .
 : p-y 1- swap 1- swap ;
 : p-k 1- ;
 : p-u 1- swap 1+ swap ;
@@ -75,6 +82,7 @@ variable current-offset
 : p-b swap 1- swap 1+ ;
 : p-j 1+ ;
 : p-n 1+ swap 1+ swap ;
+: p-. ;
 
 : rect
     create swap 2 roll 3 roll c, c, c, c, ;
