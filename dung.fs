@@ -146,14 +146,6 @@ here value (dungeon) ( -- adr )
 : invalidate ( x1 y1 x2 y2 -- )
     norm4 update-rect rect-add ;
 
-( invalidate a single location )
-: invalidate1 ( x1 y1 -- )
-    |update-points| update-point[] p-xy!
-    |update-points| 1+ to |update-points| 
-    |update-points| |update-points-max| = if
-        abort" invalidate1 overflow"
-    then ;
-
 : invalidate-all ( -- )
     0 0 COLS 1- ROWS 1- invalidate 
     0 to |update-points| ;
@@ -239,3 +231,14 @@ here value (dungeon) ( -- adr )
     loop
     cr
   loop drop ;
+
+( invalidate a single location )
+: invalidate1 ( x1 y1 -- )
+    |update-points| update-point[] p-xy!
+    |update-points| 1+ to |update-points| 
+    |update-points| |update-points-max| = if
+        \ abort" invalidate1 overflow"
+        dupdate-invalid
+    then ;
+
+
