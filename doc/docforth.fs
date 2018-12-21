@@ -528,8 +528,10 @@ FORTH-WORDLIST STANDARD FORTH-WORDLIST 3 SET-ORDER
 : [ELSE] POSTPONE [ELSE] ; IMMEDIATE 
 : [IF] POSTPONE [IF] ; IMMEDIATE 
 : [THEN] POSTPONE [THEN] ; IMMEDIATE 
+: [DEFINED] POSTPONE [DEFINED] ; IMMEDIATE
 : \ POSTPONE \ ; IMMEDIATE 
 : ] ] ; 
+
 
 forth-wordlist 1 set-order
 forth-wordlist set-current
@@ -1172,8 +1174,10 @@ KNOW       [COMPILE]        6.2.2530 CORE-EXT
 KNOW          [ELSE]     15.6.2.2531 TOOLS-EXT
 KNOW            [IF]     15.6.2.2532 TOOLS-EXT
 KNOW          [THEN]     15.6.2.2533 TOOLS-EXT
+KNOW	      [DEFINED]  15.6.2.2534 TOOLS-EXT
 KNOW               \        6.2.2535 CORE-EXT
 KNOW               \      7.6.2.2535 BLOCK-EXT
 KNOW               ]        6.1.2540 CORE
+KNOW		SCAN	    6.1.2396 CORE-EXT
 
 forth-wordlist set-current

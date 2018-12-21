@@ -5,6 +5,8 @@ read wtf
 for f in *.fs ; do
   mv $f.html html/
 done
+echo "If you don't want to update docs in git, press ^C"
+read wtf
 git stash
 git checkout gh-pages
 cp -f html/* .
