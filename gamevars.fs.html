@@ -1,0 +1,224 @@
+<html>
+<head>
+<style type=text/css>
+div.code {
+  padding:0.5em;
+  font-size:large;
+  line-height:110%;
+}
+div.code a.name {
+  font-weight:bold;
+}
+div.code a.name:target {
+  background-color:#ff7
+}
+div.code a.ref {
+  text-decoration:none;
+  color:#007
+}
+div.code a.ref:hover {
+  text-decoration:underline;
+}
+.footer {
+  font-size:x-small;
+  line-height:110%;
+}
+</style>
+</head>
+<body>
+<div class=code>
+<code>
+0&nbsp;0&nbsp;<a class=ref href=base.fs.html#496>point</a>&nbsp;<a class=name name=810>rogue-xy</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;rogue&nbsp;xy&nbsp;location</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;<a class=name name=811>rogue-room</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;the&nbsp;room&nbsp;rogue&nbsp;is&nbsp;in</code>
+<br>
+
+<code>
+0&nbsp;0&nbsp;<a class=ref href=base.fs.html#496>point</a>&nbsp;<a class=name name=812>last-door</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;last&nbsp;disappeared&nbsp;through&nbsp;this&nbsp;door</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;player&nbsp;stats</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans8.htm#8.6.1.0440>2variable</a>&nbsp;&nbsp;&nbsp;<a class=name name=813>2stat-$</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;gold&nbsp;(LONG!)</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=814>stat-str</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;strength</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=815>stat-strmax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;max&nbsp;strength</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=816>stat-exp</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;experience&nbsp;level</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans8.htm#8.6.1.0440>2variable</a>&nbsp;&nbsp;&nbsp;<a class=name name=817>2stat-exp-pts</a>&nbsp;&nbsp;&nbsp;0&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;experience&nbsp;points&nbsp;(LONG!)</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=818>stat-arm</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;armor&nbsp;class</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=819>stat-hp</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;hit&nbsp;points</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=820>stat-hpmax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;max&nbsp;hit&nbsp;points</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=821>stat-movs</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1250&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;moves</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=name name=822>stat-faint</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0150>,</a>&nbsp;</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans8.htm#8.6.1.0440>2variable</a>&nbsp;<a class=name name=823>stat-dmg</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;string&nbsp;describing&nbsp;damage&nbsp;done</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans8.htm#8.6.1.0440>2variable</a>&nbsp;<a class=name name=824>stat-hunger</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;hungry&nbsp;string</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=825>roguexy@</a>&nbsp;<a class=ref href=gamevars.fs.html#810>rogue-xy</a>&nbsp;<a class=ref href=base.fs.html#497>p-xy@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=826>can-@-go?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;--&nbsp;true|false&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#672>dcellyx@</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=chars.fs.html#561>B-MONSTER</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=base.fs.html#534>(feckoff)</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=chars.fs.html#557>B-FLOOR</a>&nbsp;<a class=ref href=chars.fs.html#558>B-PASSAGE</a>&nbsp;<a class=ref href=chars.fs.html#559>B-DOOR</a>&nbsp;<a class=ref href=chars.fs.html#560>B-THING</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=827>can-M-go?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;--&nbsp;true|false&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=gamevars.fs.html#825>roguexy@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans8.htm#8.6.1.1120>d=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0370>2drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1485>false</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1380>exit</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=gamevars.fs.html#826>can-@-go?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=828>@-init</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;todo&nbsp;inventory&nbsp;init</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;&nbsp;&nbsp;&nbsp;</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=829>@-count-move</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=gamevars.fs.html#821>stat-movs</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0300>1-</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;stat-movs@&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=base.fs.html#471>HUNGRY</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.2165>s"</a>&nbsp;Hungry"&nbsp;&nbsp;&nbsp;<a class=ref href=gamevars.fs.html#824>stat-hunger</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0310>2!</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=base.fs.html#472>WEAK</a>&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.2165>s"</a>&nbsp;Weak"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=gamevars.fs.html#824>stat-hunger</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0310>2!</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=base.fs.html#473>FAINT</a>&nbsp;<a class=ref href=base.fs.html#480>&lt;=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.2165>s"</a>&nbsp;Fainting"&nbsp;<a class=ref href=gamevars.fs.html#824>stat-hunger</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0310>2!</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=gamevars.fs.html#822>stat-faint</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=base.fs.html#474>STARVE</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.2165>s"</a>&nbsp;Starved"&nbsp;&nbsp;<a class=ref href=gamevars.fs.html#824>stat-hunger</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0310>2!</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+</div>
+<p class=footer>Created with <a href=http://excamera.com/sphinx/docforth.html>docforth</a>
+</body></html>

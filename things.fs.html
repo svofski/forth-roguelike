@@ -1,0 +1,884 @@
+<html>
+<head>
+<style type=text/css>
+div.code {
+  padding:0.5em;
+  font-size:large;
+  line-height:110%;
+}
+div.code a.name {
+  font-weight:bold;
+}
+div.code a.name:target {
+  background-color:#ff7
+}
+div.code a.ref {
+  text-decoration:none;
+  color:#007
+}
+div.code a.ref:hover {
+  text-decoration:underline;
+}
+.footer {
+  font-size:x-small;
+  line-height:110%;
+}
+</style>
+</head>
+<body>
+<div class=code>
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1170>decimal</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;struct&nbsp;thing&nbsp;field&nbsp;offsets&nbsp;)</code>
+<br>
+
+<code>
+<a class=ref href=base.fs.html#492>current-offset</a>&nbsp;<a class=ref href=#458>off</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=599>}t-x</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=600>}t-y</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=601>}t-class</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=602>}t-flags</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=603>}t-hp</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=604>}t-time</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=605>}t-tgt-x</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=606>}t-tgt-y</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=607>}t-count1</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=608>}t-room</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;struct&nbsp;thing&nbsp;field&nbsp;getters&nbsp;)</code>
+<br>
+
+<code>
+<a class=ref href=base.fs.html#492>current-offset</a>&nbsp;<a class=ref href=#458>off</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=609>}t-x@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=610>}t-y@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=611>}t-class@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=612>}t-flags@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=613>}t-hp@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=614>}t-time@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=615>}t-tgt-x@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=616>}t-tgt-y@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=617>}t-count1@</a></code>
+<br>
+
+<code>
+1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=618>}t-room@</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+16&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=619>|THING|</a></code>
+<br>
+
+<code>
+20&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=620>THINGS-MAX</a>&nbsp;</code>
+<br>
+
+<code>
+<a class=ref href=things.fs.html#619>|THING|</a>&nbsp;<a class=ref href=things.fs.html#620>THINGS-MAX</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=621>|THINGSDATA|</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;linked&nbsp;list&nbsp;using&nbsp;indices:</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;&nbsp;&nbsp;msb&nbsp;=&nbsp;things-data&nbsp;idx&nbsp;&nbsp;&nbsp;msb&nbsp;=&nbsp;next&nbsp;or&nbsp;0</code>
+<br>
+
+<code>
+<a class=ref href=things.fs.html#620>THINGS-MAX</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0890>cells</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=622>|THINGSLIST|</a>&nbsp;</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=base.fs.html#470>ROWS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=623>|YIDX|</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;10&nbsp;cells&nbsp;(&nbsp;0&nbsp;for&nbsp;roomless,&nbsp;1&nbsp;-&nbsp;9&nbsp;)&nbsp;for&nbsp;entry&nbsp;points</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;of&nbsp;thing&nbsp;lists</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;actual&nbsp;things&nbsp;data,&nbsp;unlinked</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=624>mkthings-data</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;<a class=ref href=things.fs.html#621>|THINGSDATA|</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0710>allot</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1250>does></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1805>lshift</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=625>mkthings-list</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;<a class=ref href=things.fs.html#622>|THINGSLIST|</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0710>allot</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1250>does></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0890>cells</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=626>mkthings-yidx</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;<a class=ref href=things.fs.html#623>|YIDX|</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0710>allot</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1250>does></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=627>car>data+next</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;8&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2162>rshift</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;255&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;&nbsp;&nbsp;&nbsp;</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=628>data+next>car</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;8&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1805>lshift</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=things.fs.html#624>mkthings-data</a>&nbsp;<a class=name name=629>(t-data)</a>&nbsp;</code>
+<br>
+
+<code>
+<a class=ref href=things.fs.html#625>mkthings-list</a>&nbsp;<a class=name name=630>(t-list)</a></code>
+<br>
+
+<code>
+<a class=ref href=things.fs.html#626>mkthings-yidx</a>&nbsp;<a class=name name=631>(t-yidx)</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=632>t-data>index</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=things.fs.html#629>(t-data)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2162>rshift</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2410>variable</a>&nbsp;<a class=name name=633>nthings</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=#462>defer</a>&nbsp;<a class=name name=634>dump-monster</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=635>dump-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;ptr&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0630>?dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0190>."</a>&nbsp;x:"&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#609>}t-x@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0180>.</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0190>."</a>&nbsp;y:"&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#610>}t-y@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0180>.</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0190>."</a>&nbsp;cls:"&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#611>}t-class@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0180>.</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=base.fs.html#483>isupper?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#634>dump-monster</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0190>."</a>&nbsp;(nil)"</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=636>dump-things-data</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0990>cr</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#633>nthings</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1240>do</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;<a class=ref href=things.fs.html#629>(t-data)</a>&nbsp;<a class=ref href=things.fs.html#635>dump-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0990>cr</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1800>loop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=637>things-clear</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#633>nthings</a>&nbsp;<a class=ref href=#458>off</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=things.fs.html#630>(t-list)</a>&nbsp;<a class=ref href=things.fs.html#622>|THINGSLIST|</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1350>erase</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=things.fs.html#629>(t-data)</a>&nbsp;<a class=ref href=things.fs.html#621>|THINGSDATA|</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1350>erase</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=things.fs.html#631>(t-yidx)</a>&nbsp;<a class=ref href=things.fs.html#623>|YIDX|</a>&nbsp;255&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1540>fill</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;pointer&nbsp;to&nbsp;newly&nbsp;create&nbsp;thing</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=638>newtdata</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;t-data&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#633>nthings</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=things.fs.html#629>(t-data)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=639>newcar</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;car&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#633>nthings</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2405>value</a>&nbsp;<a class=name name=640>freecell-tlist</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=641>link-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;t-data&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>R</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#610>}t-y@</a>&nbsp;<a class=ref href=things.fs.html#631>(t-yidx)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#632>t-data>index</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#628>data+next>car</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#640>freecell-tlist</a>&nbsp;<a class=ref href=things.fs.html#630>(t-list)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;store&nbsp;car&nbsp;in&nbsp;free&nbsp;t-list&nbsp;cell&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#640>freecell-tlist</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2060>R></a>&nbsp;<a class=ref href=things.fs.html#610>}t-y@</a>&nbsp;<a class=ref href=things.fs.html#631>(t-yidx)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;create&nbsp;an&nbsp;empty&nbsp;thing&nbsp;at&nbsp;x,&nbsp;y</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=642>thing-new</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x,&nbsp;y&nbsp;--&nbsp;thing-data&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#633>nthings</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans13.htm#13.6.1.2295>to</a>&nbsp;freecell-tlist&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#638>newtdata</a>&nbsp;<a class=ref href=things.fs.html#619>|THING|</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1350>erase</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#638>newtdata</a>&nbsp;<a class=ref href=things.fs.html#600>}t-y</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#638>newtdata</a>&nbsp;<a class=ref href=things.fs.html#599>}t-x</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#638>newtdata</a>&nbsp;<a class=ref href=things.fs.html#641>link-thing</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#638>newtdata</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;return&nbsp;value&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=things.fs.html#633>nthings</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0130>+!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=643>car-next+(data)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;n&nbsp;--&nbsp;next&nbsp;data&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#630>(t-list)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=things.fs.html#627>car>data+next</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#629>(t-data)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;xt:&nbsp;data&nbsp;--&nbsp;true|false,&nbsp;true&nbsp;continues&nbsp;)</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=644>with-y-things</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;xt&nbsp;y&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>R</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#631>(t-yidx)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;car&nbsp;idx</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;255&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2060>R></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1380>exit</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0760>begin</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#643>car-next+(data)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1370>execute</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=#457>not</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;255&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;next&nbsp;res&nbsp;next=255&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2390>until</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2060>R></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=645>dump-thing-t</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;data&nbsp;--&nbsp;true&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#635>dump-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2298>true</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=646>dump-y-things</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2510>[']</a>&nbsp;dump-thing-t&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#644>with-y-things</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2405>value</a>&nbsp;<a class=name name=647>sought-thing</a></code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=648>compare-x</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#609>}t-x@</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans13.htm#13.6.1.2295>to</a>&nbsp;sought-thing&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1485>false</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2298>true</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=649>get-thing-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;--&nbsp;t-data/0&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans13.htm#13.6.1.2295>to</a>&nbsp;sought-thing</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2510>[']</a>&nbsp;compare-x&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#644>with-y-things</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#647>sought-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2405>value</a>&nbsp;<a class=name name=650>prev-car</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=651>replace-cdr</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;car&nbsp;new-cdr&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#630>(t-list)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#627>car>data+next</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;new-cdr&nbsp;t-list&nbsp;data&nbsp;old-cdr&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=things.fs.html#628>data+next>car</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=652>unlink-tail</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;data&nbsp;cur&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0760>begin</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#643>car-next+(data)</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;data&nbsp;cur&nbsp;next&nbsp;data'&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;cur&nbsp;next&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans13.htm#13.6.1.2295>to</a>&nbsp;freecell-tlist</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;cur&nbsp;next&nbsp;)&nbsp;<a class=ref href=things.fs.html#650>prev-car</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#651>replace-cdr</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0370>2drop</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1380>exit</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;data&nbsp;cur&nbsp;next&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans13.htm#13.6.1.2295>to</a>&nbsp;prev-car</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;255&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2390>until</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=653>unlink-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;data&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#610>}t-y@</a>&nbsp;<a class=ref href=things.fs.html#631>(t-yidx)</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;255&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=base.fs.html#481>3drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1380>exit</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>R</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;yidx&nbsp;car&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans13.htm#13.6.1.2295>to</a>&nbsp;prev-car&nbsp;&nbsp;</code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#643>car-next+(data)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;yidx&nbsp;next&nbsp;data'&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0530>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;yidx&nbsp;next&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans13.htm#13.6.1.2295>to</a>&nbsp;freecell-tlist</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;yidx&nbsp;next&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1930>nip</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=things.fs.html#652>unlink-tail</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2060>R></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=654>unlink-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#649>get-thing-xy</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0630>?dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#653>unlink-thing</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=655>move-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;data&nbsp;x&nbsp;y&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#653>unlink-thing</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#600>}t-y</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=things.fs.html#599>}t-x</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#641>link-thing</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=656>char@xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;--&nbsp;char&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#649>get-thing-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0630>?dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=things.fs.html#611>}t-class@</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1380>exit</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[char]</a>&nbsp;~&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=things.fs.html#637>things-clear</a></code>
+<br>
+
+</div>
+<p class=footer>Created with <a href=http://excamera.com/sphinx/docforth.html>docforth</a>
+</body></html>

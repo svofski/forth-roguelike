@@ -28,35 +28,27 @@ div.code a.ref:hover {
 <body>
 <div class=code>
 <code>
-1&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=560>RF-EXISTS</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;exists&nbsp;and&nbsp;valid&nbsp;)</code>
+1&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=702>RF-EXISTS</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;exists&nbsp;and&nbsp;valid&nbsp;)</code>
 <br>
 
 <code>
-2&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=561>RF-CON</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;in&nbsp;connected&nbsp;set&nbsp;)</code>
+2&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=703>RF-CON</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;in&nbsp;connected&nbsp;set&nbsp;)</code>
 <br>
 
 <code>
-4&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=562>RF-THRU</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;a&nbsp;thru&nbsp;for&nbsp;xing&nbsp;)</code>
+4&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=704>RF-THRU</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;a&nbsp;thru&nbsp;for&nbsp;xing&nbsp;)</code>
 <br>
 
 <code>
-8&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=563>RF-TRUNK</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;in&nbsp;the&nbsp;spanning&nbsp;tree&nbsp;)</code>
+8&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=705>RF-TRUNK</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;in&nbsp;the&nbsp;spanning&nbsp;tree&nbsp;)</code>
 <br>
 
 <code>
-16&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=564>RF-LIT</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;instantly&nbsp;visible&nbsp;)</code>
+16&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=706>RF-LIT</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;instantly&nbsp;visible&nbsp;)</code>
 <br>
 
 <code>
-32&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=565>RF-SHOWN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;already&nbsp;shown&nbsp;)</code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-14&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=566>ROOM-SIZEOF</a></code>
+32&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=707>RF-SHOWN</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;room&nbsp;is&nbsp;already&nbsp;shown&nbsp;)</code>
 <br>
 
 <code>
@@ -64,67 +56,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=base.fs.html#468>current-offset</a>&nbsp;<a class=ref href=#457>off</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#469>soffset</a>&nbsp;<a class=name name=567>}x1</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#469>soffset</a>&nbsp;<a class=name name=568>}y1</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#469>soffset</a>&nbsp;<a class=name name=569>}x2</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#469>soffset</a>&nbsp;<a class=name name=570>}y2</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#469>soffset</a>&nbsp;<a class=name name=571>}flags</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#469>soffset</a>&nbsp;<a class=name name=572>}n-doors</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;<a class=ref href=base.fs.html#469>soffset</a>&nbsp;<a class=name name=573>}doors</a></code>
-<br>
-
-<code>
-<a class=ref href=base.fs.html#468>current-offset</a>&nbsp;<a class=ref href=#457>off</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#470>soffset@</a>&nbsp;<a class=name name=574>}x1@</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#470>soffset@</a>&nbsp;<a class=name name=575>}y1@</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#470>soffset@</a>&nbsp;<a class=name name=576>}x2@</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#470>soffset@</a>&nbsp;<a class=name name=577>}y2@</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#470>soffset@</a>&nbsp;<a class=name name=578>}flags@</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#470>soffset@</a>&nbsp;<a class=name name=579>}n-doors@</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;<a class=ref href=base.fs.html#470>soffset@</a>&nbsp;<a class=name name=580>}doors@</a></code>
+14&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=708>ROOM-SIZEOF</a></code>
 <br>
 
 <code>
@@ -132,7 +64,75 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=581>struct-array</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;n&nbsp;len&nbsp;--&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;i&nbsp;--&nbsp;addr)</code>
+<a class=ref href=base.fs.html#492>current-offset</a>&nbsp;<a class=ref href=#458>off</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=709>}x1</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=710>}y1</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=711>}x2</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=712>}y2</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=713>}flags</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=714>}n-doors</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;<a class=ref href=base.fs.html#493>soffset</a>&nbsp;<a class=name name=715>}doors</a></code>
+<br>
+
+<code>
+<a class=ref href=base.fs.html#492>current-offset</a>&nbsp;<a class=ref href=#458>off</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=716>}x1@</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=717>}y1@</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=718>}x2@</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=719>}y2@</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=720>}flags@</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=721>}n-doors@</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;<a class=ref href=base.fs.html#494>soffset@</a>&nbsp;<a class=name name=722>}doors@</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=723>struct-array</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;n&nbsp;len&nbsp;--&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;i&nbsp;--&nbsp;addr)</code>
 <br>
 
 <code>
@@ -148,23 +148,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=582>room-array</a>&nbsp;</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=724>room-array</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;<a class=ref href=rooms.fs.html#566>ROOM-SIZEOF</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0710>allot</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1000>create</a>&nbsp;<a class=ref href=rooms.fs.html#708>ROOM-SIZEOF</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0710>allot</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1250>does></a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#566>ROOM-SIZEOF</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-10&nbsp;<a class=ref href=rooms.fs.html#582>room-array</a>&nbsp;<a class=name name=583>(rooms)</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1250>does></a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#708>ROOM-SIZEOF</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -172,11 +164,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=dung.fs.html#519>COLS</a>&nbsp;6&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=584>ROOM_HW</a></code>
-<br>
-
-<code>
-<a class=ref href=dung.fs.html#520>ROWS</a>&nbsp;6&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=585>ROOM_HH</a></code>
+10&nbsp;<a class=ref href=rooms.fs.html#724>room-array</a>&nbsp;<a class=name name=725>(rooms)</a></code>
 <br>
 
 <code>
@@ -184,7 +172,19 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=586>room-centre</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
+<a class=ref href=base.fs.html#469>COLS</a>&nbsp;6&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=726>ROOM_HW</a></code>
+<br>
+
+<code>
+<a class=ref href=base.fs.html#470>ROWS</a>&nbsp;6&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0950>constant</a>&nbsp;<a class=name name=727>ROOM_HH</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=728>room-centre</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
@@ -192,11 +192,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1890>mod</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=rooms.fs.html#584>ROOM_HW</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1890>mod</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=rooms.fs.html#726>ROOM_HW</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=rooms.fs.html#585>ROOM_HH</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=rooms.fs.html#727>ROOM_HH</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -204,23 +204,23 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=587>rnd-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=729>rnd-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#586>room-centre</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;cx&nbsp;cy&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#728>room-centre</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;cx&nbsp;cy&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=rooms.fs.html#584>ROOM_HW</a>&nbsp;<a class=ref href=lfsr.fs.html#505>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;cx&nbsp;cy&nbsp;x1&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=rooms.fs.html#726>ROOM_HW</a>&nbsp;<a class=ref href=lfsr.fs.html#538>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;cx&nbsp;cy&nbsp;x1&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=rooms.fs.html#585>ROOM_HH</a>&nbsp;<a class=ref href=lfsr.fs.html#505>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;cx&nbsp;cy&nbsp;x1&nbsp;y1&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=rooms.fs.html#727>ROOM_HH</a>&nbsp;<a class=ref href=lfsr.fs.html#538>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;cx&nbsp;cy&nbsp;x1&nbsp;y1&nbsp;)</code>
 <br>
 
 <code>
@@ -228,11 +228,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#584>ROOM_HW</a>&nbsp;<a class=ref href=lfsr.fs.html#505>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#726>ROOM_HW</a>&nbsp;<a class=ref href=lfsr.fs.html#538>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#585>ROOM_HH</a>&nbsp;<a class=ref href=lfsr.fs.html#505>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;y2&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#727>ROOM_HH</a>&nbsp;<a class=ref href=lfsr.fs.html#538>rnd</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;&amp;r&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;y2&nbsp;)</code>
 <br>
 
 <code>
@@ -240,11 +240,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=base.fs.html#493>rect!</a>&nbsp;&nbsp;&nbsp;&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=base.fs.html#518>rect!</a>&nbsp;&nbsp;&nbsp;&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#713>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -252,31 +252,19 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=588>room-thru</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=730>room-thru</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#586>room-centre</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=base.fs.html#493>rect!</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#728>room-centre</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=base.fs.html#518>rect!</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#713>}flags</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=rooms.fs.html#562>RF-THRU</a>&nbsp;<a class=ref href=rooms.fs.html#560>RF-EXISTS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=589>room-width</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;width&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#569>}x2</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#567>}x1</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=rooms.fs.html#704>RF-THRU</a>&nbsp;<a class=ref href=rooms.fs.html#702>RF-EXISTS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -284,11 +272,23 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=590>room-height</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;height&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=731>room-width</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;width&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#570>}y2</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#568>}y1</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#526>rect-width</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=732>room-height</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;height&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#527>rect-height</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -304,7 +304,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=591>room-validate</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;exists&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=733>room-validate</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;exists&nbsp;)</code>
 <br>
 
 <code>
@@ -312,11 +312,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#589>room-width</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0540>></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#731>room-width</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0540>></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#590>room-height</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0540>></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#732>room-height</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0540>></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a></code>
 <br>
 
 <code>
@@ -324,7 +324,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;<a class=ref href=rooms.fs.html#560>RF-EXISTS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#713>}flags</a>&nbsp;<a class=ref href=rooms.fs.html#702>RF-EXISTS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;&nbsp;</code>
 <br>
 
 <code>
@@ -336,7 +336,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=592>room-exists?</a>&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#578>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#560>RF-EXISTS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0260>0&lt;></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=734>room-exists?</a>&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#720>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#702>RF-EXISTS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;0&lt;>&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -344,7 +344,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=593>room-thru?</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#578>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#562>RF-THRU</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0260>0&lt;></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=735>room-thru?</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#720>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#704>RF-THRU</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;0&lt;>&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -352,31 +352,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=594>room-nexisteplus!</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=736>room-nexisteplus!</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#713>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=rooms.fs.html#560>RF-EXISTS</a>&nbsp;<a class=ref href=rooms.fs.html#562>RF-THRU</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1720>invert</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=595>room-trunk?</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#578>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#563>RF-TRUNK</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0500>&lt;></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=596>room-trunk!</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=rooms.fs.html#563>RF-TRUNK</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=597>room-cut!</a>&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=rooms.fs.html#563>RF-TRUNK</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1720>invert</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=rooms.fs.html#702>RF-EXISTS</a>&nbsp;<a class=ref href=rooms.fs.html#704>RF-THRU</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1720>invert</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -384,23 +368,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=598>room-lit?</a>&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#578>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#564>RF-LIT</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0500>&lt;></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=737>room-trunk?</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#720>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#705>RF-TRUNK</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;0&lt;>&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=599>room-shown?</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#578>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#565>RF-SHOWN</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0500>&lt;></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=738>room-trunk!</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#713>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=rooms.fs.html#705>RF-TRUNK</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=600>room-flags+!</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=601>room-lit!</a>&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#564>RF-LIT</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#600>room-flags+!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=602>room-shown!</a>&nbsp;<a class=ref href=rooms.fs.html#565>RF-SHOWN</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#600>room-flags+!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=739>room-cut!</a>&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#713>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=rooms.fs.html#705>RF-TRUNK</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1720>invert</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -408,19 +384,43 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=603>room-make</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=740>room-lit?</a>&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#720>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#706>RF-LIT</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;0&lt;>&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#571>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=rooms.fs.html#560>RF-EXISTS</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0270>0=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=741>room-shown?</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#720>}flags@</a>&nbsp;<a class=ref href=rooms.fs.html#707>RF-SHOWN</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;0&lt;>&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#587>rnd-room</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=742>room-flags+!</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#713>}flags</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0650>@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1980>or</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0010>!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#591>room-validate</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=743>room-lit!</a>&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#706>RF-LIT</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#742>room-flags+!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=744>room-shown!</a>&nbsp;<a class=ref href=rooms.fs.html#707>RF-SHOWN</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#742>room-flags+!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=745>room-make</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#734>room-exists?</a>&nbsp;<a class=ref href=#457>not</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#729>rnd-room</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#733>room-validate</a></code>
 <br>
 
 <code>
@@ -432,15 +432,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=604>dump-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=746>dump-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=base.fs.html#502>dump-rect</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=base.fs.html#531>dump-rect</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;:&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1320>emit</a>&nbsp;<a class=ref href=rooms.fs.html#578>}flags@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1660>hex</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0180>.</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1170>decimal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;:&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1320>emit</a>&nbsp;<a class=ref href=rooms.fs.html#720>}flags@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1660>hex</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0180>.</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1170>decimal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -448,7 +448,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=605>dump-rooms</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=747>dump-rooms</a></code>
 <br>
 
 <code>
@@ -456,7 +456,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;<a class=ref href=rooms.fs.html#604>dump-room</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;<a class=ref href=rooms.fs.html#746>dump-room</a></code>
 <br>
 
 <code>
@@ -468,15 +468,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=606>make-rooms</a>&nbsp;</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=748>make-rooms</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#566>ROOM-SIZEOF</a>&nbsp;10&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1540>fill</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=rooms.fs.html#708>ROOM-SIZEOF</a>&nbsp;10&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1540>fill</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=lfsr.fs.html#505>rnd</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>R</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=lfsr.fs.html#538>rnd</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>R</a></code>
 <br>
 
 <code>
@@ -492,7 +492,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=rooms.fs.html#603>room-make</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;nrooms&nbsp;i+1&nbsp;exists&nbsp;--&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=rooms.fs.html#745>room-make</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;nrooms&nbsp;i+1&nbsp;exists&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
@@ -500,23 +500,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=base.fs.html#460>>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2390>until</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=base.fs.html#479>>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2390>until</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2060>R></a>&nbsp;<a class=ref href=base.fs.html#462>3drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;drop&nbsp;limit,&nbsp;drop&nbsp;counters&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=607>fill-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#525>C-FLOOR</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=dung.fs.html#550>dfillrect</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2060>R></a>&nbsp;<a class=ref href=base.fs.html#481>3drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;drop&nbsp;limit,&nbsp;drop&nbsp;counters&nbsp;)&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -524,11 +512,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=608>paint-room-visible</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=749>fill-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#484>rect@</a>&nbsp;<a class=ref href=dung.fs.html#551>dfill-visible</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=chars.fs.html#557>B-FLOOR</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=dung.fs.html#686>dfillrect</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -536,31 +524,43 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=609>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;x&nbsp;y&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=750>paint-room-visible</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=base.fs.html#463>3dup</a>&nbsp;24&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0540>></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans9.htm#9.6.2.0680>abort"</a>&nbsp;y&nbsp;>&nbsp;80"&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#509>rect@</a>&nbsp;<a class=ref href=dung.fs.html#687>dfill-visible</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0540>></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans9.htm#9.6.2.0680>abort"</a>&nbsp;x&nbsp;>&nbsp;80"&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0540>></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans9.htm#9.6.2.0680>abort"</a>&nbsp;rn&nbsp;>&nbsp;9"&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=751>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;x&nbsp;y&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>R</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;3dup&nbsp;24&nbsp;>&nbsp;if&nbsp;abort"&nbsp;y&nbsp;>&nbsp;80"&nbsp;then</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#572>}n-doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;x&nbsp;y&nbsp;&amp;room&nbsp;ndoors&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;&nbsp;&nbsp;&nbsp;80&nbsp;>&nbsp;if&nbsp;abort"&nbsp;x&nbsp;>&nbsp;80"&nbsp;then</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0320>2*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#573>}doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;x&nbsp;y&nbsp;&amp;door&nbsp;&amp;door+1)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;&nbsp;&nbsp;&nbsp;9&nbsp;>&nbsp;if&nbsp;abort"&nbsp;rn&nbsp;>&nbsp;9"&nbsp;then</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>R</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#714>}n-doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0850>c!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;x&nbsp;y&nbsp;&amp;room&nbsp;ndoors&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0320>2*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#715>}doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;x&nbsp;y&nbsp;&amp;door&nbsp;&amp;door+1)</code>
 <br>
 
 <code>
@@ -572,47 +572,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=610>door[]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;n&nbsp;--&nbsp;x&nbsp;y&nbsp;)&nbsp;</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=752>door[]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;n&nbsp;--&nbsp;x&nbsp;y&nbsp;)&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#573>}doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0320>2*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=611>room-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x1&nbsp;y1&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#496>rect-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=612>room-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x2&nbsp;y1&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#497>rect-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=613>room-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x1&nbsp;y2&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#498>rect-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=614>room-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x2&nbsp;y2&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#499>rect-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#715>}doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0320>2*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -620,59 +584,35 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=615>room-border</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=753>room-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x1&nbsp;y1&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;/&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#611>room-topleft</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#542>dcellyx!</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#521>rect-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;\&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#612>room-topright</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#542>dcellyx!</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=754>room-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x2&nbsp;y1&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;\&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#613>room-bottomleft</a>&nbsp;&nbsp;<a class=ref href=dung.fs.html#542>dcellyx!</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#522>rect-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;/&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#614>room-bottomright</a>&nbsp;<a class=ref href=dung.fs.html#542>dcellyx!</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=755>room-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x1&nbsp;y2&nbsp;)</code>
 <br>
 
 <code>
-</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#523>rect-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;-&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=756>room-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x2&nbsp;y2&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#611>room-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#612>room-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=dung.fs.html#552>dlineh</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;-&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#613>room-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#614>room-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=dung.fs.html#552>dlineh</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;|&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#611>room-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#613>room-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1930>nip</a>&nbsp;<a class=ref href=dung.fs.html#553>dlinev</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2520>[CHAR]</a>&nbsp;|&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#612>room-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#614>room-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1930>nip</a>&nbsp;<a class=ref href=dung.fs.html#553>dlinev</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#524>rect-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a>&nbsp;</code>
 <br>
 
 <code>
@@ -680,7 +620,47 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=757>room-border</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=chars.fs.html#563>B-HWALL</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;'-'&nbsp;rn&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=rooms.fs.html#753>room-topleft</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#671>dcellyx!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=rooms.fs.html#754>room-topright</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#671>dcellyx!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=rooms.fs.html#755>room-bottomleft</a>&nbsp;&nbsp;<a class=ref href=dung.fs.html#671>dcellyx!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=rooms.fs.html#756>room-bottomright</a>&nbsp;<a class=ref href=dung.fs.html#671>dcellyx!</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#753>room-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#754>room-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=dung.fs.html#688>dlineh</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#755>room-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#756>room-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=dung.fs.html#688>dlineh</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1930>nip</a>&nbsp;<a class=ref href=chars.fs.html#562>B-VWALL</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;'|'&nbsp;rn&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#753>room-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#755>room-bottomleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1930>nip</a>&nbsp;<a class=ref href=dung.fs.html#689>dlinev</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#754>room-topright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#756>room-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1930>nip</a>&nbsp;<a class=ref href=dung.fs.html#689>dlinev</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -688,11 +668,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=616>room-doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=758>room-doors</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#579>}n-doors@</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#721>}n-doors@</a>&nbsp;</code>
 <br>
 
 <code>
@@ -704,15 +684,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=dung.fs.html#527>C-DOOR</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=chars.fs.html#559>B-DOOR</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#610>door[]</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#752>door[]</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#542>dcellyx!</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#671>dcellyx!</a></code>
 <br>
 
 <code>
@@ -736,7 +716,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=617>render-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=759>render-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
@@ -744,11 +724,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#593>room-thru?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#735>room-thru?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#526>C-PASSAGE</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=dung.fs.html#542>dcellyx!</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=chars.fs.html#558>B-PASSAGE</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0870>c@</a>&nbsp;<a class=ref href=dung.fs.html#671>dcellyx!</a></code>
 <br>
 
 <code>
@@ -756,19 +736,19 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#592>room-exists?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#734>room-exists?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#607>fill-room</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#749>fill-room</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#615>room-border</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#757>room-border</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#616>room-doors</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2070>R@</a>&nbsp;<a class=ref href=rooms.fs.html#758>room-doors</a></code>
 <br>
 
 <code>
@@ -788,11 +768,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=618>render-rooms</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=760>render-rooms</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1240>do</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;<a class=ref href=rooms.fs.html#617>render-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1800>loop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1240>do</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;<a class=ref href=rooms.fs.html#759>render-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1800>loop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -800,11 +780,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;room&nbsp;number&nbsp;to&nbsp;x&nbsp;y&nbsp;position&nbsp;in&nbsp;3x3&nbsp;grid</code>
+<br>
+
+<code>
 <a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;room&nbsp;number&nbsp;rn&nbsp;n&nbsp;in&nbsp;range&nbsp;1..9&nbsp;-->&nbsp;x&nbsp;y&nbsp;in&nbsp;range&nbsp;0..2</code>
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=619>rn-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=761>rn-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
@@ -816,39 +800,19 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=620>door-y</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;y&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=762>door-y</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#590>room-height</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#732>room-height</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0280>0></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;<a class=ref href=lfsr.fs.html#505>rnd</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#575>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0280>0></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;<a class=ref href=lfsr.fs.html#538>rnd</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#717>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#575>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=621>door-x</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#589>room-width</a>&nbsp;</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0280>0></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;<a class=ref href=lfsr.fs.html#505>rnd</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#574>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#574>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#717>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -856,23 +820,19 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=622>door-l</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=763>door-x</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#620>door-y</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#576>}x2@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#731>room-width</a>&nbsp;</code>
 <br>
 
 <code>
-</code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.0280>0></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0160>-</a>&nbsp;<a class=ref href=lfsr.fs.html#538>rnd</a>&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#716>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;</code>
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=623>door-h</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#620>door-y</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#574>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1310>else</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#716>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -880,23 +840,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=624>door-j</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=764>door-l</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#621>door-x</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#577>}y2@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=625>door-k</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#621>door-x</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#575>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#762>door-y</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#718>}x2@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -904,23 +852,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=626>hpass</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=765>door-h</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#526>C-PASSAGE</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;<a class=ref href=dung.fs.html#552>dlineh</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=627>vpass</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;y2&nbsp;--&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=dung.fs.html#526>C-PASSAGE</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;<a class=ref href=dung.fs.html#553>dlinev</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#762>door-y</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#716>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -928,15 +864,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=628>conn-h</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;left&nbsp;right&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=766>door-j</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#623>door-h</a>&nbsp;<a class=ref href=base.fs.html#463>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#609>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#622>door-l</a>&nbsp;<a class=ref href=base.fs.html#463>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#609>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0430>2swap</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#763>door-x</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#719>}y2@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -944,19 +876,71 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=lfsr.fs.html#508>any-between</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;y2&nbsp;m&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=767>door-k</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=rooms.fs.html#626>hpass</a>&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x1,y1&nbsp;-&nbsp;mx,y1&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#763>door-x</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#717>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=rooms.fs.html#627>vpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;mx,y1&nbsp;-&nbsp;mx,y2</code>
+</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0300>1-</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#626>hpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;mx,y2&nbsp;-&nbsp;x2,y2</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=768>hpass</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=chars.fs.html#558>B-PASSAGE</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;<a class=ref href=dung.fs.html#688>dlineh</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=769>vpass</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;y2&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=chars.fs.html#558>B-PASSAGE</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2150>roll</a>&nbsp;<a class=ref href=dung.fs.html#689>dlinev</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=770>conn-h</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;left&nbsp;right&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#765>door-h</a>&nbsp;<a class=ref href=base.fs.html#482>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#751>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a></code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#764>door-l</a>&nbsp;<a class=ref href=base.fs.html#482>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#751>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0430>2swap</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=lfsr.fs.html#541>any-between</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;y2&nbsp;m&nbsp;--&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=rooms.fs.html#768>hpass</a>&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x1,y1&nbsp;-&nbsp;mx,y1&nbsp;</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=rooms.fs.html#769>vpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;mx,y1&nbsp;-&nbsp;mx,y2</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0300>1-</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=rooms.fs.html#768>hpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;mx,y2&nbsp;-&nbsp;x2,y2</code>
 <br>
 
 <code>
@@ -968,15 +952,15 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=629>conn-v</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;top&nbsp;bottom&nbsp;--&nbsp;)&nbsp;</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=771>conn-v</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;top&nbsp;bottom&nbsp;--&nbsp;)&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#625>door-k</a>&nbsp;<a class=ref href=base.fs.html#463>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#609>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#767>door-k</a>&nbsp;<a class=ref href=base.fs.html#482>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#751>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#624>door-j</a>&nbsp;<a class=ref href=base.fs.html#463>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#609>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0430>2swap</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#766>door-j</a>&nbsp;<a class=ref href=base.fs.html#482>3dup</a>&nbsp;<a class=ref href=rooms.fs.html#751>+door!</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0430>2swap</a></code>
 <br>
 
 <code>
@@ -984,23 +968,23 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=lfsr.fs.html#508>any-between</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;y2&nbsp;m&nbsp;--&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;<a class=ref href=lfsr.fs.html#541>any-between</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x1&nbsp;y1&nbsp;x2&nbsp;y2&nbsp;m&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=rooms.fs.html#627>vpass</a>&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x1,y1&nbsp;-&nbsp;x1,m</code>
+&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;<a class=ref href=rooms.fs.html#769>vpass</a>&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x1,y1&nbsp;-&nbsp;x1,m</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=rooms.fs.html#626>hpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x1,m&nbsp;-&nbsp;x2,m&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;4&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=rooms.fs.html#768>hpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x1,m&nbsp;-&nbsp;x2,m&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=rooms.fs.html#627>vpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x2,m&nbsp;-&nbsp;x2,y2</code>
+&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1990>over</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.2030>pick</a>&nbsp;<a class=ref href=rooms.fs.html#769>vpass</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans7.htm#7.6.2.2535>\</a>&nbsp;x2,m&nbsp;-&nbsp;x2,y2</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0300>1-</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#627>vpass</a>&nbsp;</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0300>1-</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#769>vpass</a>&nbsp;</code>
 <br>
 
 <code>
@@ -1012,7 +996,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=630>connect-2rooms</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;r1&nbsp;r2&nbsp;--&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=772>connect-2rooms</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;r1&nbsp;r2&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
@@ -1020,7 +1004,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#619>rn-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;r1&nbsp;r2&nbsp;r1&nbsp;x2&nbsp;y2&nbsp;--&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#761>rn-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;r1&nbsp;r2&nbsp;r1&nbsp;x2&nbsp;y2&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
@@ -1028,7 +1012,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#619>rn-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;r1&nbsp;r2&nbsp;x2&nbsp;y2&nbsp;x1&nbsp;y1&nbsp;--&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#761>rn-xy</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;r1&nbsp;r2&nbsp;x2&nbsp;y2&nbsp;x1&nbsp;y1&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
@@ -1040,7 +1024,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#628>conn-h</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#770>conn-h</a></code>
 <br>
 
 <code>
@@ -1052,7 +1036,7 @@ div.code a.ref:hover {
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#629>conn-v</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#771>conn-v</a></code>
 <br>
 
 <code>
@@ -1064,67 +1048,31 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=631>xy-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;rn&nbsp;--&nbsp;true|false&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=773>xy-find-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;--&nbsp;rn&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=base.fs.html#463>3dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;rn&nbsp;x&nbsp;y&nbsp;rn&nbsp;--&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a></code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#611>room-topleft</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;rn&nbsp;x&nbsp;tlx&nbsp;y&nbsp;tly&nbsp;--&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=rooms.fs.html#727>ROOM_HH</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0320>2*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2500>[</a>&nbsp;<a class=ref href=rooms.fs.html#726>ROOM_HW</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0320>2*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2540>]</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1780>literal</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0230>/</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=base.fs.html#460>>=</a>&nbsp;<a class=ref href=#459>-rot</a>&nbsp;<a class=ref href=base.fs.html#460>>=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;rn&nbsp;cond1&nbsp;--&nbsp;)</code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;3&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0090>*</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0120>+</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0290>1+</a>&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;rn&nbsp;--&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=#456>not</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=base.fs.html#462>3drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.2.1485>false</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1380>exit</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#735>room-thru?</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=base.fs.html#481>3drop</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1380>exit</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;thru&nbsp;rooms&nbsp;not&nbsp;cool&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=rooms.fs.html#614>room-bottomright</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0580>>r</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=base.fs.html#530>xy-in-r?</a>&nbsp;</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=base.fs.html#461>&lt;=</a>&nbsp;<a class=ref href=#459>-rot</a>&nbsp;<a class=ref href=base.fs.html#461>&lt;=</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0720>and</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=632>xy-find-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;x&nbsp;y&nbsp;--&nbsp;rn&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<a class=ref href=#459>-rot</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;x&nbsp;y&nbsp;--&nbsp;)</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;1&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1240>do</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0380>2dup</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;<a class=ref href=rooms.fs.html#631>xy-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2160>rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1680>i</a>&nbsp;<a class=ref href=#459>-rot</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1760>leave</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1800>loop</a>&nbsp;</code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0370>2drop</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2060>r></a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=#457>not</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1700>if</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1260>drop</a>&nbsp;0&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2270>then</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -1132,23 +1080,11 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=633>x-rnd-in-room</a></code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=774>x-rnd-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#574>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#576>}x2@</a>&nbsp;<a class=ref href=lfsr.fs.html#508>any-between</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
-<br>
-
-<code>
-</code>
-<br>
-
-<code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=634>y-rnd-in-room</a></code>
-<br>
-
-<code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#575>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#583>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#577>}y2@</a>&nbsp;<a class=ref href=lfsr.fs.html#508>any-between</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#716>}x1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#718>}x2@</a>&nbsp;<a class=ref href=lfsr.fs.html#541>any-between</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
@@ -1156,11 +1092,23 @@ div.code a.ref:hover {
 <br>
 
 <code>
-<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=635>somewhere-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=775>y-rnd-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;y&nbsp;)</code>
 <br>
 
 <code>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#633>x-rnd-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#634>y-rnd-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#717>}y1@</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#725>(rooms)</a>&nbsp;<a class=ref href=rooms.fs.html#719>}y2@</a>&nbsp;<a class=ref href=lfsr.fs.html#541>any-between</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
+<br>
+
+<code>
+</code>
+<br>
+
+<code>
+<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0450>:</a>&nbsp;<a class=name name=776>somewhere-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans11.htm#11.6.1.0080>(</a>&nbsp;rn&nbsp;--&nbsp;x&nbsp;y&nbsp;)</code>
+<br>
+
+<code>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.1290>dup</a>&nbsp;<a class=ref href=rooms.fs.html#774>x-rnd-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.2260>swap</a>&nbsp;<a class=ref href=rooms.fs.html#775>y-rnd-in-room</a>&nbsp;<a class=ref href=http://forth.sourceforge.net/std/dpans/dpans6.htm#6.1.0460>;</a></code>
 <br>
 
 <code>
