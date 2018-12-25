@@ -61,6 +61,14 @@ variable current-offset
     create current-offset dup @ dup , 2 roll + swap !
     does> @ + c@ ;
 
+: soffset@w
+    create current-offset dup @ dup , 2 roll + swap !
+    does> @ + @ ;
+
+: soffset2@
+    create current-offset dup @ dup , 2 roll + swap !
+    does> @ + 2@ ;
+
 : point@ 
     create c, c, 
     does> dup c@ swap 1+ c@ swap ;
@@ -192,5 +200,17 @@ current-offset off
         postpone drop 0 postpone literal 
         postpone exit 
     postpone then ; immediate
+
+( create cell array )
+: constarray 
+    create 
+    does> swap cells + @ ;
+
+: char-array 
+    create
+    does> swap + ;
+
+
+
 
 create %debugcount 0 ,

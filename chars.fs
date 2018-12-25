@@ -47,10 +47,22 @@ here swap - constant |static-items|
 : rnd-static-thing ( -- ) 
     |static-items| rnd static-items + c@ ;
 
+\ take HERE of a sequence of NSTRINGS counted strings
+\ and compile a string array
+\ tos = ptr to current string, start with the first one
+\   dup ,         -- store pointer to ptr
+\   dup c@ 1+ +   -- ptr += string(ptr).length
+\   aligned       -- align to cell boundary 
+\ does>
+\   swap cells + @ -- ptr = this[n]
+\   c@            -- string(ptr).length
+\   swap 1+       -- ptr += 1
+\   swap          -- len ptr, useful for TYPE
+
 : csarray ( there nstrings -- )
     create 
-        0 do
-            dup , dup c@ 1+ + aligned 
+        0 do                            
+            dup , dup c@ 1+ + aligned   
         loop
         drop
     does>
