@@ -58,14 +58,8 @@ here
     ," beige "
 NPOTIONS csarray colors
 
-: mkshuffle ( -- shuffled sequence of NPOTIONS )
-    NPOTIONS 0 do i loop
-    NPOTIONS 2 * 0 do
-        -1 NPOTIONS any-between roll
-    loop ;
-
 : gen-potion-names
-    mkshuffle
+    NPOTIONS mkshuffle
     NPOTIONS 0 do
         colors
         i (potion-name) place
@@ -94,6 +88,6 @@ NPOTIONS csarray colors
     loop ;
 
 
-gen-potion-names
+\ gen-potion-names
 \ dump-potions
 

@@ -129,7 +129,7 @@ NSCROLLS mk-names (scroll-name)
     loop ;
 
 
-gen-scroll-names
+\ gen-scroll-names
 \ type-scroll-names
 \ 3 call-scroll
 

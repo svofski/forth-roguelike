@@ -210,7 +210,5 @@ current-offset off
     create
     does> swap + ;
 
-
-
-
 create %debugcount 0 ,
+0 value scratch

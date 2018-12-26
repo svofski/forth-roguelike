@@ -44,3 +44,12 @@ decimal
 : dice-for-roomlight ( dlvl -- t|f )
     12 min 12 swap - 13 rnd > ;
 
+\ halp! i don't know how to implement this without a scratch var
+: mkshuffle ( n -- shuffled sequence of 0..n-1 )
+    dup to scratch
+    0 do i loop
+    scratch 2 * 0 do
+        -1 scratch any-between roll
+    loop ;
+
+
