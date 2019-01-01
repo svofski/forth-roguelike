@@ -10,12 +10,15 @@ gforth [IF]
 
 include chars.fs
 include things.fs
+
 include invitems.fs
 include scroll.fs
 include potion.fs
 include wand.fs
 include ring.fs
+include armor.fs
 include inv.fs
+
 include dung.fs
 include rooms.fs
 include level.fs

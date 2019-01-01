@@ -377,4 +377,8 @@ create RS-DISP ' cmd-single ,
 : play
     time&date + + + + + -1 and lfsr !
     allot-dungeon
+    gen-scroll-names 
+    gen-potion-names 
+    gen-wand-names
+    gen-ring-names 
     0play ;

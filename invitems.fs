@@ -1,6 +1,7 @@
 decimal 
 
 1 constant CALLED
+2 constant IDENTIFIED
 
 36 constant |CALLED-NAME|
 
@@ -24,3 +25,11 @@ decimal
     does> swap cells + ;
 
 
+\ }i-what-is field values
+1 constant WI-FOOD
+2 constant WI-SCROLL
+3 constant WI-POTION
+4 constant WI-WAND
+5 constant WI-RING
+6 constant WI-ARMOR
+7 constant WI-WEAPON
